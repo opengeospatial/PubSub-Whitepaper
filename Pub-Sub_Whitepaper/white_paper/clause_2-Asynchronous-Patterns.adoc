@@ -1,0 +1,56 @@
+== Asynchonous Operations
+
+An asynchronous operation is any interaction between two software entities where the conclusing action does not immediately follow the initiating action. There are a number of different models for Asynchronous Operations. This section attempts to describe someof the more common ones. An understanding of the scope of this space will help discuss and compare the alternatives OGC faces in asynchonous services.
+
+Asynchronous operatations have three variables:
+
+. The overall pattern of behavior
+. How the two entities rendezvous 
+. The criteria for completing the operation
+
+=== Asynchronous Behavior Models
+
+==== Request response
+
+Request-Response is a synchronous behavior model. A request is issued by one entity and a response is provided in return. Asynchonous behaviors can best be understood in contrast to this model.
+
+==== Request with delayed response
+
+This model differs from Reqest-Response in that the immediate response is not the final response. Rather is indicates the success or failure of the request. The final response is to be delivered latter.
+
+==== Publish Subscribe
+
+==== Mesh Network (Pub Sub)
+
+==== Synchronization (geosync)
+
+==== Broadcast
+
+==== Standing Query
+
+=== Notification and Alert
+
+==== Callback
+
+==== Polling
+
+==== Stored response queue
+
+==== Instant Message
+
+==== e-mail
+
+==== Phone call
+
+==== Snail mail
+
+=== Filtering
+
+==== Event (RSS, SNMP)
+
+==== Tags (JMS)
+
+==== Query expression (Standing Query)
+
+==== Check Point
+

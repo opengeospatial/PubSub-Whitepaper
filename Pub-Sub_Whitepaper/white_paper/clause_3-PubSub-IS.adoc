@@ -1,0 +1,5 @@
+== OGC’s PubSub implementation Standard
+
+Description of the standard and recommendations for OGC PubSub
+
+//write text in as many clauses as necessary. Use one document or many, your choice!

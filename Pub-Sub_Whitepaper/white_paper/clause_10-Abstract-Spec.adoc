@@ -1,0 +1,5 @@
+== Ideas for an OGC Abstract Spec for PubSub
+
+Concepts to be included in an OGC AS for PubSub - draw from the previous sections
+
+//write text in as many clauses as necessary. Use one document or many, your choice!
