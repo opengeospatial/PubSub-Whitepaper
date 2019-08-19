@@ -1,0 +1,5 @@
+== WMO OpenWIS use of AMQP
+
+Description of the standard and recommendations for OGC PubSub
+
+//write text in as many clauses as necessary. Use one document or many, your choice!

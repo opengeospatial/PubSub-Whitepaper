@@ -1,4 +1,4 @@
-:Title: OGC (add title text)
+:Title: OGC (PubSub White Paper)
 :titletext: {Title}
 :doctype: book
 :encoding: utf-8
@@ -74,14 +74,32 @@ toc::[]
 ////
 Make sure to complete each included document
 ////
+
 include::clause_0_front_material.adoc[]
 
-include::clause_1.adoc[]
+include::clause_1-Overview.adoc[]
+
+include::clause_2-Asynchronous-Patterns.adoc[]
+
+include::clause_3-Pub-Sub-IS.adoc[]
+
+include::clause_4-SensorThings.adoc[]
+
+include::clause_5-W3C.adoc[]
+
+include::clause_6-Aviation.adoc[]
+
+include::clause_7-WMO-OpenWIS.adoc[]
+
+include::clause_8-AsyncAPI.adoc[]
+
+include::clause_9-AsyncAPI-in-OGC.adoc[]
+
+include::clause_10-Abstract-Spec.adoc[]
 
 <<<
 //use annexes as needed
 include::annex-n.adoc[]
-
 <<<
 ////
 Revision History should be the last annex before the Bibliography

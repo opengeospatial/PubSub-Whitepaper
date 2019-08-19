@@ -1,0 +1,7 @@
+== AsyncAPI description
+
+Description of the AsyncAPI spec in general. 
+
+The role of AsyncAPI is to provide a language for designing the API.
+
+//write text in as many clauses as necessary. Use one document or many, your choice!
