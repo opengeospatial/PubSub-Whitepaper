@@ -81,7 +81,7 @@ include::clause_1-Overview.adoc[]
 
 include::clause_2-Asynchronous-Patterns.adoc[]
 
-include::clause_3-Pub-Sub-IS.adoc[]
+include::clause_3-PubSub-IS.adoc[]
 
 include::clause_4-SensorThings.adoc[]
 
