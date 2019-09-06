@@ -77,6 +77,10 @@ Make sure to complete each included document
 
 include::clause_0_front_material.adoc[]
 
+include::clause_0_references.adoc[]
+
+include::clause_0_conventions.adoc[]
+
 include::clause_1-Overview.adoc[]
 
 include::clause_2-Asynchronous-Patterns.adoc[]
