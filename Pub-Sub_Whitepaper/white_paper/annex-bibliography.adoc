@@ -23,3 +23,5 @@ Springer LNCS is widely used in technical and computer science journals and othe
 ((( Example )))
 [[OGC2015]]
 [1] OGC: OGC Testbed 12 Annex B: Architecture. (2015).
+[2] L. Bigagli, M. Rieke. The new OGC Publish/Subscribe Standard - applications in the Sensor Web and the Aviation domain. Open Geospatial Data, Software and Standards, ISSN: 2363-7501, doi: 10.1186/s40965- 017-0030-7, vol. 2, issue no. 1, article 18, Springer, Heidelberg, Germany, December 2017 (electronic 3 August 2017).
+[3] M. Rieke, L. Bigagli, S. Herle, S. Jirka, A. Kotsev, T. Liebig, C. Malewski, T. Paschke, C. Stasch. Geospatial IoT—The Need for Event-Driven Architectures in Contemporary Spatial Data Infrastructures. ISPRS International Journal of Geo-Information (IJGI), ISSN 2220-9964, Volume 7, Issue 10, article 385, doi: 10.3390/ijgi7100385, MDPI, Basel, Switzerland, 25 September 2018.
