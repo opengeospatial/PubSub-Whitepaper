@@ -3,3 +3,37 @@
 Description of the standard and recommendations for OGC PubSub
 
 //write text in as many clauses as necessary. Use one document or many, your choice!
+The OpenWIS Association is examining the potential use of pubsub services for Meteorology as part of the World Meteorological Organization (WMO) Information System (WIS) 2 draft technical specification.  Several use cases were identified.  Of particular importance, were the use of WAN for WMO GTS data dissemination, and the use of WAN for NHMs specific users (aeronautical, B2B and general public).
+
+A number of message queue protocols were examined (AMQP, MQTT, STOMP, JMS, Kafka, Redis).  However, only 2 use ISO standards (AMQP and MQTT).  AMQP was the preferred message queue protocol for SESAR and SWiM.  There also appears to be good alignment for AQMP and RabbitMQ.  RabbitMQ support several message queue protocols
+  ― AMQP 0-9-1 (used for all tutorials) 
+  ― AMQP 1.0 (via a plugin) 
+  ― STOMP 
+  ― MQTT 
+  ― HTTP (API)
+  
+  And RabbitMQ has implemented extensions to AMQP
+  
+  The proposed AMQP Architecture for OpenWIS is shown in Figure 1
+  
+  (Figure 1)
+  
+  The propsed AMQP message structure for OpenWIS is shown in Figure 2
+  
+  (Figure 2)
+  
+  Four types of exchanges are being considered for OpenWIS, including Direct, Fanout, Topic, and Header exchanges.  Figure 3 describes each of these exchanges
+  
+  (Figure 3)
+
+RabbitMQ tunable settings currently being considered by OpenWIS Association include:
+ - Make queues lazy
+   - Store messages on disk (predictable response times)
+ - Make queues persistent
+   - Allows to route messages even if consumer not connected
+ - Tune prefetch
+   - Allows to use all bandwidth even with on high latency WAN
+ - Need to be mindful of big files
+ - Be careful when sending send files bigger than a few Kbs
+RAM Impact (files loaded to RAM)
+Transfer times
