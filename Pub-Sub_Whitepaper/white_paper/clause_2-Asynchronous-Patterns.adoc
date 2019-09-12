@@ -44,6 +44,17 @@ image::images/Point-To-Point.bmp[]
 
 ==== Publish-Subscribe
 
+A messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific reveivers, called subscribers, but instead to categorize published messages into classes without knowledge of which subscribers, if any, there may be. Similarly, subscribers express interest in one or more classes and only receive messages that are of interest, without knowledge of which publishers, if any, there are. (Wikipedia)
+
+image::images/Pub-Sub.bmp[]
+
+Implemented by:
+
+. Amazon SNS
+. Azure Service Bus
+. Google Cloud Pub/Sub
+. IBM MQ
+
 ==== Synchronization (geosync)
 
 === Selection
@@ -57,6 +68,10 @@ MQTT uses Topic Filters to select messages. A Topic Filter is a path-like heirar
 . sport/tennis/player1/score/Wimbledon is a Topic Name
 . sport/+/player1 is a Topic Name with a wild card for only one level
 . sport/tennis/#/ranking is a Topic Name with a wild card for 1 or more levels.
+
+Google Pub-Sub
+
+The name of the topic from which this subscription is receiving messages. Format is projects/{project}/topics/{topic}. The value of this field will be deleted-topic if the topic has been deleted.
 
 ==== Query Expression
 
