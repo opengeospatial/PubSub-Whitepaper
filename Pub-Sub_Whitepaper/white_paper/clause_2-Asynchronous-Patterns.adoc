@@ -24,17 +24,17 @@ In other words, a callback is an http accessible resource which can receive info
 
 image::images/Callback.bmp[]
 
-Callbacks have been implemeted as non-standard extensions to a number of OGC implementations. The change to the software is fairly minor and imposes no limitations on the functionality of the Service.
+Callbacks have been implemented as non-standard extensions to a number of OGC implementations. The change to the software is fairly minor and imposes no limitations on the functionality of the Service.
 
 ==== Standing Query
 
-A standing query is an extension to the callback pattern where the request, once issued, stays active. The client recieves a response whenever the conditions specified in the request are met.
+A standing query is an extension to the callback pattern where the request, once issued, stays active. The client receives a response whenever the conditions specified in the request are met.
 
 image::images/Standing_Query.bmp[]
 
 Standing Queries have long been used in image libraries to inform users when relevant images have arrived. Their value lies in relieving users of the need to search for new data.
 
-Standing Queries require additional management functions to monior and terminate their execution. These functions are similar to the Stored Query management functions documented in WFS 2.0.
+Standing Queries require additional management functions to monitor and terminate their execution. These functions are similar to the Stored Query management functions documented in WFS 2.0.
 
 ==== Point-to-Point
 
@@ -44,7 +44,7 @@ image::images/Point-To-Point.bmp[]
 
 ==== Publish-Subscribe
 
-A messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific reveivers, called subscribers, but instead to categorize published messages into classes without knowledge of which subscribers, if any, there may be. Similarly, subscribers express interest in one or more classes and only receive messages that are of interest, without knowledge of which publishers, if any, there are. (Wikipedia)
+A messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers, but instead to categorize published messages into classes without knowledge of which subscribers, if any, there may be. Similarly, subscribers express interest in one or more classes and only receive messages that are of interest, without knowledge of which publishers, if any, there are. (Wikipedia)
 
 image::images/Pub-Sub.bmp[]
 
@@ -63,7 +63,7 @@ Implemented by:
 
 ==== Topic Hierarchy
 
-MQTT uses Topic Filters to select messages. A Topic Filter is a path-like heirarch of concepts. Wildcards are supported to indicate a single path entry or multiple. For example:
+MQTT uses Topic Filters to select messages. A Topic Filter is a path-like hierarchy of concepts. Wildcards are supported to indicate a single path entry or multiple. For example:
 
 . sport/tennis/player1/score/Wimbledon is a Topic Name
 . sport/+/player1 is a Topic Name with a wild card for only one level
@@ -84,5 +84,3 @@ Java Messaging Service (JMS) is the foundation for many (most) publish-subscribe
 ==== IoT
 
 ==== Event-Driven Architecture
-
-
