@@ -46,6 +46,8 @@ image::images/Point-To-Point.bmp[]
 
 A messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers, but instead to categorize published messages into classes without knowledge of which subscribers, if any, there may be. Similarly, subscribers express interest in one or more classes and only receive messages that are of interest, without knowledge of which publishers, if any, there are. (Wikipedia)
 
+The Publish/Subscribe model is distinguished from the request/reply and client/server models by the asynchronous delivery of messages and the ability for a Subscriber to specify an ongoing (persistent) expression of interest.
+
 image::images/Pub-Sub.bmp[]
 
 Implemented by:
