@@ -2,9 +2,14 @@
 
 === Overview
 
-The OGC has conducted significant work on event-based models and architectures in the past, resulting in the Web Notification Service (WNS) Best Practice footnote:[http://portal.opengeospatial.org/files/?artifact_id=18776], the proposed Sensor Alert and Sensor Event Service, as well as several ERs produced in previous OGC interoperability initiatives. Starting from 2010, these efforts have been subsumed under the scope of the PubSub SWG and resulted in the adoption of the Publish/Subscribe Interface Standard 1.0 in February 2016.
+The OGC has conducted significant work on event-based models and architectures in the past. <<OGC_TIMELINE>> provides an overview and a timeline of relevant OGC work related to Publish/Subscribe in the last decade. The rows show the roadmap of various documents, including official OGC standards (highlighted in bold fonts) and milestones, indicated with their version and OGC reference number and type (Best Practice, Discussion Paper, Implementation Standard, and Engineering Report; see section <<TBD>> for a complete list of abbreviations).
 
-Although the current OGC Baseline still supports only synchronous web service request-response capabilities, there is wide consensus that standard solutions for push-based message exchange patterns are fundamental enablers of the OGC vision, for example to implement the ubiquitous sensor-based applications in the advanced proactive control scenarios envisioned by the Internet of Things.
+[[OGC_TIMELINE]]
+[#OGC_TIMELINE,reftext='{figure-caption} {counter:figure-num}']
+.OGC Publish/Subscribe related work (source: <<Rieke2018>>)
+image::figures/clause_3/OGC_PubSub_timeline.png[align=center,width=600]
+
+From 2010 onward, these efforts have been subsumed under the scope of the PubSub SWG and resulted in the adoption of the Publish/Subscribe Interface Standard 1.0 in February 2016.
 
 Several work items in the OGC Testbed 12 RFQ/CFP footnote:[http://www.opengeospatial.org/standards/requests/139] have addressed the means to incorporate forms of asynchronous service interaction, including Publish/Subscribe message patterns, for example in WPS, WCS, WFS, or in geospatial queries of aviation data.
 
@@ -18,30 +23,25 @@ The subtask description in the RFQ/CFP distinguished among three different appro
 
 The document deliverable "A067 Implementing Asynchronous Service Response Engineering Report" (OGC 16-023) elaborates on the above approaches in situations where big chunks of data require asynchronous delivery. The ER focuses on the first and the second approach, with the goal to summarize and compare the results from using a WPS facade and an extension for WFS for asynchronous service responses, as well as to provide recommendations for future activities.
 
-The document deliverable "A074 PubSub/Catalog Engineering Report" (OGC 16-137) focuses on the third approach, OGC PubSub, in the specific case of catalogs, investigating the functional requirements of an interoperable, push-based data discovery solution.
-
-As underlined in the RFQ/CFP, it is important to provide methods that support notification (push) of new data as opposed to search (pull), given the volume of data that will be available in catalogs in the near future.
+The document deliverable "A074 PubSub/Catalog Engineering Report" (OGC 16-137) focuses on the third approach, OGC PubSub, in the specific case of catalogs, investigating the functional requirements of an interoperable, push-based data discovery solution. As underlined in the RFQ/CFP, it is important to provide methods that support notification (push) of new data as opposed to search (pull), given the volume of data that will be available in catalogs.
 
 === PubSub features
 
-The recently approved OGC PubSub standard is intended as an overarching model to extend services with Publish/Subscribe capabilities. The Publish/Subscribe model is distinguished from the request/reply and client/server models by the asynchronous delivery of messages and the ability for a Subscriber to specify an ongoing (persistent) expression of interest.
+The OGC PubSub standard is intended as an overarching model to extend services with Publish/Subscribe capabilities.
 
-The PubSub specification is agnostic as to what constitutes a change, i.e. an event that should cause a notification by a Publisher (aka its event model). It is only required that a Publisher instance communicate what notifications it will emit by advertising them in the Publication section of its Capabilities document.
+The specification is agnostic as to what constitutes a change, i.e. an event that should cause a notification by a Publisher (aka its event model). It is only required that a Publisher instance communicate what notifications it will emit by advertising them in the Publication section of its Capabilities document.
 
 Likewise, the PubSub standard is agnostic as regards delivery methods. It defines a Publisher role that may support multiple delivery methods, such as ATOM, AMQP, or SOAP, as advertised in its Capabilities document, in the DeliveryCapabilities section. By implementing the Publisher interface, a PubSub-OWS may offer more than one method of delivery for each Publication, to be chosen by Subscribers. Publish/Subscribe would imply push-style message delivery, however some methods may actually be pull-based (e.g. polling), under the hood.
 
 Hence, both the solutions investigated in ER OGC 16-023, the WPS façade and the specific WFS extension for asynchronous responses, are compatible with the PubSub standard and may be integrated in an application.
 
-The application of OGC PubSub to OGC Catalogue Services allows an analyst to register and be notified when new metadata records become available. Such new OGC-compliant PubSub-enabled discovery service supports and promotes the system architecture of the Testbed 12 Initiative, as a fundamental building block to advance the current OGC standard baseline. As a consequence, such work may contribute to the enhanced availability of standards-based offerings in the marketplace.
-
-
 === Basic PubSub 1.0 extension for the generic OWS
 
-This chapter summarizes the PubSub extension for the generic OWS introduced by OGC 16-137. This extension is conceived as a simple way to enable the existing request/reply OWS specifications to Publish/Subscribe, by implementing the OGC Publish/Subscribe Interface Standard 1.0.
+This chapter summarizes the PubSub extension for the generic OWS introduced by OGC 16-137. Such extension is conceived as a simple way to enable the existing request/reply OWS specifications to Publish/Subscribe, by implementing the OGC Publish/Subscribe Interface Standard 1.0.
 
 An OWS implementing this extension is capable of accepting its usual requests as filters, and of sending notifications about data/metadata updates, based on its existing semantics and syntax expressiveness.
 
-=== Conceptual model
+==== Conceptual model
 This chapter describes how PubSub 1.0 Core operations, encodings and messages are modeled in terms of the functionalities of the generic OWS. No assumption is made on the capabilities of the target OWS, other than those defined by the OGC Web Services Common Standard. Hence this extension may apply, for example, to WFS, WCS, and other OWS interfaces.
 
 The PubSub specification is agnostic as to what constitutes a change, i.e. an event that should cause a notification by a Publisher (aka its event model). It is only required that a Publisher instance communicate what notifications it will emit by advertising them in the Publication section of its Capabilities document (see below).
@@ -69,7 +69,7 @@ This may be formalized in an “OWS Request/Reply Publisher” Conformance Class
 This MEP is a simple way to enable existing OWSs to PubSub, allowing to bind the PubSub 1.0 Core operations, encodings and messages to the standard OWS functionalities, data models, and semantics.
 
 
-=== Required Capabilities components
+==== Required Capabilities components
 PubSub Core requires that the OWS advertise the implemented Conformance Classes in its Capabilities document, namely in the Profile property of the ServiceIdentification section (as of OWS Common 1.1). Besides, it requires that the additional Capabilities components represented in figure <<PubSubCapabilitiescomponents>> are returned in the GetCapabilities response, but does not specify the specific mechanism for incorporating these additional Capabilities components into the OWS Capabilities document. These extension proposes to include these additional Capabilities components in the ExtendedCapabilities of the OWS, as detailed in the following chapters.
 
 [[PubSubCapabilitiescomponents]]
@@ -78,7 +78,7 @@ PubSub Core requires that the OWS advertise the implemented Conformance Classes 
 image::figures/clause_3/PubSubCapabilitiescomponents.png[align=center,width=600]
 
 
-==== FilterCapabilities
+===== FilterCapabilities
 The FilterCapabilities section describes the filtering-related capabilities of a PubSub-OWS, i.e. the filter languages it supports for matching events against subscriptions (e.g., OGC Filter Encoding). This allows the pluggability of filter languages.
 
 [[OWSFilterCapabilities]]
@@ -103,7 +103,7 @@ The SupportedCapabilities elements allows restricting the acceptable requests, p
 ----
 
 
-==== DeliveryCapabilities
+===== DeliveryCapabilities
 The DeliveryCapabilities section describes the delivery methods supported by the PubSub-OWS, e.g. SOAP, WS-Notification, ATOM, SSE, WebSockets, OAI-PMH. This allows the pluggability of delivery methods.
 
 [[DeliveryCapabilities]]
@@ -127,7 +127,7 @@ The following Capabilities snippet declares that this PubSub-OWS instance delive
 ----
 
 [[DeliveryMethods]]
-===== Delivery methods
+====== Delivery methods
 The DeliveryCapabilities section describes the methods supported by the PubSub-OWS for delivering notifications.
 Publishers may offer more than one method of delivery for each Publication, to be chosen by Subscribers. Publish/Subscribe would imply push-style message delivery, however some methods may actually be pull-based (e.g. polling), under the hood.
 
@@ -140,7 +140,7 @@ Server-Sent Events (SSE) is a pure push-style communication technology based on 
 * Connection: "keep-alive”
 
 
-==== Publications
+===== Publications
 The Publications section describes the contents offered by the PubSub-OWS, i.e. the sequences of notifications that Subscribers can subscribe to.
 
 [[Publications]]
@@ -166,7 +166,7 @@ The following Capabilities snippet declares a publication that notifies on all t
 ----
 
 [[OWSNotificationEncoding]]
-===== Notification encoding
+====== Notification encoding
 For the generic OWS instance, no operation is defined that provides the basic semantics of “insert”, “update”, and “delete” actions on the content managed by the instance.
 
 The most generic mechanism to notify about updates is that the Publisher re-send the whole response element corresponding to the request used as filter in the Subscription. For example, in the case of WFS, if the client subscribes with a wfs:GetFeature request as a filter, the PubSub-WFS should notify about any changes by delivering a standard wfs:FeatureCollection, in response to that request.
