@@ -577,7 +577,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_conventions">3. Conventions</a>
 <ul class="sectlevel2">
-<li><a href="#_abbreviated_terms">3.1. Abbreviated terms</a></li>
+<li><a href="#section:abbreviations">3.1. Abbreviated terms</a></li>
 <li><a href="#_uml_notation">3.2. UML notation</a></li>
 </ul>
 </li>
@@ -586,50 +586,42 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_asynchronous_behavior_models">5.1. Asynchronous Behavior Models</a>
 <ul class="sectlevel3">
-<li><a href="#_request_response">5.1.1. Request response</a></li>
-<li><a href="#_request_with_delayed_response">5.1.2. Request with delayed response</a></li>
-<li><a href="#_publish_subscribe">5.1.3. Publish Subscribe</a></li>
-<li><a href="#_mesh_network_pub_sub">5.1.4. Mesh Network (Pub Sub)</a></li>
-<li><a href="#_synchronization_geosync">5.1.5. Synchronization (geosync)</a></li>
-<li><a href="#_broadcast">5.1.6. Broadcast</a></li>
-<li><a href="#_standing_query">5.1.7. Standing Query</a></li>
+<li><a href="#_request_response">5.1.1. Request - response</a></li>
+<li><a href="#_request_with_callback">5.1.2. Request with Callback</a></li>
+<li><a href="#_standing_query">5.1.3. Standing Query</a></li>
+<li><a href="#_point_to_point">5.1.4. Point-to-Point</a></li>
+<li><a href="#_publish_subscribe">5.1.5. Publish-Subscribe</a></li>
+<li><a href="#_synchronization_geosync">5.1.6. Synchronization (geosync)</a></li>
 </ul>
 </li>
-<li><a href="#_notification_and_alert">5.2. Notification and Alert</a>
+<li><a href="#_selection">5.2. Selection</a>
 <ul class="sectlevel3">
-<li><a href="#_callback">5.2.1. Callback</a></li>
-<li><a href="#_polling">5.2.2. Polling</a></li>
-<li><a href="#_stored_response_queue">5.2.3. Stored response queue</a></li>
-<li><a href="#_instant_message">5.2.4. Instant Message</a></li>
-<li><a href="#_e_mail">5.2.5. e-mail</a></li>
-<li><a href="#_phone_call">5.2.6. Phone call</a></li>
-<li><a href="#_snail_mail">5.2.7. Snail mail</a></li>
+<li><a href="#_topic_term">5.2.1. Topic (Term)</a></li>
+<li><a href="#_topic_hierarchy">5.2.2. Topic Hierarchy</a></li>
+<li><a href="#_query_expression">5.2.3. Query Expression</a></li>
+<li><a href="#_check_point">5.2.4. Check Point</a></li>
 </ul>
 </li>
-<li><a href="#_filtering">5.3. Filtering</a>
+<li><a href="#_applications">5.3. Applications</a>
 <ul class="sectlevel3">
-<li><a href="#_event_rss_snmp">5.3.1. Event (RSS, SNMP)</a></li>
-<li><a href="#_tags_jms">5.3.2. Tags (JMS)</a></li>
-<li><a href="#_query_expression_standing_query">5.3.3. Query expression (Standing Query)</a></li>
-<li><a href="#_check_point">5.3.4. Check Point</a></li>
+<li><a href="#_iot">5.3.1. IoT</a></li>
+<li><a href="#_event_driven_architecture">5.3.2. Event-Driven Architecture</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_ogcs_pubsub_implementation_standard">6. OGC’s PubSub implementation Standard</a>
+<li><a href="#_ogcs_pubsub_implementation_standard">6. OGC’s PubSub Implementation Standard</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_2">6.1. Overview</a></li>
-<li><a href="#_pubsub_features">6.2. PubSub features</a></li>
-<li><a href="#_basic_pubsub_1_0_extension_for_the_generic_ows">6.3. Basic PubSub 1.0 extension for the generic OWS</a></li>
-<li><a href="#_conceptual_model">6.4. Conceptual model</a></li>
-<li><a href="#_required_capabilities_components">6.5. Required Capabilities components</a>
+<li><a href="#_ogcs_pubsub_features">6.2. OGC&#8217;s PubSub features</a></li>
+<li><a href="#_related_work">6.3. Related Work</a></li>
+<li><a href="#_basic_pubsub_1_0_extension_for_the_generic_ows">6.4. Basic PubSub 1.0 extension for the generic OWS</a>
 <ul class="sectlevel3">
-<li><a href="#_filtercapabilities">6.5.1. FilterCapabilities</a></li>
-<li><a href="#_deliverycapabilities">6.5.2. DeliveryCapabilities</a></li>
-<li><a href="#_publications">6.5.3. Publications</a></li>
+<li><a href="#_conceptual_model">6.4.1. Conceptual model</a></li>
+<li><a href="#_required_capabilities_components">6.4.2. Required Capabilities components</a></li>
 </ul>
 </li>
-<li><a href="#LegacyComponents">6.6. Support to legacy components</a></li>
+<li><a href="#LegacyComponents">6.5. Support to legacy components</a></li>
 </ul>
 </li>
 <li><a href="#_pubsub_in_ogc_sensorthings">7. PubSub in OGC SensorThings</a></li>
@@ -809,7 +801,7 @@ Attention is drawn to the possibility that some of the elements of this document
 <h2 id="_conventions"><a class="anchor" href="#_conventions"></a>3. Conventions</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_abbreviated_terms"><a class="anchor" href="#_abbreviated_terms"></a>3.1. Abbreviated terms</h3>
+<h3 id="section:abbreviations"><a class="anchor" href="#section:abbreviations"></a>3.1. Abbreviated terms</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -823,6 +815,9 @@ Attention is drawn to the possibility that some of the elements of this document
 </li>
 <li>
 <p>MEP Message Exchange Pattern</p>
+</li>
+<li>
+<p>OAI-PMH Open Archives Initiative Protocol for Metadata Harvesting</p>
 </li>
 <li>
 <p>OGC Open Geospatial Consortium</p>
@@ -884,127 +879,269 @@ representation that is consistent with TM_Instant.
 <h2 id="_asynchronous_operations"><a class="anchor" href="#_asynchronous_operations"></a>5. Asynchronous Operations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>An asynchronous operation is any interaction between two software entities where the conclusing action does not immediately follow the initiating action. There are a number of different models for Asynchronous Operations. This section attempts to describe some of the more common ones. An understanding of the scope of this space will help discuss and compare the alternatives OGC faces in asynchronous services.</p>
+<p>An asynchronous operation is any interaction between two software entities where the concluding action does not immediately follow the initiating action. There are a number of different models for asynchronous operations. This section attempts to describe some of the more common ones. An understanding of the scope of this space will help discuss and compare the alternatives OGC faces in asynchronous services.</p>
 </div>
 <div class="paragraph">
-<p>Asynchronous operations have three variables:</p>
+<p>This section will look at three aspects of asynchronous operations:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The overall pattern of behavior</p>
+<p>Asynchronous Patterns</p>
 </li>
 <li>
-<p>How the two entities rendezvous</p>
+<p>Message Selection</p>
 </li>
 <li>
-<p>The criteria for completing the operation</p>
+<p>Applications</p>
 </li>
 </ol>
 </div>
 <div class="sect2">
 <h3 id="_asynchronous_behavior_models"><a class="anchor" href="#_asynchronous_behavior_models"></a>5.1. Asynchronous Behavior Models</h3>
 <div class="sect3">
-<h4 id="_request_response"><a class="anchor" href="#_request_response"></a>5.1.1. Request response</h4>
+<h4 id="_request_response"><a class="anchor" href="#_request_response"></a>5.1.1. Request - response</h4>
 <div class="paragraph">
 <p>Request-Response is a synchronous behavior model. A request is issued by one entity and a response is provided in return. Asynchronous behaviors can best be understood in contrast to this model.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Request-Response.bmp" alt="Request Response">
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_request_with_delayed_response"><a class="anchor" href="#_request_with_delayed_response"></a>5.1.2. Request with delayed response</h4>
+<h4 id="_request_with_callback"><a class="anchor" href="#_request_with_callback"></a>5.1.2. Request with Callback</h4>
 <div class="paragraph">
-<p>This model differs from Request-Response in that the immediate response is not the final response. Rather is indicates the success or failure of the request. The final response is to be delivered latter.</p>
+<p>The OpenAPI Callback object describes "a set of requests that may be initiated by the API provider and the expected responses. The key value used to identify the callback object is an expression,  evaluated at runtime, that identifies a URL to use for the callback operation.</p>
+</div>
+<div class="paragraph">
+<p>In other words, a callback is an http accessible resource which can receive information from the server. This differs from Request-Response in that the immediate response is not the final response. The final response to the request is delivered latter through the callback.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Callback.bmp" alt="Callback">
+</div>
+</div>
+<div class="paragraph">
+<p>Callbacks have been implemented as non-standard extensions to a number of OGC implementations. The change to the software is fairly minor and imposes no limitations on the functionality of the Service.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_publish_subscribe"><a class="anchor" href="#_publish_subscribe"></a>5.1.3. Publish Subscribe</h4>
-
+<h4 id="_standing_query"><a class="anchor" href="#_standing_query"></a>5.1.3. Standing Query</h4>
+<div class="paragraph">
+<p>A standing query is an extension to the callback pattern where the request, once issued, stays active. The client receives a response whenever the conditions specified in the request are met.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Standing_Query.bmp" alt="Standing Query">
+</div>
+</div>
+<div class="paragraph">
+<p>Standing Queries have long been used in image libraries to inform users when relevant images have arrived. Their value lies in relieving users of the need to search for new data.</p>
+</div>
+<div class="paragraph">
+<p>Standing Queries require additional management functions to monitor and terminate their execution. These functions are similar to the Stored Query management functions documented in WFS 2.0.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_mesh_network_pub_sub"><a class="anchor" href="#_mesh_network_pub_sub"></a>5.1.4. Mesh Network (Pub Sub)</h4>
-
+<h4 id="_point_to_point"><a class="anchor" href="#_point_to_point"></a>5.1.4. Point-to-Point</h4>
+<div class="paragraph">
+<p>The Point-to-Point pattern uses an intermediate service to handle delivery of the message to the designated recipient. These services use a set of queues, one per recipient, to hold messages designated for the associated recipient. Recipients, in turn, can collect their messages at their leisure.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Point-To-Point.bmp" alt="Point To Point">
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_synchronization_geosync"><a class="anchor" href="#_synchronization_geosync"></a>5.1.5. Synchronization (geosync)</h4>
-
+<h4 id="_publish_subscribe"><a class="anchor" href="#_publish_subscribe"></a>5.1.5. Publish-Subscribe</h4>
+<div class="paragraph">
+<p>A messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers, but instead to categorize published messages into classes without knowledge of which subscribers, if any, there may be. Similarly, subscribers express interest in one or more classes and only receive messages that are of interest, without knowledge of which publishers, if any, there are. (Wikipedia)</p>
+</div>
+<div class="paragraph">
+<p>The Publish/Subscribe model is distinguished from the request/reply and client/server models by the asynchronous delivery of messages and the ability for a Subscriber to specify an ongoing (persistent) expression of interest.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Pub-Sub.bmp" alt="Pub Sub">
+</div>
+</div>
+<div class="paragraph">
+<p>Implemented by:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Amazon SNS</p>
+</li>
+<li>
+<p>Azure Service Bus</p>
+</li>
+<li>
+<p>Google Cloud Pub/Sub</p>
+</li>
+<li>
+<p>IBM MQ</p>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_broadcast"><a class="anchor" href="#_broadcast"></a>5.1.6. Broadcast</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_standing_query"><a class="anchor" href="#_standing_query"></a>5.1.7. Standing Query</h4>
+<h4 id="_synchronization_geosync"><a class="anchor" href="#_synchronization_geosync"></a>5.1.6. Synchronization (geosync)</h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_notification_and_alert"><a class="anchor" href="#_notification_and_alert"></a>5.2. Notification and Alert</h3>
+<h3 id="_selection"><a class="anchor" href="#_selection"></a>5.2. Selection</h3>
 <div class="sect3">
-<h4 id="_callback"><a class="anchor" href="#_callback"></a>5.2.1. Callback</h4>
+<h4 id="_topic_term"><a class="anchor" href="#_topic_term"></a>5.2.1. Topic (Term)</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_polling"><a class="anchor" href="#_polling"></a>5.2.2. Polling</h4>
-
+<h4 id="_topic_hierarchy"><a class="anchor" href="#_topic_hierarchy"></a>5.2.2. Topic Hierarchy</h4>
+<div class="paragraph">
+<p>MQTT uses Topic Filters to select messages. A Topic Filter is a path-like hierarchy of concepts. Wildcards are supported to indicate a single path entry or multiple. For example:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>sport/tennis/player1/score/Wimbledon is a Topic Name</p>
+</li>
+<li>
+<p>sport/+/player1 is a Topic Name with a wild card for only one level</p>
+</li>
+<li>
+<p>sport/tennis/#/ranking is a Topic Name with a wild card for 1 or more levels.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Google Pub-Sub</p>
+</div>
+<div class="paragraph">
+<p>The name of the topic from which this subscription is receiving messages. Format is projects/{project}/topics/{topic}. The value of this field will be deleted-topic if the topic has been deleted.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_stored_response_queue"><a class="anchor" href="#_stored_response_queue"></a>5.2.3. Stored response queue</h4>
-
+<h4 id="_query_expression"><a class="anchor" href="#_query_expression"></a>5.2.3. Query Expression</h4>
+<div class="paragraph">
+<p>Java Messaging Service (JMS) is the foundation for many (most) publish-subscribe services. JMS supports messaging selection through a query string. The query language is a subset of the SQL92</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_instant_message"><a class="anchor" href="#_instant_message"></a>5.2.4. Instant Message</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_e_mail"><a class="anchor" href="#_e_mail"></a>5.2.5. e-mail</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_phone_call"><a class="anchor" href="#_phone_call"></a>5.2.6. Phone call</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_snail_mail"><a class="anchor" href="#_snail_mail"></a>5.2.7. Snail mail</h4>
+<h4 id="_check_point"><a class="anchor" href="#_check_point"></a>5.2.4. Check Point</h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_filtering"><a class="anchor" href="#_filtering"></a>5.3. Filtering</h3>
+<h3 id="_applications"><a class="anchor" href="#_applications"></a>5.3. Applications</h3>
 <div class="sect3">
-<h4 id="_event_rss_snmp"><a class="anchor" href="#_event_rss_snmp"></a>5.3.1. Event (RSS, SNMP)</h4>
+<h4 id="_iot"><a class="anchor" href="#_iot"></a>5.3.1. IoT</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_tags_jms"><a class="anchor" href="#_tags_jms"></a>5.3.2. Tags (JMS)</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_query_expression_standing_query"><a class="anchor" href="#_query_expression_standing_query"></a>5.3.3. Query expression (Standing Query)</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_check_point"><a class="anchor" href="#_check_point"></a>5.3.4. Check Point</h4>
+<h4 id="_event_driven_architecture"><a class="anchor" href="#_event_driven_architecture"></a>5.3.2. Event-Driven Architecture</h4>
 
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_ogcs_pubsub_implementation_standard"><a class="anchor" href="#_ogcs_pubsub_implementation_standard"></a>6. OGC’s PubSub implementation Standard</h2>
+<h2 id="_ogcs_pubsub_implementation_standard"><a class="anchor" href="#_ogcs_pubsub_implementation_standard"></a>6. OGC’s PubSub Implementation Standard</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>6.1. Overview</h3>
 <div class="paragraph">
-<p>The OGC has conducted significant work on event-based models and architectures in the past, resulting in the Web Notification Service (WNS) Best Practice <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>, the proposed Sensor Alert and Sensor Event Service, as well as several ERs produced in previous OGC interoperability initiatives. Starting from 2010, these efforts have been subsumed under the scope of the PubSub SWG and resulted in the adoption of the Publish/Subscribe Interface Standard 1.0 in February 2016.</p>
+<p>The OGC has conducted significant work on event-based models and architectures. <a href="#OGC_TIMELINE">Figure 1</a> provides an overview and a timeline of relevant OGC work in the last decade.</p>
+</div>
+<div id="OGC_TIMELINE" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/OGC_PubSub_timeline.png" alt="OGC PubSub timeline" width="600">
+</div>
+<div class="title">Figure 1. OGC Publish/Subscribe related work (source: <a href="#Rieke2018">[Rieke2018]</a>). The rows show the roadmap of various documents, including official OGC standards (highlighted in bold fonts) and milestones, indicated with their version and OGC reference number and type (Best Practice, Discussion Paper, Implementation Standard, and Engineering Report; see section <a href="#section:abbreviations">Abbreviated terms</a> for a complete list of abbreviations)</div>
 </div>
 <div class="paragraph">
-<p>Although the current OGC Baseline still supports only synchronous web service request-response capabilities, there is wide consensus that standard solutions for push-based message exchange patterns are fundamental enablers of the OGC vision, for example to implement the ubiquitous sensor-based applications in the advanced proactive control scenarios envisioned by the Internet of Things.</p>
+<p>From 2010 onward, these efforts have been subsumed under the scope of the PubSub SWG and resulted in the adoption of the Publish/Subscribe Interface Standard 1.0 in February 2016.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ogcs_pubsub_features"><a class="anchor" href="#_ogcs_pubsub_features"></a>6.2. OGC&#8217;s PubSub features</h3>
+<div class="paragraph">
+<p>The OGC Publish/Subscribe Interface Standard (in short, PubSub) describes a mechanism to support publish/subscribe requirements across OGC service interfaces, such as Sensor Observation Service (SOS) and Catalogue Service for the Web (CSW), and data types, such as coverages, features, and observations.</p>
 </div>
 <div class="paragraph">
-<p>Several work items in the OGC Testbed 12 RFQ/CFP <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> have addressed the means to incorporate forms of asynchronous service interaction, including Publish/Subscribe message patterns, for example in WPS, WCS, WFS, or in geospatial queries of aviation data.</p>
+<p>PubSub is intended as an overarching model to complement OGC service interfaces with publish/subscribe capabilities, alongside the primarily addressed request/reply model. In fact, the latter is sufficient to meet may use cases, when clients request the data of interest upon need, and may re-issue requests periodically for updates. However, the publish/subscribe model can be better suited to manage urgent, unpredictable pieces of information, such as sporadic events, hazard warnings and sensor data, resulting in less network traffic and more timely responses.</p>
 </div>
 <div class="paragraph">
-<p>In particular, the RFQ/CFP included a specific Asynchronous Service Interaction subtask, part of a set of subtasks that aimed at enhancing the OGC Baseline, by extending OGC architectural designs through efforts that cross over several individual standards and services and are applied in a much wider scope.</p>
+<p>In the assumption that clients are interested in the information already provided by OGC services, the rationale for PubSub is to avoid impact on the existing service semantics, when possible reusing the specialized mechanisms for accessing and filtering the information provided (e.g., the Filter Encoding Specification <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> for general-purpose filtering).
+Hence, PubSub provides notification and messaging capabilities as a module to existing services, as well as a standalone, independent OWS capability. Besides, it supports simple notifications (e.g. references to data from OWS services) or actual data push.</p>
+</div>
+<div class="paragraph">
+<p>The basic OGC PubSub workflow, depicted in <a href="#PUBSUB_MEP">Figure 2</a>, involves two primary actors: the Publisher of information (XML, binary data, or other content); and the Subscriber, which subscribes to the Publisher to obtain the published information, possibly filtered according to criteria defined upon subscription.
+Information is contained and transported in messages, which may include additional data, such as for routing or security purposes.</p>
+</div>
+<div class="paragraph">
+<p>PubSub distinguishes two additional roles, the Sender and the Receiver, respectively the entity that delivers  messages and the entity to which messages are delivered, allowing versatile use cases (e.g. a Subscriber entity may subscribe to a Publisher a number of third parties acting as Receivers; or a Publisher may be segregated from the ultimate recipients of its messages by a separate Sender).</p>
+</div>
+<div id="PUBSUB_MEP" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/PubSub_MEP.png" alt="PubSub MEP" width="600">
+</div>
+<div class="title">Figure 2. OGC PubSub basic workflow (source: <a href="#PubSubCore2016">[PubSubCore2016]</a>). The Subscriber creates a subscription (with possible filter criteria) on behalf of a Receiver using the Subscribe operation on a Publisher (1.0). The Publisher creates a Subscription (1.1) and returns a SubscribeResponse (1.2). The Publisher attempts to match each new message against the filter of each Subscription (2.0). If a message matches, the Sender delivers it to the appropriate Receiver via the Notify operation (2.1). The Subscriber may utilize the Renew operation (3.0) to extend the lifetime of a Subscription. If the Publisher accepts the request, it sets the new termination time on the Subscription and returns a RenewResponse (3.1). The Subscriber may at any time request the termination of a Subscription via the Unsubscribe operation (4.0). If the Publisher accepts the request, it terminates the subscription (4.1) and returns an UnsubscribeResponse (4.2).</div>
+</div>
+<div class="paragraph">
+<p>To qualify as a Publisher, an OWS must at least conform to the Basic Publisher conformance class, that is satisfy the requirements for the above basic functionalities. Besides, it must return in its GetCapabilities response the three additional Capabilities components represented in <a href="#PUBSUB_CAP_COMPONENTS">Figure 3</a>.</p>
+</div>
+<div id="PUBSUB_CAP_COMPONENTS" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/PubSubCapabilitiescomponents.png" alt="PubSubCapabilitiescomponents" width="600">
+</div>
+<div class="title">Figure 3. OGC PubSub additional Capabilities components (source: <a href="#PubSubCore2016">[PubSubCore2016]</a>).</div>
+</div>
+<div class="paragraph">
+<p>The Publications component describes the contents offered by the Publisher, i.e. the sets of messages that Subscribers can subscribe to. The specification is agnostic as to what constitutes a publication, i.e. what events should cause notifications by a Publisher (i.e. its event model). Likewise, PubSub is agnostic as for the encoding of messages.</p>
+</div>
+<div class="paragraph">
+<p>The FilterCapabilities component describes the filtering-related capabilities of a Publisher, i.e. the filter languages it supports for matching messages against subscriptions (e.g., OGC Filter Encoding, XQuery). PubSub is agnostic as for the language to filter messages in subscriptions. A Publisher may support multiple filter languages, to support different Subscribers.</p>
+</div>
+<div class="paragraph">
+<p>The DeliveryCapabilities component describes the methods supported by the PubSub-enabled OWS for delivering messages. The publish/subscribe MEP typically implies push-style message delivery, however some delivery methods may actually be underpinned by pull-based mechanisms (e.g. polling). Examples of delivery methods include: SOAP and related technologies, such as WS-N (used by the PubSub SOAP Binding), ATOM, PubSubHubbub, OAI-PMH, e-mail, Short Message Service, WebSockets and SSE. The PubSub standard is agnostic as regards delivery methods. A Publisher may offer more than one method of delivery for each Publication, to be chosen by Subscribers.</p>
+</div>
+<div class="paragraph">
+<p>In addition to the mandatory Basic Publisher conformance class, PubSub defines several other optional conformance classes, introducing additional functionalities, e.g. to pause a Subscription (Pausable Publisher), derive additional publications (Publication Manager), group messages in batches (Message Batching Publisher). Moreover, it defines conformance classes to bind such functionalities to actual technologies. At present, the PubSub specification consists of two parts:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>a Core document <a href="#PubSubCore2016">[PubSubCore2016]</a> that abstractly describes the basic mandatory functionalities and several optional extensions, independently of the underlying binding technology;</p>
+</li>
+<li>
+<p>a SOAP binding document <a href="#PubSubSOAP2016">[PubSubSOAP2016]</a> that defines the implementation of PubSub in SOAP services, based on the OASIS Web Services Notification (WS-N) set of standards. <a href="#WSBN2016">[WSBN2016]</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The scope of the OGC PubSub Standard Working Group also includes a RESTful binding, to realize the PubSub functionality in REST/JSON services. Several communities are proposing additional extensions (e.g. bindings to JMS and MQTT), leveraging on the modular structure of the OGC specifications.</p>
+</div>
+<div class="paragraph">
+<p>PubSub Core requires that a PubSub-enabled OWS advertise the implemented Conformance Classes in its Capabilities document. <a href="#PUBSUB_REQ_CLASSES">Figure 4</a> shows all the conformance classes currently defined by the PubSub specification.</p>
+</div>
+<div id="PUBSUB_REQ_CLASSES" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/Requirements_Classes.png" alt="Requirements Classes" width="800">
+</div>
+<div class="title">Figure 4. OGC PubSub Conformance classes (source: <a href="#PubSubCore2016">[PubSubCore2016]</a>).</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_related_work"><a class="anchor" href="#_related_work"></a>6.3. Related Work</h3>
+<div class="paragraph">
+<p>Recognizing that the OGC baseline mainly supported synchronous web service request-response capabilities, the 2016 OGC Testbed 12 initiative addressed the means to incorporate forms of asynchronous service interaction, including Publish/Subscribe message patterns, for example in WPS, WCS, WFS, or in application domains such as the Sensor Web and Aviation. <a href="#Bigagli2017">[Bigagli2017]</a></p>
+</div>
+<div class="paragraph">
+<p>In particular, the RFQ/CFP <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> included a specific Asynchronous Service Interaction subtask, part of a set of subtasks that aimed at enhancing the OGC Baseline, by extending OGC architectural designs through efforts that cross over several individual standards and services and are applied in a much wider scope.</p>
 </div>
 <div class="paragraph">
 <p>The subtask description in the RFQ/CFP distinguished among three different approaches to handle asynchronous interaction with OGC Web services:</p>
@@ -1026,41 +1163,22 @@ representation that is consistent with TM_Instant.
 <p>The document deliverable "A067 Implementing Asynchronous Service Response Engineering Report" (OGC 16-023) elaborates on the above approaches in situations where big chunks of data require asynchronous delivery. The ER focuses on the first and the second approach, with the goal to summarize and compare the results from using a WPS facade and an extension for WFS for asynchronous service responses, as well as to provide recommendations for future activities.</p>
 </div>
 <div class="paragraph">
-<p>The document deliverable "A074 PubSub/Catalog Engineering Report" (OGC 16-137) focuses on the third approach, OGC PubSub, in the specific case of catalogs, investigating the functional requirements of an interoperable, push-based data discovery solution.</p>
+<p>The document deliverable "A074 PubSub/Catalog Engineering Report" (OGC 16-137) <a href="#OGC19-137r2">[OGC19-137r2]</a> focused on the third approach, OGC PubSub, and exemplified the use of the standard, particularly in conjunction with the Catalog Service interface, investigating the functional requirements of an interoperable, push-based data discovery solution. As underlined in the RFQ/CFP, it is important to provide methods that support notification (push) of new data as opposed to search (pull), given the volume of data typically available in catalogs.</p>
 </div>
 <div class="paragraph">
-<p>As underlined in the RFQ/CFP, it is important to provide methods that support notification (push) of new data as opposed to search (pull), given the volume of data that will be available in catalogs in the near future.</p>
+<p>Besides, it introduced a general, basic mechanism for enabling PubSub for the generic OGC Web Service over the existing request/reply OWS’s, i.e. usual requests as filters, usual responses as appropriate updates/data pushes, existing semantics and syntax expressiveness. The following chapters summarize such mechanism.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_pubsub_features"><a class="anchor" href="#_pubsub_features"></a>6.2. PubSub features</h3>
+<h3 id="_basic_pubsub_1_0_extension_for_the_generic_ows"><a class="anchor" href="#_basic_pubsub_1_0_extension_for_the_generic_ows"></a>6.4. Basic PubSub 1.0 extension for the generic OWS</h3>
 <div class="paragraph">
-<p>The recently approved OGC PubSub standard is intended as an overarching model to extend services with Publish/Subscribe capabilities. The Publish/Subscribe model is distinguished from the request/reply and client/server models by the asynchronous delivery of messages and the ability for a Subscriber to specify an ongoing (persistent) expression of interest.</p>
-</div>
-<div class="paragraph">
-<p>The PubSub specification is agnostic as to what constitutes a change, i.e. an event that should cause a notification by a Publisher (aka its event model). It is only required that a Publisher instance communicate what notifications it will emit by advertising them in the Publication section of its Capabilities document.</p>
-</div>
-<div class="paragraph">
-<p>Likewise, the PubSub standard is agnostic as regards delivery methods. It defines a Publisher role that may support multiple delivery methods, such as ATOM, AMQP, or SOAP, as advertised in its Capabilities document, in the DeliveryCapabilities section. By implementing the Publisher interface, a PubSub-OWS may offer more than one method of delivery for each Publication, to be chosen by Subscribers. Publish/Subscribe would imply push-style message delivery, however some methods may actually be pull-based (e.g. polling), under the hood.</p>
-</div>
-<div class="paragraph">
-<p>Hence, both the solutions investigated in ER OGC 16-023, the WPS façade and the specific WFS extension for asynchronous responses, are compatible with the PubSub standard and may be integrated in an application.</p>
-</div>
-<div class="paragraph">
-<p>The application of OGC PubSub to OGC Catalogue Services allows an analyst to register and be notified when new metadata records become available. Such new OGC-compliant PubSub-enabled discovery service supports and promotes the system architecture of the Testbed 12 Initiative, as a fundamental building block to advance the current OGC standard baseline. As a consequence, such work may contribute to the enhanced availability of standards-based offerings in the marketplace.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_basic_pubsub_1_0_extension_for_the_generic_ows"><a class="anchor" href="#_basic_pubsub_1_0_extension_for_the_generic_ows"></a>6.3. Basic PubSub 1.0 extension for the generic OWS</h3>
-<div class="paragraph">
-<p>This chapter summarizes the PubSub extension for the generic OWS introduced by OGC 16-137. This extension is conceived as a simple way to enable the existing request/reply OWS specifications to Publish/Subscribe, by implementing the OGC Publish/Subscribe Interface Standard 1.0.</p>
+<p>The PubSub extension for the generic OWS introduced by OGC 16-137 is conceived as a simple way to enable the existing request/reply OWS specifications to Publish/Subscribe, by implementing the OGC Publish/Subscribe Interface Standard 1.0.</p>
 </div>
 <div class="paragraph">
 <p>An OWS implementing this extension is capable of accepting its usual requests as filters, and of sending notifications about data/metadata updates, based on its existing semantics and syntax expressiveness.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_conceptual_model"><a class="anchor" href="#_conceptual_model"></a>6.4. Conceptual model</h3>
+<div class="sect3">
+<h4 id="_conceptual_model"><a class="anchor" href="#_conceptual_model"></a>6.4.1. Conceptual model</h4>
 <div class="paragraph">
 <p>This chapter describes how PubSub 1.0 Core operations, encodings and messages are modeled in terms of the functionalities of the generic OWS. No assumption is made on the capabilities of the target OWS, other than those defined by the OGC Web Services Common Standard. Hence this extension may apply, for example, to WFS, WCS, and other OWS interfaces.</p>
 </div>
@@ -1072,7 +1190,7 @@ representation that is consistent with TM_Instant.
 The extension introduced in this chapter addresses the most general case, at the expenses of efficiency and semantic accuracy. The precise definition of an event model for the various OWS&#8217;s is left to the relevant OGC Working Groups.</p>
 </div>
 <div class="paragraph">
-<p>The basic PubSub-OWS MEP can be generalized as follows (see figure <a href="#OWS_MEP">Figure 1</a>):</p>
+<p>The basic PubSub-OWS MEP can be generalized as follows (see <a href="#OWS_MEP">Figure 5</a>):</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1091,7 +1209,7 @@ The extension introduced in this chapter addresses the most general case, at the
 <div class="content">
 <img src="figures/clause_3/OWS_MEP.png" alt="OWS MEP" width="600">
 </div>
-<div class="title">Figure 1. OWS Publish/Subscribe MEP</div>
+<div class="title">Figure 5. OWS Publish/Subscribe MEP</div>
 </div>
 <div class="paragraph">
 <p>This may be formalized in an “OWS Request/Reply Publisher” Conformance Class that:</p>
@@ -1117,19 +1235,19 @@ The extension introduced in this chapter addresses the most general case, at the
 <p>This MEP is a simple way to enable existing OWSs to PubSub, allowing to bind the PubSub 1.0 Core operations, encodings and messages to the standard OWS functionalities, data models, and semantics.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_required_capabilities_components"><a class="anchor" href="#_required_capabilities_components"></a>6.5. Required Capabilities components</h3>
+<div class="sect3">
+<h4 id="_required_capabilities_components"><a class="anchor" href="#_required_capabilities_components"></a>6.4.2. Required Capabilities components</h4>
 <div class="paragraph">
-<p>PubSub Core requires that the OWS advertise the implemented Conformance Classes in its Capabilities document, namely in the Profile property of the ServiceIdentification section (as of OWS Common 1.1). Besides, it requires that the additional Capabilities components represented in figure <a href="#PubSubCapabilitiescomponents">Figure 2</a> are returned in the GetCapabilities response, but does not specify the specific mechanism for incorporating these additional Capabilities components into the OWS Capabilities document. These extension proposes to include these additional Capabilities components in the ExtendedCapabilities of the OWS, as detailed in the following chapters.</p>
+<p>PubSub Core requires that the OWS advertise the implemented Conformance Classes in its Capabilities document, namely in the Profile property of the ServiceIdentification section (as of OWS Common 1.1). Besides, it requires that the additional Capabilities components represented in <a href="#PubSubCapabilitiescomponents">Figure 6</a> are returned in the GetCapabilities response, but does not specify the specific mechanism for incorporating these additional Capabilities components into the OWS Capabilities document. These extension proposes to include these additional Capabilities components in the ExtendedCapabilities of the OWS, as detailed in the following chapters.</p>
 </div>
 <div id="PubSubCapabilitiescomponents" class="imageblock text-center">
 <div class="content">
 <img src="figures/clause_3/PubSubCapabilitiescomponents.png" alt="PubSubCapabilitiescomponents" width="600">
 </div>
-<div class="title">Figure 2. PubSub Capabilities components</div>
+<div class="title">Figure 6. PubSub Capabilities components</div>
 </div>
-<div class="sect3">
-<h4 id="_filtercapabilities"><a class="anchor" href="#_filtercapabilities"></a>6.5.1. FilterCapabilities</h4>
+<div class="sect4">
+<h5 id="_filtercapabilities"><a class="anchor" href="#_filtercapabilities"></a>FilterCapabilities</h5>
 <div class="paragraph">
 <p>The FilterCapabilities section describes the filtering-related capabilities of a PubSub-OWS, i.e. the filter languages it supports for matching events against subscriptions (e.g., OGC Filter Encoding). This allows the pluggability of filter languages.</p>
 </div>
@@ -1137,7 +1255,7 @@ The extension introduced in this chapter addresses the most general case, at the
 <div class="content">
 <img src="figures/clause_3/FilterCapabilities.png" alt="FilterCapabilities" width="200">
 </div>
-<div class="title">Figure 3. Filter Capabilities</div>
+<div class="title">Figure 7. Filter Capabilities</div>
 </div>
 <div class="paragraph">
 <p>The SupportedCapabilities elements allows restricting the acceptable requests, possibly providing templates. The following Capabilities snippet declares that this PubSub-OWS instance (namely, a CSW) accepts as subscription filters GetRecords requests conforming to the specified OpenSearch template. Multiple templates may be introduced, specifying multiple FilterLanguages.</p>
@@ -1157,8 +1275,8 @@ The extension introduced in this chapter addresses the most general case, at the
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_deliverycapabilities"><a class="anchor" href="#_deliverycapabilities"></a>6.5.2. DeliveryCapabilities</h4>
+<div class="sect4">
+<h5 id="_deliverycapabilities"><a class="anchor" href="#_deliverycapabilities"></a>DeliveryCapabilities</h5>
 <div class="paragraph">
 <p>The DeliveryCapabilities section describes the delivery methods supported by the PubSub-OWS, e.g. SOAP, WS-Notification, ATOM, SSE, WebSockets, OAI-PMH. This allows the pluggability of delivery methods.</p>
 </div>
@@ -1166,7 +1284,7 @@ The extension introduced in this chapter addresses the most general case, at the
 <div class="content">
 <img src="figures/clause_3/DeliveryCapabilities.png" alt="DeliveryCapabilities" width="200">
 </div>
-<div class="title">Figure 4. Delivery Capabilities</div>
+<div class="title">Figure 8. Delivery Capabilities</div>
 </div>
 <div class="paragraph">
 <p>The following Capabilities snippet declares that this PubSub-OWS instance delivers notifications via SSE (see chapter <a href="#DeliveryMethods">Delivery methods</a>, below).</p>
@@ -1184,8 +1302,8 @@ The extension introduced in this chapter addresses the most general case, at the
 &lt;/DeliveryCapabilities&gt;</code></pre>
 </div>
 </div>
-<div class="sect4">
-<h5 id="DeliveryMethods"><a class="anchor" href="#DeliveryMethods"></a>Delivery methods</h5>
+<div class="sect5">
+<h6 id="DeliveryMethods"><a class="anchor" href="#DeliveryMethods"></a>Delivery methods</h6>
 <div class="paragraph">
 <p>The DeliveryCapabilities section describes the methods supported by the PubSub-OWS for delivering notifications.
 Publishers may offer more than one method of delivery for each Publication, to be chosen by Subscribers. Publish/Subscribe would imply push-style message delivery, however some methods may actually be pull-based (e.g. polling), under the hood.</p>
@@ -1211,8 +1329,8 @@ Publishers may offer more than one method of delivery for each Publication, to b
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_publications"><a class="anchor" href="#_publications"></a>6.5.3. Publications</h4>
+<div class="sect4">
+<h5 id="_publications"><a class="anchor" href="#_publications"></a>Publications</h5>
 <div class="paragraph">
 <p>The Publications section describes the contents offered by the PubSub-OWS, i.e. the sequences of notifications that Subscribers can subscribe to.</p>
 </div>
@@ -1220,7 +1338,7 @@ Publishers may offer more than one method of delivery for each Publication, to b
 <div class="content">
 <img src="figures/clause_3/Publications.png" alt="Publications" width="200">
 </div>
-<div class="title">Figure 5. Publications</div>
+<div class="title">Figure 9. Publications</div>
 </div>
 <div class="paragraph">
 <p>The following Capabilities snippet declares a publication that notifies on all the relevant events for this PubSub-OWS. Notifications can be filtered with the semantics of the requests of this OWS and are delivered via SSE, encoded in JSON (see chapter <a href="#OWSNotificationEncoding">Notification encoding</a>, below).</p>
@@ -1240,8 +1358,8 @@ Publishers may offer more than one method of delivery for each Publication, to b
 &lt;/Publications&gt;</code></pre>
 </div>
 </div>
-<div class="sect4">
-<h5 id="OWSNotificationEncoding"><a class="anchor" href="#OWSNotificationEncoding"></a>Notification encoding</h5>
+<div class="sect5">
+<h6 id="OWSNotificationEncoding"><a class="anchor" href="#OWSNotificationEncoding"></a>Notification encoding</h6>
 <div class="paragraph">
 <p>For the generic OWS instance, no operation is defined that provides the basic semantics of “insert”, “update”, and “delete” actions on the content managed by the instance.</p>
 </div>
@@ -1254,8 +1372,9 @@ Publishers may offer more than one method of delivery for each Publication, to b
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="LegacyComponents"><a class="anchor" href="#LegacyComponents"></a>6.6. Support to legacy components</h3>
+<h3 id="LegacyComponents"><a class="anchor" href="#LegacyComponents"></a>6.5. Support to legacy components</h3>
 <div class="paragraph">
 <p>The integration of legacy components in an eventing architecture is desirable in a number of scenarios. However, legacy components may not be instrumented to monitor their state for the purpose of notification, nor to react upon notifications from other components (or they may, but by legacy, non-standard mechanisms).</p>
 </div>
@@ -1279,12 +1398,12 @@ Publishers may offer more than one method of delivery for each Publication, to b
 <div class="content">
 <img src="figures/clause_3/proxied_subscribe.png" alt="proxied subscribe" width="450">
 </div>
-<div class="title">Figure 6. Proxied subscribe</div>
+<div class="title">Figure 10. Proxied subscribe</div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Proxied Publish – a proxy/adapter component monitors the legacy system and generates appropriate notifications upon relevant events (according to a given event model). The proxy/adapter may act as a full-fledged Publisher, accepting Subscriptions against the sequence of notifications, or just act as a pure Sender, relaying each notification to another Publisher entity (see figure <a href="#ProxiedPublish">Figure 7</a>).</p>
+<p>Proxied Publish – a proxy/adapter component monitors the legacy system and generates appropriate notifications upon relevant events (according to a given event model). The proxy/adapter may act as a full-fledged Publisher, accepting Subscriptions against the sequence of notifications, or just act as a pure Sender, relaying each notification to another Publisher entity (see <a href="#ProxiedPublish">Figure 11</a>).</p>
 </li>
 </ul>
 </div>
@@ -1292,7 +1411,7 @@ Publishers may offer more than one method of delivery for each Publication, to b
 <div class="content">
 <img src="figures/clause_3/proxied_publish.png" alt="proxied publish" width="500">
 </div>
-<div class="title">Figure 7. Proxied publish</div>
+<div class="title">Figure 11. Proxied publish</div>
 </div>
 <div class="paragraph">
 <p>The Brokering Publisher Conformance Class of the PubSub 1.0 Standard supports this use case. In fact, a Brokering Publisher (or, more simply, a broker), is an intermediary between Subscribers and other Publishers which have been previously registered with the broker. The broker is not the original producer of messages, but only acts as a message middleman, re-publishing messages received from other Publishers and decoupling them from their Subscribers. A broker may shuffle or aggregate messages into different publications, may offer publications with different delivery methods than the original ones, or otherwise process the messages (e.g. converting their format). A broker may also provide advanced messaging features, such as load balancing.</p>
@@ -1412,7 +1531,89 @@ A GSS may be used to monitor insert/update/delete operations performed on one or
 <h2 id="_wmo_openwis_use_of_amqp"><a class="anchor" href="#_wmo_openwis_use_of_amqp"></a>10. WMO OpenWIS use of AMQP</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Description of the standard and recommendations for OGC PubSub</p>
+<p>The OpenWIS Association, lead by Meteo France, is examining the use of pubsub services to disseminate Meteorological data as part of the World Meteorological Organization (WMO) Information System (WIS) 2 draft technical specification.  The OpenWIS Association conducted an initial WIS 2 study on message protocols and found that several use cases were well positioned to use pubsub.  This included but was not limted to the current use of WAN for WMO GTS data dissemination, and  use of the WAN for NHMs specific users (aeronautical, B2B and general public).</p>
+</div>
+<div class="paragraph">
+<p>The WIS 2 study also examined a number of message queue protocols the OpenWIS Program could use including: AMQP, MQTT, STOMP, JMS, Kafka, Redis.  However, only 2 were found to use ISO standards (AMQP and MQTT).  For a long time, the FAA SWIM aprogram has been very
+successful in standardizing on the mature JMS API for pub/sub. However, an interoperability limitation in the wire-level protocol for JMS being vendor dependent forced the SWIM program to seek other open source alternatives.  SESAR/Eurocontrol is now very much interested in AMQP v1.0 publish/subscribe message protocol as a promising new ISO, IEC, and OASIS international standard, that
+offers SWIM an open publish-subscribe messaging protocol.  Given that, the WIS 2 study focused on specific queues that support AMQP.</p>
+</div>
+<div class="paragraph">
+<p>The first MQ to be analyzed was RabbitMQ.  RabbitMQ supports several message queue protocols including:  AMQP 0-9-1, AMQP 1.0 (via a plugin), STOMP, MQTT, HTTP (API).  In addition, the study found that RabbitMQ has implemented extensions to AMQP.</p>
+</div>
+<div class="paragraph">
+<p>In support of our WIS 2 study, the following figure (see figure <a href="#clause7_figure1">Figure 12</a>) shows the proposed AMQP Architecture</p>
+</div>
+<div id="clause7_figure1" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_7/FIG1.png" alt="FIG1" width="600">
+</div>
+<div class="title">Figure 12. OWS Publish/Subscribe FIG1</div>
+</div>
+<div class="paragraph">
+<p>In our proposed AMQP architecture, all connections are TCP based. There is no UDP.  Publish is performed to an exchange, not to a queue.  There can be N exchanges.  Subscriptions lead to the creation of: 1) a queue (if needed); 2) bindings from exchange to queue.  Two basic principles will apply:  If there is no binding, there is no routing, and in turn the message is discarded.  Also, once messages are consumed, they disappear.</p>
+</div>
+<div class="paragraph">
+<p>Figure <a href="#clause7_figure2">Figure 13</a> describes one of the proposed AMQP message structure for OpenWIS WIS2</p>
+</div>
+<div id="clause7_figure2" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_7/FIG2.png" alt="FIG2" width="600">
+</div>
+<div class="title">Figure 13. OWS Publish/Subscribe FIG2</div>
+</div>
+<div class="paragraph">
+<p>Four types of exchanges are being considered for OpenWIS, including Direct, Fanout, Topic, and Header exchanges.  Figure <a href="#clause7_figure3">Figure 14</a> describes each of these exchanges</p>
+</div>
+<div id="clause7_figure3" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_7/FIG3.png" alt="FIG3" width="600">
+</div>
+<div class="title">Figure 14. OWS Publish/Subscribe FIG3</div>
+</div>
+<div class="paragraph">
+<p>RabbitMQ tunable settings used during WIS2 study:
+ - Make queues lazy
+   - Store messages on disk (predictable response times)
+ - Make queues persistent
+   - Allows to route messages even if consumer not connected
+ - Tune prefetch
+   - Allows to use all bandwidth even with on high latency WAN
+ - Need to be mindful of big files
+ - Be careful when sending send files bigger than a few Kbs
+RAM Impact (files loaded to RAM)
+Transfer times</p>
+</div>
+<div class="paragraph">
+<p>The proposed message format used during the WIS2 study can be found in figure <a href="#clause7_figure4">Figure 15</a></p>
+</div>
+<div id="clause7_figure4" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_7/FIG4.png" alt="FIG4" width="600">
+</div>
+<div class="title">Figure 15. OWS Publish/Subscribe FIG4</div>
+</div>
+<div class="paragraph">
+<p>A single Node pubsub implementation can be found in figure <a href="#clause7_figure5">[clause7_figure5]</a>.</p>
+</div>
+<div class="paragraph">
+<p>The results of the study found:
+1.  When you compare Reference vs Direct message dissemination methods, large message always need to be disseminated by reference
+2.  For small messages there are questions, including where or not to incude messages into payload.  It appears to be difficult to set a threshold.  This leads to a more complicated protocol, and also leads to less predictable message rate.  And finally, it leads to potential issues with memory management
+3.  The conclusion was to not include message into payload.</p>
+</div>
+<div class="paragraph">
+<p>The next steps in the study include:
+1.  Agree pubsub tree.  It must be TTAAiiCCCC based.  It must be data types based, productor based, or a mix.
+2.  Need to stabilize the message format
+3.  Conduct a larger scale test</p>
+</div>
+<div class="paragraph">
+<p>The key for this is to think about how this could be implemented in the frame of WIS/GTS
+ * Need Pub/Sub for “GISCs”
+ * Need Pub/Sub for “Ncs”
+ * Need SLA / Key Performance Indicators
+ * Need Metadata</p>
 </div>
 </div>
 </div>
@@ -1440,6 +1641,24 @@ A GSS may be used to monitor insert/update/delete operations performed on one or
 <div class="sectionbody">
 <div class="paragraph">
 <p>Concepts to be included in an OGC AS for PubSub - draw from the previous sections</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Note by Lorenzo.</div>
+<div class="paragraph">
+<p>May look into the chapter in Clause 3 that summarizes the PubSub extension for the generic OWS introduced by OGC 16-137. Such extension is conceived as a simple way to enable the existing request/reply OWS specifications to Publish/Subscribe, by implementing the OGC Publish/Subscribe Interface Standard 1.0.</p>
+</div>
+<div class="paragraph">
+<p>The chapter describes how PubSub 1.0 Core operations, encodings and messages are modeled in terms of the functionalities of the generic OWS. No assumption is made on the capabilities of the target OWS, other than those defined by the OGC Web Services Common Standard. Hence the described extension may apply, for example, to WFS, WCS, and other OWS interfaces.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1536,9 +1755,27 @@ Place other Annex material in sequential annexes beginning with "A" and leave fi
 <p></p>
 </div>
 <div id="OGC2015" class="paragraph">
-<p>[1] OGC: OGC Testbed 12 Annex B: Architecture. (2015).
-[2] L. Bigagli, M. Rieke. The new OGC Publish/Subscribe Standard - applications in the Sensor Web and the Aviation domain. Open Geospatial Data, Software and Standards, ISSN: 2363-7501, doi: 10.1186/s40965- 017-0030-7, vol. 2, issue no. 1, article 18, Springer, Heidelberg, Germany, December 2017 (electronic 3 August 2017).
-[3] M. Rieke, L. Bigagli, S. Herle, S. Jirka, A. Kotsev, T. Liebig, C. Malewski, T. Paschke, C. Stasch. Geospatial IoT—The Need for Event-Driven Architectures in Contemporary Spatial Data Infrastructures. ISPRS International Journal of Geo-Information (IJGI), ISSN 2220-9964, Volume 7, Issue 10, article 385, doi: 10.3390/ijgi7100385, MDPI, Basel, Switzerland, 25 September 2018.</p>
+<p>[1] OGC: OGC Testbed 12 Annex B: Architecture. (2015).</p>
+</div>
+<div id="Bigagli2017" class="paragraph">
+<p>[2] L. Bigagli, M. Rieke. The new OGC Publish/Subscribe Standard - applications in the Sensor Web and the Aviation domain. Open Geospatial Data, Software and Standards, ISSN: 2363-7501, doi: 10.1186/s40965- 017-0030-7, vol. 2, issue no. 1, article 18, Springer, Heidelberg, Germany, December 2017 (electronic 3 August 2017).</p>
+</div>
+<div id="Rieke2018" class="paragraph">
+<p>[3] M. Rieke, L. Bigagli, S. Herle, S. Jirka, A. Kotsev, T. Liebig, C. Malewski, T. Paschke, C. Stasch. Geospatial IoT—The Need for Event-Driven Architectures in Contemporary Spatial Data Infrastructures. ISPRS International Journal of Geo-Information (IJGI), ISSN 2220-9964, Volume 7, Issue 10, article 385, doi: 10.3390/ijgi7100385, MDPI, Basel, Switzerland, 25 September 2018.</p>
+</div>
+<div id="PubSubCore2016" class="paragraph">
+<p>[4] OGC. OGC Publish/Subscribe Interface Standard 1.0 — Core, 1st ed.; Open Geospatial Consortium: Wayland,
+MA, USA, 2016.</p>
+</div>
+<div id="PubSubSOAP2016" class="paragraph">
+<p>[5] OGC. OGC Publish/Subscribe Interface Standard 1.0 - SOAP Protocol Binding Extension, 1st ed.; Open Geospatial Consortium: Wayland, MA, USA, 2016.</p>
+</div>
+<div id="WSBN2016" class="paragraph">
+<p>[6] Graham, S.; Hull, D.; Murray, B. Web Services Base Notification 1.3; Technical Report; OASIS: Burlington, MA, USA, 2016.</p>
+</div>
+<div id="OGC19-137r2" class="paragraph">
+<p>[7] Bigagli, L.; Vretanos, P.P.A.; Lawrence, M.; Papeschi, F.; Martell, R. Testbed-12 PubSub/Catalog Engineering
+Report; Technical Report OGC 16-137r2; Open Geospatial Consortium: Wayland, MA, USA, 2017.</p>
 </div>
 </div>
 </div>
@@ -1546,7 +1783,7 @@ Place other Annex material in sequential annexes beginning with "A" and leave fi
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnotedef_1">
-<a href="#_footnoteref_1">1</a>. <a href="http://portal.opengeospatial.org/files/?artifact_id=18776" class="bare">http://portal.opengeospatial.org/files/?artifact_id=18776</a>
+<a href="#_footnoteref_1">1</a>. <a href="http://www.opengeospatial.org/standards/filter" class="bare">http://www.opengeospatial.org/standards/filter</a>
 </div>
 <div class="footnote" id="_footnotedef_2">
 <a href="#_footnoteref_2">2</a>. <a href="http://www.opengeospatial.org/standards/requests/139" class="bare">http://www.opengeospatial.org/standards/requests/139</a>
