@@ -2,4 +2,12 @@
 
 Concepts to be included in an OGC AS for PubSub - draw from the previous sections
 
+[NOTE]
+.Note by Lorenzo.
+===============================================
+May look into the chapter in Clause 3 that summarizes the PubSub extension for the generic OWS introduced by OGC 16-137. Such extension is conceived as a simple way to enable the existing request/reply OWS specifications to Publish/Subscribe, by implementing the OGC Publish/Subscribe Interface Standard 1.0.
+
+The chapter describes how PubSub 1.0 Core operations, encodings and messages are modeled in terms of the functionalities of the generic OWS. No assumption is made on the capabilities of the target OWS, other than those defined by the OGC Web Services Common Standard. Hence the described extension may apply, for example, to WFS, WCS, and other OWS interfaces.
+===============================================
+
 //write text in as many clauses as necessary. Use one document or many, your choice!
