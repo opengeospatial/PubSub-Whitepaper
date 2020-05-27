@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>OGC Publish-Subscribe White Paper</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment @import statement to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+:not(pre)>code.nobreak{word-wrap:normal}
+:not(pre)>code.nowrap{white-space:nowrap}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details>summary:first-of-type{cursor:pointer;display:list-item;outline:none;margin-bottom:.75em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos{border-right:1px solid currentColor;opacity:.35;padding-right:.5em}
+pre.pygments .lineno{border-right:1px solid currentColor;opacity:.35;display:inline-block;margin-right:.75em}
+pre.pygments .lineno::before{content:"";margin-right:-.125em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+table.tableblock{max-width:100%;border-collapse:separate}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+td.tableblock>.content>:last-child.sidebarblock{margin-bottom:0}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="book">
+<div id="header">
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div style="page-break-after: always;"></div>
+<table class="tableblock frame-none grid-none stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong class="big">Open Geospatial Consortium</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Submission Date: &lt;yyyy-mm-dd&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Approval Date:   &lt;yyyy-mm-dd&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Publication Date:   &lt;2020-05-27&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">External identifier of this OGC&#174; document: <a href="http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}" class="bare">http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Internal reference number of this OGC&#174; document:    20-046</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Category: OGC&#174; White Paper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Editor:   &lt;Name(s) of Editor or Editors&gt;</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong class="big">OGC Publish-Subscribe White Paper</strong></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-none grid-none stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong>Copyright notice</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Copyright &#169; &lt;year&gt; Open Geospatial Consortium</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock">To obtain additional rights of use, visit <a href="http://www.opengeospatial.org/legal/" class="bare">http://www.opengeospatial.org/legal/</a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-none grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong>Warning</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>This document is not an OGC Standard. This document is an OGC White Paper and is therefore not an official position of the OGC membership. It is distributed for review and comment. It is subject to change without notice and may not be referred to as an OGC Standard. Further, an OGC White Paper should not be referenced as required or mandatory technology in procurements.</p>
+</div>
+<table class="tableblock frame-all grid-none" style="width: 50%;">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Document type:   	OGC® White Paper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Document subtype:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Document stage:   	Draft</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Document language: 	English</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<div class="paragraph">
+<p>License Agreement</p>
+</div>
+<div class="paragraph">
+<p><span class="small">Permission is hereby granted by the Open Geospatial Consortium, ("Licensor"), free of charge and subject to the terms set forth below, to any person obtaining a copy of this Intellectual Property and any associated documentation, to deal in the Intellectual Property without restriction (except as set forth below), including without limitation the rights to implement, use, copy, modify, merge, publish, distribute, and/or sublicense copies of the Intellectual Property, and to permit persons to whom the Intellectual Property is furnished to do so, provided that all copyright notices on the intellectual property are retained intact and that each person to whom the Intellectual Property is furnished agrees to the terms of this Agreement.</span></p>
+</div>
+<div class="paragraph">
+<p><span class="small">If you modify the Intellectual Property, all copies of the modified Intellectual Property must include, in addition to the above copyright notice, a notice that the Intellectual Property includes modifications that have not been approved or adopted by LICENSOR.</span></p>
+</div>
+<div class="paragraph">
+<p><span class="small">THIS LICENSE IS A COPYRIGHT LICENSE ONLY, AND DOES NOT CONVEY ANY RIGHTS UNDER ANY PATENTS THAT MAY BE IN FORCE ANYWHERE IN THE WORLD.</span></p>
+</div>
+<div class="paragraph">
+<p><span class="small">THE INTELLECTUAL PROPERTY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT OF THIRD PARTY RIGHTS. THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN THIS NOTICE DO NOT WARRANT THAT THE FUNCTIONS CONTAINED IN THE INTELLECTUAL PROPERTY WILL MEET YOUR REQUIREMENTS OR THAT THE OPERATION OF THE INTELLECTUAL PROPERTY WILL BE UNINTERRUPTED OR ERROR FREE. ANY USE OF THE INTELLECTUAL PROPERTY SHALL BE MADE ENTIRELY AT THE USER’S OWN RISK. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR ANY CONTRIBUTOR OF INTELLECTUAL PROPERTY RIGHTS TO THE INTELLECTUAL PROPERTY BE LIABLE FOR ANY CLAIM, OR ANY DIRECT, SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM ANY ALLEGED INFRINGEMENT OR ANY LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR UNDER ANY OTHER LEGAL THEORY, ARISING OUT OF OR IN CONNECTION WITH THE IMPLEMENTATION, USE, COMMERCIALIZATION OR PERFORMANCE OF THIS INTELLECTUAL PROPERTY.</span></p>
+</div>
+<div class="paragraph">
+<p><span class="small">This license is effective until terminated. You may terminate it at any time by destroying the Intellectual Property together with all copies in any form. The license will also terminate if you fail to comply with any term or condition of this Agreement. Except as provided in the following sentence, no such termination of this license shall require the termination of any third party end-user sublicense to the Intellectual Property which is in force as of the date of notice of such termination. In addition, should the Intellectual Property, or the operation of the Intellectual Property, infringe, or in LICENSOR&#8217;s sole opinion be likely to infringe, any patent, copyright, trademark or other right of a third party, you agree that LICENSOR, in its sole discretion, may terminate this license without any compensation or liability to you, your licensees or any other party. You agree upon termination of any kind to destroy or cause to be destroyed the Intellectual Property together with all copies in any form, whether held by you or by any third party.</span></p>
+</div>
+<div class="paragraph">
+<p><span class="small">Except as contained in this notice, the name of LICENSOR or of any other holder of a copyright in all or part of the Intellectual Property shall not be used in advertising or otherwise to promote the sale, use or other dealings in this Intellectual Property without prior written authorization of LICENSOR or such copyright holder. LICENSOR is and shall at all times be the sole entity that may authorize you or any third party to use certification marks, trademarks or other special designations to indicate compliance with any LICENSOR standards or specifications. This Agreement is governed by the laws of the Commonwealth of Massachusetts. The application to this Agreement of the United Nations Convention on Contracts for the International Sale of Goods is hereby expressly excluded. In the event any provision of this Agreement shall be deemed unenforceable, void or invalid, such provision shall be modified so as to make it valid and enforceable, and as so modified the entire Agreement shall remain in full force and effect. No decision, action or inaction by LICENSOR shall be construed to be a waiver of any rights or remedies available to it.</span></p>
+</div>
+<div style="page-break-after: always;"></div>
+<div id="toc" class="toc">
+<div id="toctitle" class="title">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#references">1. References</a></li>
+<li><a href="#_terms_and_definitions">2. Terms and definitions</a>
+<ul class="sectlevel2">
+<li><a href="#_broker_brokering_publisher">2.1. Broker | Brokering Publisher</a></li>
+<li><a href="#_message">2.2. Message</a></li>
+<li><a href="#_publication">2.3. Publication</a></li>
+<li><a href="#_publisher">2.4. Publisher</a></li>
+<li><a href="#_receiver">2.5. Receiver</a></li>
+<li><a href="#_reliable_publisher">2.6. Reliable Publisher</a></li>
+<li><a href="#_sender">2.7. Sender</a></li>
+<li><a href="#_subscriber">2.8. Subscriber</a></li>
+<li><a href="#_subscription">2.9. Subscription</a></li>
+</ul>
+</li>
+<li><a href="#_conventions">3. Conventions</a>
+<ul class="sectlevel2">
+<li><a href="#section:abbreviations">3.1. Abbreviated terms</a></li>
+<li><a href="#_uml_notation">3.2. UML notation</a></li>
+</ul>
+</li>
+<li><a href="#_overview">4. Overview</a></li>
+<li><a href="#_asynchronous_operations">5. Asynchronous Operations</a>
+<ul class="sectlevel2">
+<li><a href="#_behavior_models">5.1. Behavior Models</a>
+<ul class="sectlevel3">
+<li><a href="#_request_response">5.1.1. Request-Response</a></li>
+<li><a href="#_delayed_response">5.1.2. Delayed Response</a></li>
+<li><a href="#_standing_request">5.1.3. Standing Request</a></li>
+<li><a href="#_synchronization">5.1.4. Synchronization</a></li>
+<li><a href="#_publish_subscribe">5.1.5. Publish-Subscribe</a></li>
+<li><a href="#_broadcast">5.1.6. Broadcast</a></li>
+</ul>
+</li>
+<li><a href="#_notification_and_alert">5.2. Notification and Alert</a>
+<ul class="sectlevel3">
+<li><a href="#_callback">5.2.1. Callback</a></li>
+<li><a href="#_polling">5.2.2. Polling</a></li>
+<li><a href="#_stored_response_queue">5.2.3. Stored response queue</a></li>
+<li><a href="#_man_in_the_loop">5.2.4. Man in the Loop</a></li>
+</ul>
+</li>
+<li><a href="#_filtering">5.3. Filtering</a>
+<ul class="sectlevel3">
+<li><a href="#_event_rss_snmp">5.3.1. Event (RSS, SNMP)</a></li>
+<li><a href="#_topic_hierarchy">5.3.2. Topic Hierarchy</a></li>
+<li><a href="#_query_expression_standing_query">5.3.3. Query expression (Standing Query)</a></li>
+<li><a href="#_check_point">5.3.4. Check Point</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_ogcs_pubsub_implementation_standard">6. OGC’s PubSub Implementation Standard</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_2">6.1. Overview</a></li>
+<li><a href="#_ogcs_pubsub_features">6.2. OGC&#8217;s PubSub features</a></li>
+<li><a href="#_related_work">6.3. Related Work</a></li>
+<li><a href="#_basic_pubsub_1_0_extension_for_the_generic_ows">6.4. Basic PubSub 1.0 extension for the generic OWS</a>
+<ul class="sectlevel3">
+<li><a href="#_conceptual_model">6.4.1. Conceptual model</a></li>
+<li><a href="#_required_capabilities_components">6.4.2. Required Capabilities components</a></li>
+</ul>
+</li>
+<li><a href="#LegacyComponents">6.5. Support to legacy components</a></li>
+</ul>
+</li>
+<li><a href="#_pubsub_in_ogc_sensorthings">7. PubSub in OGC SensorThings</a></li>
+<li><a href="#_w3c_pub_sub_recommendation">8. W3C Pub Sub Recommendation</a></li>
+<li><a href="#_asynchronous_messaging_for_aviation_from_ogc_testing">9. Asynchronous Messaging for Aviation from OGC testing</a></li>
+<li><a href="#_wmo_openwis_use_of_amqp">10. WMO OpenWIS use of AMQP</a></li>
+<li><a href="#_asyncapi_description">11. AsyncAPI description</a></li>
+<li><a href="#_ideas_for_asyncapi_in_ogc">12. Ideas for AsyncAPI in OGC</a></li>
+<li><a href="#_ideas_for_an_ogc_abstract_spec_for_pubsub">13. Ideas for an OGC Abstract Spec for PubSub</a></li>
+<li><a href="#_title">Annex A: Title</a></li>
+<li><a href="#_revision_history">Annex B: Revision History</a></li>
+<li><a href="#Bibliography">Annex C: Bibliography</a></li>
+</ul>
+</div>
+<div style="page-break-after: always;"></div>
+<div class="paragraph">
+<p><strong class="big">i.     Abstract</strong></p>
+</div>
+<div class="paragraph">
+<p>&lt;Insert Abstract Text here&gt;</p>
+</div>
+<div class="paragraph">
+<p><strong class="big">ii.    Keywords</strong></p>
+</div>
+<div class="paragraph">
+<p>The following are keywords to be used by search engines and document catalogues.</p>
+</div>
+<div class="paragraph">
+<p>ogcdoc, OGC document,  &lt;tags separated by commas&gt;</p>
+</div>
+<div class="paragraph">
+<p><strong class="big">iii.   Preface</strong></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Insert Preface Text here. Give OGC specific commentary: describe the technical content, reason for document, history of the document and precursors, and plans for future work. &gt;
+Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.</p>
+</div>
+<div class="paragraph">
+<p>Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong class="big">iv.    Submitting organizations</strong></p>
+</div>
+<div class="paragraph">
+<p>The following organizations submitted this Document to the Open Geospatial Consortium (OGC):</p>
+</div>
+<div class="paragraph">
+<p>Organization name(s)</p>
+</div>
+<div class="paragraph">
+<p><strong class="big">v.     Submitters</strong></p>
+</div>
+<div class="paragraph">
+<p>All questions regarding this submission should be directed to the editor or the submitters:</p>
+</div>
+<div class="paragraph">
+<p>Name  Affiliation</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="references"><a class="anchor" href="#references"></a>1. References</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following documents are referenced in this document. For dated references, subsequent amendments to, or revisions of, any of these publications do not apply. For undated references, the latest edition of the normative document referred to applies.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>OGC 06-121r3, OGC® Web Services Common Specification, version 1.1.0 (9 February 2007)</p>
+</li>
+<li>
+<p>OGC 13-131, OGC® Publish/Subscribe Interface Standard 1.0 - Core</p>
+</li>
+<li>
+<p>OGC 13-133, OGC® Publish/Subscribe Interface Standard 1.0 - SOAP Protocol Binding Extension</p>
+</li>
+<li>
+<p>OGC 13-132, OGC® Publish/Subscribe Interface Standard 1.0 - RESTful Protocol Binding Extension (draft, in progress)</p>
+</li>
+<li>
+<p>OGC 07-006r1, OpenGIS® Catalogue Services Specification, version 2.0.2, corrigendum 2</p>
+</li>
+<li>
+<p>OGC 07-045, OpenGIS® Catalogue Services Specification 2.0.2 - ISO Metadata Application Profile, version 1.0</p>
+</li>
+<li>
+<p>OGC 07-110r4, CSW-ebRIM Registry Service - Part 1: ebRIM profile of CSW, version 1.0.1, corrigendum 1</p>
+</li>
+<li>
+<p>OGC 07-144r4, CSW-ebRIM Registry Service - Part 2: Basic extension package, version 1.0.1, corrigendum 1</p>
+</li>
+<li>
+<p>OGC 08-103r2, CSW-ebRIM Registry Service - Part 3: Abstract Test Suite, version 1.0.1</p>
+</li>
+<li>
+<p>OGC 16-137r2, Testbed-12 PubSub / Catalog Engineering Report (12 May 2017)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_terms_and_definitions"><a class="anchor" href="#_terms_and_definitions"></a>2. Terms and definitions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For the purposes of this report, the definitions specified in Clause 4 of the OWS Common Implementation Standard [OGC 06-121r3] shall apply. In addition, the following terms and definitions apply.</p>
+</div>
+<div class="sect2">
+<h3 id="_broker_brokering_publisher"><a class="anchor" href="#_broker_brokering_publisher"></a>2.1. Broker | Brokering Publisher</h3>
+<div class="paragraph">
+<p>Intermediary between Subscribers and other Publishers which have been previously registered with the broker. The broker is not the original producer of messages, but only acts as a message middleman, re-publishing messages received from other Publishers and decoupling them from their Subscribers</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_message"><a class="anchor" href="#_message"></a>2.2. Message</h3>
+<div class="paragraph">
+<p>A container within which data (such as XML, binary data, or other content) is transported. Messages may include additional information beyond data, including headers or other information used for routing or security purposes</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_publication"><a class="anchor" href="#_publication"></a>2.3. Publication</h3>
+<div class="paragraph">
+<p>A uniquely identified aggregation of messages published by a Publisher over time. A Publisher may offer any number of publications that Subscribers may subscribe to</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_publisher"><a class="anchor" href="#_publisher"></a>2.4. Publisher</h3>
+<div class="paragraph">
+<p>An entity that offers publications to Subscribers; supports subscription management (subscribe, unsubscribe) and is responsible for filtering and matching messages of interest to active subscriptions</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_receiver"><a class="anchor" href="#_receiver"></a>2.5. Receiver</h3>
+<div class="paragraph">
+<p>An entity that receives messages from Senders; may (but need not) be the original Subscriber</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reliable_publisher"><a class="anchor" href="#_reliable_publisher"></a>2.6. Reliable Publisher</h3>
+<div class="paragraph">
+<p>A publisher of messages that offers capabilities to detect and recover from message delivery losses, whether caused by network failures, software failures, hardware failures, or other causes</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sender"><a class="anchor" href="#_sender"></a>2.7. Sender</h3>
+<div class="paragraph">
+<p>Entity that sends messages to Receivers; may (but need not) be the initial creator/producer of the data in the message payload</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_subscriber"><a class="anchor" href="#_subscriber"></a>2.8. Subscriber</h3>
+<div class="paragraph">
+<p>Entity that creates a subscription at a Publisher; may (but need not) be the Receiver of delivered messages</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_subscription"><a class="anchor" href="#_subscription"></a>2.9. Subscription</h3>
+<div class="paragraph">
+<p>Expression of interest in all or part of a publication offered by a Publisher. When a subscription has been created, the Publisher delivers messages that match the subscription criteria to the Receiver defined in the subscription</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conventions"><a class="anchor" href="#_conventions"></a>3. Conventions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="section:abbreviations"><a class="anchor" href="#section:abbreviations"></a>3.1. Abbreviated terms</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>CFP Call for Participation</p>
+</li>
+<li>
+<p>DWG Domain Working Group</p>
+</li>
+<li>
+<p>HTTP Hypertext Transfer Protocol</p>
+</li>
+<li>
+<p>MEP Message Exchange Pattern</p>
+</li>
+<li>
+<p>OAI-PMH Open Archives Initiative Protocol for Metadata Harvesting</p>
+</li>
+<li>
+<p>OGC Open Geospatial Consortium</p>
+</li>
+<li>
+<p>RFQ Request for Quotation</p>
+</li>
+<li>
+<p>SSE Server-Sent Events</p>
+</li>
+<li>
+<p>SWG Standards Working Group</p>
+</li>
+<li>
+<p>UML Unified Modeling Language</p>
+</li>
+<li>
+<p>XML eXtensible Markup Language</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_uml_notation"><a class="anchor" href="#_uml_notation"></a>3.2. UML notation</h3>
+<div class="paragraph">
+<p>Most diagrams that appear in this document are presented using the UML 2 static structure diagram, as described in Subclause 5.2 of [OGC 06-121r9].</p>
+</div>
+<div class="paragraph">
+<p>All classes in this document are extensible and may be extended with application- or
+domain-specific content via Extension blocks.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The UML shown in this document is considered conceptual and abstract,
+and should not be interpreted as an implementation strategy for bindings that extend and
+implement a standard. For example, TM_Instant from ISO 19108 may be used to represent
+time instants for conceptual clarity, but bindings and implementations of this document
+may realize TM_Instant as a GML TimeInstant, an ISO 8601 date string, or any other
+representation that is consistent with TM_Instant.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>4. Overview</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_asynchronous_operations"><a class="anchor" href="#_asynchronous_operations"></a>5. Asynchronous Operations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An asynchronous operation is any interaction between two software entities where the conclusing action does not immediately follow the initiating action. There are a number of different models for Asynchronous Operations. This section attempts to describe someof the more common ones. An understanding of the scope of this space will help discuss and compare the alternatives OGC faces in asynchonous services.</p>
+</div>
+<div class="paragraph">
+<p>This section will look at three aspects of asynchronous operations:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The overall pattern of behavior</p>
+</li>
+<li>
+<p>How the two entities rendezvous</p>
+</li>
+<li>
+<p>The criteria for selecting response messages</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_behavior_models"><a class="anchor" href="#_behavior_models"></a>5.1. Behavior Models</h3>
+<div class="sect3">
+<h4 id="_request_response"><a class="anchor" href="#_request_response"></a>5.1.1. Request-Response</h4>
+<div class="paragraph">
+<p>Request-Response is a synchronous behavior model. A request is issued by one entity and a response is provided in return. Asynchonous behaviors can best be understood in contrast to this model.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Request-Response.bmp" alt="Request Response">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_delayed_response"><a class="anchor" href="#_delayed_response"></a>5.1.2. Delayed Response</h4>
+<div class="paragraph">
+<p>This model differs from Reqest-Response in that the immediate response is not the final response. Rather it acknowedges successful receipt of the request. The final response is to be delivered latter.</p>
+</div>
+<div class="paragraph">
+<p>A key part of this pattern is the callback. A callback is an http accessible resource which can receive information (responses) from the server.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Callback.bmp" alt="Callback">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_standing_request"><a class="anchor" href="#_standing_request"></a>5.1.3. Standing Request</h4>
+<div class="paragraph">
+<p>A Standing Request is a variation of the Delayed Response pattern. While a Delayed Response performs a single operation, a Standing Request is active until instructed to stop.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Standing_Query.bmp" alt="Standing Query">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_synchronization"><a class="anchor" href="#_synchronization"></a>5.1.4. Synchronization</h4>
+<div class="paragraph">
+<p>The Synchronization pattern supports a scenario where communication between the message producer and consumer is intermittent. When communication is possible, they perform whatever transactions are needed to synchronize their states, then establish a checkpoint for that state. Both parties can then continue to operate independently until the next synchronization opportunity arrives.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_publish_subscribe"><a class="anchor" href="#_publish_subscribe"></a>5.1.5. Publish-Subscribe</h4>
+<div class="paragraph">
+<p>A messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers, but instead to categorize published messages into classes without knowledge of which subscribers, if any, there may be. Similarly, subscribers express interest in one or classes and only receive messages that are of interest, without knowledge of which publishers, if any, there are. (Wikipedia)</p>
+</div>
+<div class="paragraph">
+<p>The Publish/Subscribe model is distinguished from the request/reply and client/server models by the asynchronous delivery of messages and the ability for a Subscriber to specify an ongoing (persistent) expression of interest.</p>
+</div>
+<div class="paragraph">
+<p>Alternate Text</p>
+</div>
+<div class="paragraph">
+<p>The Publish-Subscribe model completely separates message producers and consumers. Potential consumers of messages create filtering criteria which describe the types of messages they wish to receive. They then "subscribe" to a Pub-Sub service with this filtering criteria. Producers of messages "publish" those messages to the Pub-Sub service along with a set of tags which describe each message. The Pub-Sub service evaluates the tags against the filtering criteria of all subscribers. The message is forwarded to all subscribers who&#8217;s criteria are met.</p>
+</div>
+<div class="paragraph">
+<p>The "publish" operation follows the Request-Response pattern. The "subscribe" operation follows the Standing Request pattern.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Pub-Sub.bmp" alt="Pub Sub">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_broadcast"><a class="anchor" href="#_broadcast"></a>5.1.6. Broadcast</h4>
+<div class="paragraph">
+<p>Broadcast is the simplest asynchronous pattern. The message producer simply sends the message to everyone. It is left up to the recipients to decide what to do with it.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_notification_and_alert"><a class="anchor" href="#_notification_and_alert"></a>5.2. Notification and Alert</h3>
+<div class="paragraph">
+<p>An inherent property of Asynchronus operations is that there is no persistent connection between the message producer and message receiver. Therefore, there must be a way for the message producer to re-establish a connection with the receiver in order to complete the transaction. There are a number of ways this is done.</p>
+</div>
+<div class="sect3">
+<h4 id="_callback"><a class="anchor" href="#_callback"></a>5.2.1. Callback</h4>
+<div class="paragraph">
+<p>Callbacks can be viewed as mini-services who&#8217;s sole purpose is to receive an asychronous response. Information on how to access the callback is provided with the initial request. Message producers (or their agents) use this information deliver responses, typically using the Request-Response pattern.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_polling"><a class="anchor" href="#_polling"></a>5.2.2. Polling</h4>
+<div class="paragraph">
+<p>In polling the requesting entity checks on the status of their request on a recurring basis. Upon completion of the request, the requestor retrieves the result to complete the transaction.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_stored_response_queue"><a class="anchor" href="#_stored_response_queue"></a>5.2.3. Stored response queue</h4>
+<div class="paragraph">
+<p>A stored response queue is a service which holds responses to asynchoronous requests. The message producer simply leaves the response in the queue, and it&#8217;s up to the requestor to retrieve it.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_man_in_the_loop"><a class="anchor" href="#_man_in_the_loop"></a>5.2.4. Man in the Loop</h4>
+<div class="paragraph">
+<p>If all else fails, let the human do it. Many alternatives are available including instand messaging, e-mail, phone calls, even the Postal Service.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_filtering"><a class="anchor" href="#_filtering"></a>5.3. Filtering</h3>
+<div class="paragraph">
+<p>Filtering allows a message producer to identify the intended recipients of a message.</p>
+</div>
+<div class="sect3">
+<h4 id="_event_rss_snmp"><a class="anchor" href="#_event_rss_snmp"></a>5.3.1. Event (RSS, SNMP)</h4>
+<div class="paragraph">
+<p>Event filtering specifies that a notification will be sent if certain conditions occure. For example, if the free space in a mail box drops below 10%.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_topic_hierarchy"><a class="anchor" href="#_topic_hierarchy"></a>5.3.2. Topic Hierarchy</h4>
+<div class="paragraph">
+<p>Publish-Subscribe implementations typically define a set of topics (terms) which can be used to select messages for delivery. In the most basic case a recipient can only subscribe to topics. More capable systems may provide a simple query language to go with the topic vocabulary.</p>
+</div>
+<div class="paragraph">
+<p>Example: MQTT uses Topic Filters to select messages. A Topic Filter is a path-like hierarchy of concepts. Wildcards are supported to indicate a single path entry or multiple. For example:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>sport/tennis/player1/score/Wimbledon is a Topic Name</p>
+</li>
+<li>
+<p>sport/+/player1 is a Topic Name with a wild card for only one level</p>
+</li>
+<li>
+<p>sport/tennis/#/ranking is a Topic Name with a wild card for 1 or more levels.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_query_expression_standing_query"><a class="anchor" href="#_query_expression_standing_query"></a>5.3.3. Query expression (Standing Query)</h4>
+<div class="paragraph">
+<p>Java Messaging Service (JMS) is the foundation for many (most) publish-subscribe services. JMS supports messaging selection through a query string. The query language is a subset of the SQL92</p>
+</div>
+<div class="paragraph">
+<p>More capable systems support a full query language for filtering messages. For example, an asynchronous WFS would accept asynchronous requests using the same Filter Encoding language as any other WFS. But the results would be returned asynchronously.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_check_point"><a class="anchor" href="#_check_point"></a>5.3.4. Check Point</h4>
+<div class="paragraph">
+<p>A check point is a store snapshot of the state of the system as a specific date and time. All changes made after a check point are can</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ogcs_pubsub_implementation_standard"><a class="anchor" href="#_ogcs_pubsub_implementation_standard"></a>6. OGC’s PubSub Implementation Standard</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>6.1. Overview</h3>
+<div class="paragraph">
+<p>The OGC has conducted significant work on event-based models and architectures. <a href="#OGC_TIMELINE">Figure 1</a> provides an overview and a timeline of relevant OGC work in the last decade.</p>
+</div>
+<div id="OGC_TIMELINE" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/OGC_PubSub_timeline.png" alt="OGC PubSub timeline" width="600">
+</div>
+<div class="title">Figure 1. OGC Publish/Subscribe related work (source: <a href="#Rieke2018">[Rieke2018]</a>). The rows show the roadmap of various documents, including official OGC standards (highlighted in bold fonts) and milestones, indicated with their version and OGC reference number and type (Best Practice, Discussion Paper, Implementation Standard, and Engineering Report; see section <a href="#section:abbreviations">Abbreviated terms</a> for a complete list of abbreviations)</div>
+</div>
+<div class="paragraph">
+<p>From 2010 onward, these efforts have been subsumed under the scope of the PubSub SWG and resulted in the adoption of the Publish/Subscribe Interface Standard 1.0 in February 2016.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ogcs_pubsub_features"><a class="anchor" href="#_ogcs_pubsub_features"></a>6.2. OGC&#8217;s PubSub features</h3>
+<div class="paragraph">
+<p>The OGC Publish/Subscribe Interface Standard (in short, PubSub) describes a mechanism to support publish/subscribe requirements across OGC service interfaces, such as Sensor Observation Service (SOS) and Catalogue Service for the Web (CSW), and data types, such as coverages, features, and observations.</p>
+</div>
+<div class="paragraph">
+<p>PubSub is intended as an overarching model to complement OGC service interfaces with publish/subscribe capabilities, alongside the primarily addressed request/reply model. In fact, the latter is sufficient to meet may use cases, when clients request the data of interest upon need, and may re-issue requests periodically for updates. However, the publish/subscribe model can be better suited to manage urgent, unpredictable pieces of information, such as sporadic events, hazard warnings and sensor data, resulting in less network traffic and more timely responses.</p>
+</div>
+<div class="paragraph">
+<p>In the assumption that clients are interested in the information already provided by OGC services, the rationale for PubSub is to avoid impact on the existing service semantics, when possible reusing the specialized mechanisms for accessing and filtering the information provided (e.g., the Filter Encoding Specification <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> for general-purpose filtering).
+Hence, PubSub provides notification and messaging capabilities as a module to existing services, as well as a standalone, independent OWS capability. Besides, it supports simple notifications (e.g. references to data from OWS services) or actual data push.</p>
+</div>
+<div class="paragraph">
+<p>The basic OGC PubSub workflow, depicted in <a href="#PUBSUB_MEP">Figure 2</a>, involves two primary actors: the Publisher of information (XML, binary data, or other content); and the Subscriber, which subscribes to the Publisher to obtain the published information, possibly filtered according to criteria defined upon subscription.
+Information is contained and transported in messages, which may include additional data, such as for routing or security purposes.</p>
+</div>
+<div class="paragraph">
+<p>PubSub distinguishes two additional roles, the Sender and the Receiver, respectively the entity that delivers  messages and the entity to which messages are delivered, allowing versatile use cases (e.g. a Subscriber entity may subscribe to a Publisher a number of third parties acting as Receivers; or a Publisher may be segregated from the ultimate recipients of its messages by a separate Sender).</p>
+</div>
+<div id="PUBSUB_MEP" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/PubSub_MEP.png" alt="PubSub MEP" width="600">
+</div>
+<div class="title">Figure 2. OGC PubSub basic workflow (source: <a href="#PubSubCore2016">[PubSubCore2016]</a>). The Subscriber creates a subscription (with possible filter criteria) on behalf of a Receiver using the Subscribe operation on a Publisher (1.0). The Publisher creates a Subscription (1.1) and returns a SubscribeResponse (1.2). The Publisher attempts to match each new message against the filter of each Subscription (2.0). If a message matches, the Sender delivers it to the appropriate Receiver via the Notify operation (2.1). The Subscriber may utilize the Renew operation (3.0) to extend the lifetime of a Subscription. If the Publisher accepts the request, it sets the new termination time on the Subscription and returns a RenewResponse (3.1). The Subscriber may at any time request the termination of a Subscription via the Unsubscribe operation (4.0). If the Publisher accepts the request, it terminates the subscription (4.1) and returns an UnsubscribeResponse (4.2).</div>
+</div>
+<div class="paragraph">
+<p>To qualify as a Publisher, an OWS must at least conform to the Basic Publisher conformance class, that is satisfy the requirements for the above basic functionalities. Besides, it must return in its GetCapabilities response the three additional Capabilities components represented in <a href="#PUBSUB_CAP_COMPONENTS">Figure 3</a>.</p>
+</div>
+<div id="PUBSUB_CAP_COMPONENTS" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/PubSubCapabilitiescomponents.png" alt="PubSubCapabilitiescomponents" width="600">
+</div>
+<div class="title">Figure 3. OGC PubSub additional Capabilities components (source: <a href="#PubSubCore2016">[PubSubCore2016]</a>).</div>
+</div>
+<div class="paragraph">
+<p>The Publications component describes the contents offered by the Publisher, i.e. the sets of messages that Subscribers can subscribe to. The specification is agnostic as to what constitutes a publication, i.e. what events should cause notifications by a Publisher (i.e. its event model). Likewise, PubSub is agnostic as for the encoding of messages.</p>
+</div>
+<div class="paragraph">
+<p>The FilterCapabilities component describes the filtering-related capabilities of a Publisher, i.e. the filter languages it supports for matching messages against subscriptions (e.g., OGC Filter Encoding, XQuery). PubSub is agnostic as for the language to filter messages in subscriptions. A Publisher may support multiple filter languages, to support different Subscribers.</p>
+</div>
+<div class="paragraph">
+<p>The DeliveryCapabilities component describes the methods supported by the PubSub-enabled OWS for delivering messages. The publish/subscribe MEP typically implies push-style message delivery, however some delivery methods may actually be underpinned by pull-based mechanisms (e.g. polling). Examples of delivery methods include: SOAP and related technologies, such as WS-N (used by the PubSub SOAP Binding), ATOM, PubSubHubbub, OAI-PMH, e-mail, Short Message Service, WebSockets and SSE. The PubSub standard is agnostic as regards delivery methods. A Publisher may offer more than one method of delivery for each Publication, to be chosen by Subscribers.</p>
+</div>
+<div class="paragraph">
+<p>In addition to the mandatory Basic Publisher conformance class, PubSub defines several other optional conformance classes, introducing additional functionalities, e.g. to pause a Subscription (Pausable Publisher), derive additional publications (Publication Manager), group messages in batches (Message Batching Publisher). Moreover, it defines conformance classes to bind such functionalities to actual technologies. At present, the PubSub specification consists of two parts:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>a Core document <a href="#PubSubCore2016">[PubSubCore2016]</a> that abstractly describes the basic mandatory functionalities and several optional extensions, independently of the underlying binding technology;</p>
+</li>
+<li>
+<p>a SOAP binding document <a href="#PubSubSOAP2016">[PubSubSOAP2016]</a> that defines the implementation of PubSub in SOAP services, based on the OASIS Web Services Notification (WS-N) set of standards. <a href="#WSBN2016">[WSBN2016]</a></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The scope of the OGC PubSub Standard Working Group also includes a RESTful binding, to realize the PubSub functionality in REST/JSON services. Several communities are proposing additional extensions (e.g. bindings to JMS and MQTT), leveraging on the modular structure of the OGC specifications.</p>
+</div>
+<div class="paragraph">
+<p>PubSub Core requires that a PubSub-enabled OWS advertise the implemented Conformance Classes in its Capabilities document. <a href="#PUBSUB_REQ_CLASSES">Figure 4</a> shows all the conformance classes currently defined by the PubSub specification.</p>
+</div>
+<div id="PUBSUB_REQ_CLASSES" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/Requirements_Classes.png" alt="Requirements Classes" width="800">
+</div>
+<div class="title">Figure 4. OGC PubSub Conformance classes (source: <a href="#PubSubCore2016">[PubSubCore2016]</a>).</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_related_work"><a class="anchor" href="#_related_work"></a>6.3. Related Work</h3>
+<div class="paragraph">
+<p>Recognizing that the OGC baseline mainly supported synchronous web service request-response capabilities, the 2016 OGC Testbed 12 initiative addressed the means to incorporate forms of asynchronous service interaction, including Publish/Subscribe message patterns, for example in WPS, WCS, WFS, or in application domains such as the Sensor Web and Aviation. <a href="#Bigagli2017">[Bigagli2017]</a></p>
+</div>
+<div class="paragraph">
+<p>In particular, the RFQ/CFP <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> included a specific Asynchronous Service Interaction subtask, part of a set of subtasks that aimed at enhancing the OGC Baseline, by extending OGC architectural designs through efforts that cross over several individual standards and services and are applied in a much wider scope.</p>
+</div>
+<div class="paragraph">
+<p>The subtask description in the RFQ/CFP distinguished among three different approaches to handle asynchronous interaction with OGC Web services:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>WPS façades;</p>
+</li>
+<li>
+<p>Specific extensions to each OGC Web Service with asynchronous request/response capabilities;</p>
+</li>
+<li>
+<p>OGC PubSub.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The document deliverable "A067 Implementing Asynchronous Service Response Engineering Report" (OGC 16-023) elaborates on the above approaches in situations where big chunks of data require asynchronous delivery. The ER focuses on the first and the second approach, with the goal to summarize and compare the results from using a WPS facade and an extension for WFS for asynchronous service responses, as well as to provide recommendations for future activities.</p>
+</div>
+<div class="paragraph">
+<p>The document deliverable "A074 PubSub/Catalog Engineering Report" (OGC 16-137) <a href="#OGC19-137r2">[OGC19-137r2]</a> focused on the third approach, OGC PubSub, and exemplified the use of the standard, particularly in conjunction with the Catalog Service interface, investigating the functional requirements of an interoperable, push-based data discovery solution. As underlined in the RFQ/CFP, it is important to provide methods that support notification (push) of new data as opposed to search (pull), given the volume of data typically available in catalogs.</p>
+</div>
+<div class="paragraph">
+<p>Besides, it introduced a general, basic mechanism for enabling PubSub for the generic OGC Web Service over the existing request/reply OWS’s, i.e. usual requests as filters, usual responses as appropriate updates/data pushes, existing semantics and syntax expressiveness. The following chapters summarize such mechanism.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_basic_pubsub_1_0_extension_for_the_generic_ows"><a class="anchor" href="#_basic_pubsub_1_0_extension_for_the_generic_ows"></a>6.4. Basic PubSub 1.0 extension for the generic OWS</h3>
+<div class="paragraph">
+<p>The PubSub extension for the generic OWS introduced by OGC 16-137 is conceived as a simple way to enable the existing request/reply OWS specifications to Publish/Subscribe, by implementing the OGC Publish/Subscribe Interface Standard 1.0.</p>
+</div>
+<div class="paragraph">
+<p>An OWS implementing this extension is capable of accepting its usual requests as filters, and of sending notifications about data/metadata updates, based on its existing semantics and syntax expressiveness.</p>
+</div>
+<div class="sect3">
+<h4 id="_conceptual_model"><a class="anchor" href="#_conceptual_model"></a>6.4.1. Conceptual model</h4>
+<div class="paragraph">
+<p>This chapter describes how PubSub 1.0 Core operations, encodings and messages are modeled in terms of the functionalities of the generic OWS. No assumption is made on the capabilities of the target OWS, other than those defined by the OGC Web Services Common Standard. Hence this extension may apply, for example, to WFS, WCS, and other OWS interfaces.</p>
+</div>
+<div class="paragraph">
+<p>The PubSub specification is agnostic as to what constitutes a change, i.e. an event that should cause a notification by a Publisher (aka its event model). It is only required that a Publisher instance communicate what notifications it will emit by advertising them in the Publication section of its Capabilities document (see below).</p>
+</div>
+<div class="paragraph">
+<p>In general, a PubSub-OWS may be able to notify about changes to any component of its information set. For example, it may notify about changes to its Capabilities document.
+The extension introduced in this chapter addresses the most general case, at the expenses of efficiency and semantic accuracy. The precise definition of an event model for the various OWS&#8217;s is left to the relevant OGC Working Groups.</p>
+</div>
+<div class="paragraph">
+<p>The basic PubSub-OWS MEP can be generalized as follows (see <a href="#OWS_MEP">Figure 5</a>):</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The OWS client subscribes specifying a request to be used as filter for the notifications;</p>
+</li>
+<li>
+<p>The OWS client obtains the Time-0 response via a standard Request/Reply, with the same request as above;</p>
+</li>
+<li>
+<p>The OWS notifies the client of subsequent updates to the response, according to its existing semantics and syntax.</p>
+</li>
+</ol>
+</div>
+<div id="OWS_MEP" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/OWS_MEP.png" alt="OWS MEP" width="600">
+</div>
+<div class="title">Figure 5. OWS Publish/Subscribe MEP</div>
+</div>
+<div class="paragraph">
+<p>This may be formalized in an “OWS Request/Reply Publisher” Conformance Class that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Accepts OWS requests as subscription filters</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The Publisher may constraint the filter expressions allowed in Subscriptions (e.g. by imposing OpenSearch templates)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Sends corresponding OWS responses to notify about data/metadata updates</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This MEP is a simple way to enable existing OWSs to PubSub, allowing to bind the PubSub 1.0 Core operations, encodings and messages to the standard OWS functionalities, data models, and semantics.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_required_capabilities_components"><a class="anchor" href="#_required_capabilities_components"></a>6.4.2. Required Capabilities components</h4>
+<div class="paragraph">
+<p>PubSub Core requires that the OWS advertise the implemented Conformance Classes in its Capabilities document, namely in the Profile property of the ServiceIdentification section (as of OWS Common 1.1). Besides, it requires that the additional Capabilities components represented in <a href="#PubSubCapabilitiescomponents">Figure 6</a> are returned in the GetCapabilities response, but does not specify the specific mechanism for incorporating these additional Capabilities components into the OWS Capabilities document. These extension proposes to include these additional Capabilities components in the ExtendedCapabilities of the OWS, as detailed in the following chapters.</p>
+</div>
+<div id="PubSubCapabilitiescomponents" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/PubSubCapabilitiescomponents.png" alt="PubSubCapabilitiescomponents" width="600">
+</div>
+<div class="title">Figure 6. PubSub Capabilities components</div>
+</div>
+<div class="sect4">
+<h5 id="_filtercapabilities"><a class="anchor" href="#_filtercapabilities"></a>FilterCapabilities</h5>
+<div class="paragraph">
+<p>The FilterCapabilities section describes the filtering-related capabilities of a PubSub-OWS, i.e. the filter languages it supports for matching events against subscriptions (e.g., OGC Filter Encoding). This allows the pluggability of filter languages.</p>
+</div>
+<div id="OWSFilterCapabilities" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/FilterCapabilities.png" alt="FilterCapabilities" width="200">
+</div>
+<div class="title">Figure 7. Filter Capabilities</div>
+</div>
+<div class="paragraph">
+<p>The SupportedCapabilities elements allows restricting the acceptable requests, possibly providing templates. The following Capabilities snippet declares that this PubSub-OWS instance (namely, a CSW) accepts as subscription filters GetRecords requests conforming to the specified OpenSearch template. Multiple templates may be introduced, specifying multiple FilterLanguages.</p>
+</div>
+<div class="listingblock">
+<div class="title">FilterCapabilities</div>
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;FilterCapabilities&gt;
+   &lt;FilterLanguage&gt;
+      &lt;Abstract&gt;This PubSub-OWS accepts requests as subscription filters, according to the OpenSearch template specified in SupportedCapabilities.
+      &lt;/Abstract&gt;
+      &lt;Identifier&gt;http://www.opengis.net/spec/pubsub/1.0/conf/ows/request-reply-publisher&lt;/Identifier&gt;
+      &lt;SupportedCapabilities&gt;http://tb12.essi-lab.eu/pubsub-csw/services/opensearch?ct={count?}&amp;amp;st={searchTerms?}&amp;amp;bbox={geo:box?}&amp;amp;ts={time:start?}&amp;amp;te={time:end?}
+      &lt;/SupportedCapabilities&gt;
+   &lt;/FilterLanguage&gt;
+&lt;/FilterCapabilities&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_deliverycapabilities"><a class="anchor" href="#_deliverycapabilities"></a>DeliveryCapabilities</h5>
+<div class="paragraph">
+<p>The DeliveryCapabilities section describes the delivery methods supported by the PubSub-OWS, e.g. SOAP, WS-Notification, ATOM, SSE, WebSockets, OAI-PMH. This allows the pluggability of delivery methods.</p>
+</div>
+<div id="DeliveryCapabilities" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/DeliveryCapabilities.png" alt="DeliveryCapabilities" width="200">
+</div>
+<div class="title">Figure 8. Delivery Capabilities</div>
+</div>
+<div class="paragraph">
+<p>The following Capabilities snippet declares that this PubSub-OWS instance delivers notifications via SSE (see chapter <a href="#DeliveryMethods">Delivery methods</a>, below).</p>
+</div>
+<div class="listingblock">
+<div class="title">DeliveryCapabilities</div>
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;DeliveryCapabilities&gt;
+   &lt;DeliveryMethod&gt;
+      &lt;Abstract&gt;This PubSub-OWS supports notification delivery via SSE.
+      &lt;/Abstract&gt;
+      &lt;Identifier&gt;http://www.w3.org/TR/eventsource/
+      &lt;/Identifier&gt;
+   &lt;/DeliveryMethod&gt;
+&lt;/DeliveryCapabilities&gt;</code></pre>
+</div>
+</div>
+<div class="sect5">
+<h6 id="DeliveryMethods"><a class="anchor" href="#DeliveryMethods"></a>Delivery methods</h6>
+<div class="paragraph">
+<p>The DeliveryCapabilities section describes the methods supported by the PubSub-OWS for delivering notifications.
+Publishers may offer more than one method of delivery for each Publication, to be chosen by Subscribers. Publish/Subscribe would imply push-style message delivery, however some methods may actually be pull-based (e.g. polling), under the hood.</p>
+</div>
+<div class="paragraph">
+<p>Examples include: SOAP and related technologies, such as  WS-Notification (used by PSSB), ATOM (polling using the “If-Modified-Since” and “start-index” parameters), PubSubHubbub, OAI-PMH (polling using the “from” parameter), e-mail, SMS, WebSockets, SSE.</p>
+</div>
+<div class="paragraph">
+<p>Server-Sent Events (SSE) is a pure push-style communication technology based on HTTP and the SSE EventSource API standardized as part of HTML5 by the W3C. A SSE client (e.g. all modern HTML 5.0 browsers) receives automatic updates from a server via HTTP connection, simply setting the following parameters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ContentType: "text/event-stream;charset=UTF-8”</p>
+</li>
+<li>
+<p>Cache-Control: "no-cache”</p>
+</li>
+<li>
+<p>Connection: "keep-alive”</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_publications"><a class="anchor" href="#_publications"></a>Publications</h5>
+<div class="paragraph">
+<p>The Publications section describes the contents offered by the PubSub-OWS, i.e. the sequences of notifications that Subscribers can subscribe to.</p>
+</div>
+<div id="Publications" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/Publications.png" alt="Publications" width="200">
+</div>
+<div class="title">Figure 9. Publications</div>
+</div>
+<div class="paragraph">
+<p>The following Capabilities snippet declares a publication that notifies on all the relevant events for this PubSub-OWS. Notifications can be filtered with the semantics of the requests of this OWS and are delivered via SSE, encoded in JSON (see chapter <a href="#OWSNotificationEncoding">Notification encoding</a>, below).</p>
+</div>
+<div class="listingblock">
+<div class="title">Publications</div>
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;Publications&gt;
+   &lt;Publication&gt;
+      &lt;Abstract&gt;&gt;This publication notifies on all the relevant events for this PubSub-OWS.
+      &lt;/Abstract&gt;
+      &lt;Identifier&gt;ALL&lt;/Identifier&gt;
+      &lt;ContentType&gt;application/json&lt;/ContentType&gt;
+      &lt;SupportedFilterLanguage&gt;http://www.opengis.net/spec/pubsub/1.0/conf/ows/request-reply-publisher&lt;/SupportedFilterLanguage&gt;
+      &lt;SupportedDeliveryMethod&gt;http://www.w3.org/TR/eventsource/&lt;/SupportedDeliveryMethod&gt;
+   &lt;/Publication&gt;
+&lt;/Publications&gt;</code></pre>
+</div>
+</div>
+<div class="sect5">
+<h6 id="OWSNotificationEncoding"><a class="anchor" href="#OWSNotificationEncoding"></a>Notification encoding</h6>
+<div class="paragraph">
+<p>For the generic OWS instance, no operation is defined that provides the basic semantics of “insert”, “update”, and “delete” actions on the content managed by the instance.</p>
+</div>
+<div class="paragraph">
+<p>The most generic mechanism to notify about updates is that the Publisher re-send the whole response element corresponding to the request used as filter in the Subscription. For example, in the case of WFS, if the client subscribes with a wfs:GetFeature request as a filter, the PubSub-WFS should notify about any changes by delivering a standard wfs:FeatureCollection, in response to that request.</p>
+</div>
+<div class="paragraph">
+<p>By receiving the new response and comparing it with the previous one, a Subscriber can figure out the changes. Future evolutions of this extension may evaluate more efficient and semantically accurate encoding of notifications. A possible option for XML-based content types is XMLdiff (e.g. XML Patch, RFC 5261), or annotations (XML attributes) to add simple CRUD semantics on top of the existing XSDs.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="LegacyComponents"><a class="anchor" href="#LegacyComponents"></a>6.5. Support to legacy components</h3>
+<div class="paragraph">
+<p>The integration of legacy components in an eventing architecture is desirable in a number of scenarios. However, legacy components may not be instrumented to monitor their state for the purpose of notification, nor to react upon notifications from other components (or they may, but by legacy, non-standard mechanisms).</p>
+</div>
+<div class="paragraph">
+<p>Implementing the PubSub 1.0 Standard in a legacy component may not be feasible or practical. In some cases, the legacy component can be adapted to the Publish/Subscribe MEP by an additional functional entity that realize the Publish/Subscribe functionalities. Such mediating entity acts as a proxy/adapter, i.e. a middleman between the source and the target of the message exchange, implementing the behavior and/or the interfaces required by the PubSub specification.</p>
+</div>
+<div class="paragraph">
+<p>This use case has been considered in the phase of requirement analysis for the PubSub 1.0 standard <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup> and is supported by the Brokering Publisher Conformance Class of the PubSub 1.0 Standard.</p>
+</div>
+<div class="paragraph">
+<p>Depending on the intended role of the legacy component, the use case is twofold:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Proxied Subscribe – a proxy/adapter component subscribes to a Publisher on behalf of the legacy system and acts appropriately upon receiving notifications of interest.</p>
+</li>
+</ul>
+</div>
+<div id="ProxiedSubscribe" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/proxied_subscribe.png" alt="proxied subscribe" width="450">
+</div>
+<div class="title">Figure 10. Proxied subscribe</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Proxied Publish – a proxy/adapter component monitors the legacy system and generates appropriate notifications upon relevant events (according to a given event model). The proxy/adapter may act as a full-fledged Publisher, accepting Subscriptions against the sequence of notifications, or just act as a pure Sender, relaying each notification to another Publisher entity (see <a href="#ProxiedPublish">Figure 11</a>).</p>
+</li>
+</ul>
+</div>
+<div id="ProxiedPublish" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_3/proxied_publish.png" alt="proxied publish" width="500">
+</div>
+<div class="title">Figure 11. Proxied publish</div>
+</div>
+<div class="paragraph">
+<p>The Brokering Publisher Conformance Class of the PubSub 1.0 Standard supports this use case. In fact, a Brokering Publisher (or, more simply, a broker), is an intermediary between Subscribers and other Publishers which have been previously registered with the broker. The broker is not the original producer of messages, but only acts as a message middleman, re-publishing messages received from other Publishers and decoupling them from their Subscribers. A broker may shuffle or aggregate messages into different publications, may offer publications with different delivery methods than the original ones, or otherwise process the messages (e.g. converting their format). A broker may also provide advanced messaging features, such as load balancing.</p>
+</div>
+<div class="paragraph">
+<p>In general, a broker is a distinct third party that acts as a communication intermediary between the source and the target of a communication, mediating their interfaces and in some cases adding new behavior. Hence, a broker may conveniently act as a proxy/adapter for one or more legacy components, flexibly implementing any combination of the above twofold use case.</p>
+</div>
+<div class="paragraph">
+<p>The Brokering Publisher Conformance Class does not mandate any specific behavior to be implemented, in particular as regards the support to Delivery Capabilities, Filtering Capabilities, and Publications of the brokered Publishers. Brokers are free to interact with the brokered Publishers as appropriate for their specific application. Interactions may include subscribing to the offered publications, harvesting the data, decorating the capabilities, or other behavior (future extensions of the Conformance Class may standardize the behavior of Brokering Publishers in specific application scenarios).</p>
+</div>
+<div class="paragraph">
+<p>Examples of Brokering Publisher applications include the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Publisher Aggregation – a broker subscribes to several Publishers and relays their publications (without modifications) to interested Subscribers, acting like a Proxy to multiple Publishers. Optionally, the broker may adapt the service interface (binding) of the aggregated Publishers.</p>
+</li>
+<li>
+<p>Publication Aggregation – a broker receives messages generated by several Publishers (e.g. dumb sensors) and publishes them to the interested Subscribers as a single publication at a single endpoint, for the sake of simpler connectivity, or improved accountability, or easier management of subscriptions, etc.</p>
+</li>
+<li>
+<p>GeoSynchronization (GSS) - GSS is a mediation service that controls transactional access to one or more WFS&#8217;s (e.g. to moderate updates in crowdsourcing scenarios).
+A GSS maintains several event channels, including one for changes applied to the WFS content. Clients can subscribe to the channels (possibly specifying a filter) and be notified by the GSS whenever new entries appear.
+A GSS may be used to monitor insert/update/delete operations performed on one or more WFS&#8217;s and send appropriate notifications, implementing the PubSub 1.0 Brokering Publisher Conformance Class. Whenever an event (i.e. a Transaction) occurs on a WFS, the GSS will notify Subscribers of that event. In this way WFS&#8217;s that do not implement the PubSub 1.0 Standard can participate in an eventing architecture. There are plans to extend GSS to other OGC access services, such as WCS.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pubsub_in_ogc_sensorthings"><a class="anchor" href="#_pubsub_in_ogc_sensorthings"></a>7. PubSub in OGC SensorThings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OGC SensorThings API is a standard for interconnecting the Internet of Things (IoT) devices, data, and applications over the Web. OGC SensorThings API has two main parts, Sensing part which is focusing on heterogeneous IoT sensor systems, and the Tasking part that is focused on IoT actuators and tasking devices.</p>
+</div>
+<div class="paragraph">
+<p>OGC SensorThings API is following ODATA for managing the sensing resources. Thus, it has a REST-like API and supports HTTP CRUD operations (GET, POST, PATCH, DELETE) as well as ODATA query options (select, expand, filter, orderby, top, skip) for data retrieval.</p>
+</div>
+<div class="paragraph">
+<p>In addition to supporting HTTP, OGC SensorThings API has the extension for supporting MQTT for creation and real-time retrieval of sensor Observations.</p>
+</div>
+<div class="paragraph">
+<p>MQ Telemetry Transport, known as MQTT, is an OASIS standard. It is an extremely lightweight publish/subscribe messaging protocol which is specifically designed for resource-constrained IoT devices. The main concepts are topic, and publish and subscribe functions. When a new message is published to a topic, anyone subscribing to that topic will receive a notification including that message.</p>
+</div>
+<div class="paragraph">
+<p>OGC SensorThings API is adopting MQTT protocol and defines a topic structure for creating and also receiving notifications of sensor Observations. The topic structure for OGC SensorThings API MQTT extension is following its HTTP resource path. It means that the topic used for creating Observation through MQTT is identical to the HTTP URL that is used for POST and creating Observations. Examples of these resource paths are <strong><em>v1.0/Observations</em></strong> and <strong><em>v1.0/Datastreams(id)/Observations</em></strong>. Similarly, accessing those URLs using HTTP GET would result in retrieving sensor Observations, while subscribing to those as topics means receiving notifications for those Observations in real-time.</p>
+</div>
+<div class="paragraph">
+<p>Here is the summary of lessons learnt from MQTT adoption is OGC SensorThings API that might be applicable to any RESTful API:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each RESTful API has a potential for MQTT binding to receive updates for a resource collection</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The topic would be the resource GET URL</p>
+</li>
+<li>
+<p>The payload would be the same as content of HTTP GET</p>
+</li>
+<li>
+<p>Whenever there is a new resource, it will be published to the resource GET URL topic</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For any RESTful API, to create a resource, MQTT can be an option just like HTTP POST</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The topic will be same as the POST topic</p>
+</li>
+<li>
+<p>The payload will be the same as POST payload</p>
+</li>
+<li>
+<p>The service would subscribe to the topics</p>
+</li>
+<li>
+<p>When it receives the payload, it uses the same process as POST for creating the resource</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We also did a pilot on a simple rules engine for Institute for the Management of Information Systems (IMIS) pilot project. In that pilot, what we did was to define topics that contain the resource path together with $filter query options. Then the Observation that are published to that topic would be filtered by the criteria defined in the topic. This way we can define rules that notify subscribers about certain condition that happened, for example when the CO reading are higher than a threshold and considered dangerous. Example of the topic would be <strong><em>v1.0/Datastreams(id)/Observations?$filter=result gt 100</em></strong>. This was a pilot implementation and could be a starting point for OGC SensorThings API potential part 3, rules engine.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_w3c_pub_sub_recommendation"><a class="anchor" href="#_w3c_pub_sub_recommendation"></a>8. W3C Pub Sub Recommendation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Description of the standard and recommendationsfor OGC PubSub.</p>
+</div>
+<div class="paragraph">
+<p>Presentation from Stuttgart would be good to draw from.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_asynchronous_messaging_for_aviation_from_ogc_testing"><a class="anchor" href="#_asynchronous_messaging_for_aviation_from_ogc_testing"></a>9. Asynchronous Messaging for Aviation from OGC testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asynchronous Messaging for Aviation from OGC testing</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wmo_openwis_use_of_amqp"><a class="anchor" href="#_wmo_openwis_use_of_amqp"></a>10. WMO OpenWIS use of AMQP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The OpenWIS Association, lead by Meteo France, is examining the use of pubsub services to disseminate Meteorological data as part of the World Meteorological Organization (WMO) Information System (WIS) 2 draft technical specification.  The OpenWIS Association conducted an initial WIS 2 study on message protocols and found that several use cases were well positioned to use pubsub.  This included but was not limted to the current use of WAN for WMO GTS data dissemination, and  use of the WAN for NHMs specific users (aeronautical, B2B and general public).</p>
+</div>
+<div class="paragraph">
+<p>The WIS 2 study also examined a number of message queue protocols the OpenWIS Program could use including: AMQP, MQTT, STOMP, JMS, Kafka, Redis.  However, only 2 were found to use ISO standards (AMQP and MQTT).  For a long time, the FAA SWIM aprogram has been very
+successful in standardizing on the mature JMS API for pub/sub. However, an interoperability limitation in the wire-level protocol for JMS being vendor dependent forced the SWIM program to seek other open source alternatives.  SESAR/Eurocontrol is now very much interested in AMQP v1.0 publish/subscribe message protocol as a promising new ISO, IEC, and OASIS international standard, that
+offers SWIM an open publish-subscribe messaging protocol.  Given that, the WIS 2 study focused on specific queues that support AMQP.</p>
+</div>
+<div class="paragraph">
+<p>The first MQ to be analyzed was RabbitMQ.  RabbitMQ supports several message queue protocols including:  AMQP 0-9-1, AMQP 1.0 (via a plugin), STOMP, MQTT, HTTP (API).  In addition, the study found that RabbitMQ has implemented extensions to AMQP.</p>
+</div>
+<div class="paragraph">
+<p>In support of our WIS 2 study, the following figure (see figure <a href="#clause7_figure1">Figure 12</a>) shows the proposed AMQP Architecture</p>
+</div>
+<div id="clause7_figure1" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_7/FIG1.png" alt="FIG1" width="600">
+</div>
+<div class="title">Figure 12. OWS Publish/Subscribe FIG1</div>
+</div>
+<div class="paragraph">
+<p>In our proposed AMQP architecture, all connections are TCP based. There is no UDP.  Publish is performed to an exchange, not to a queue.  There can be N exchanges.  Subscriptions lead to the creation of: 1) a queue (if needed); 2) bindings from exchange to queue.  Two basic principles will apply:  If there is no binding, there is no routing, and in turn the message is discarded.  Also, once messages are consumed, they disappear.</p>
+</div>
+<div class="paragraph">
+<p>Figure <a href="#clause7_figure2">Figure 13</a> describes one of the proposed AMQP message structure for OpenWIS WIS2</p>
+</div>
+<div id="clause7_figure2" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_7/FIG2.png" alt="FIG2" width="600">
+</div>
+<div class="title">Figure 13. OWS Publish/Subscribe FIG2</div>
+</div>
+<div class="paragraph">
+<p>Four types of exchanges are being considered for OpenWIS, including Direct, Fanout, Topic, and Header exchanges.  Figure <a href="#clause7_figure3">Figure 14</a> describes each of these exchanges</p>
+</div>
+<div id="clause7_figure3" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_7/FIG3.png" alt="FIG3" width="600">
+</div>
+<div class="title">Figure 14. OWS Publish/Subscribe FIG3</div>
+</div>
+<div class="paragraph">
+<p>RabbitMQ tunable settings used during WIS2 study:
+ - Make queues lazy
+   - Store messages on disk (predictable response times)
+ - Make queues persistent
+   - Allows to route messages even if consumer not connected
+ - Tune prefetch
+   - Allows to use all bandwidth even with on high latency WAN
+ - Need to be mindful of big files
+ - Be careful when sending send files bigger than a few Kbs
+RAM Impact (files loaded to RAM)
+Transfer times</p>
+</div>
+<div class="paragraph">
+<p>The proposed message format used during the WIS2 study can be found in figure <a href="#clause7_figure4">Figure 15</a></p>
+</div>
+<div id="clause7_figure4" class="imageblock text-center">
+<div class="content">
+<img src="figures/clause_7/FIG4.png" alt="FIG4" width="600">
+</div>
+<div class="title">Figure 15. OWS Publish/Subscribe FIG4</div>
+</div>
+<div class="paragraph">
+<p>A single Node pubsub implementation can be found in figure <a href="#clause7_figure5">[clause7_figure5]</a>.</p>
+</div>
+<div class="paragraph">
+<p>The results of the study found:
+1.  When you compare Reference vs Direct message dissemination methods, large message always need to be disseminated by reference
+2.  For small messages there are questions, including where or not to incude messages into payload.  It appears to be difficult to set a threshold.  This leads to a more complicated protocol, and also leads to less predictable message rate.  And finally, it leads to potential issues with memory management
+3.  The conclusion was to not include message into payload.</p>
+</div>
+<div class="paragraph">
+<p>The next steps in the study include:
+1.  Agree pubsub tree.  It must be TTAAiiCCCC based.  It must be data types based, productor based, or a mix.
+2.  Need to stabilize the message format
+3.  Conduct a larger scale test</p>
+</div>
+<div class="paragraph">
+<p>The key for this is to think about how this could be implemented in the frame of WIS/GTS
+ * Need Pub/Sub for “GISCs”
+ * Need Pub/Sub for “Ncs”
+ * Need SLA / Key Performance Indicators
+ * Need Metadata</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_asyncapi_description"><a class="anchor" href="#_asyncapi_description"></a>11. AsyncAPI description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Description of the AsyncAPI spec in general.</p>
+</div>
+<div class="paragraph">
+<p>The role of AsyncAPI is to provide a language for designing the API.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ideas_for_asyncapi_in_ogc"><a class="anchor" href="#_ideas_for_asyncapi_in_ogc"></a>12. Ideas for AsyncAPI in OGC</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Application of Async in the context of OGC API work</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ideas_for_an_ogc_abstract_spec_for_pubsub"><a class="anchor" href="#_ideas_for_an_ogc_abstract_spec_for_pubsub"></a>13. Ideas for an OGC Abstract Spec for PubSub</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Concepts to be included in an OGC AS for PubSub - draw from the previous sections</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Note by Lorenzo.</div>
+<div class="paragraph">
+<p>May look into the chapter in Clause 3 that summarizes the PubSub extension for the generic OWS introduced by OGC 16-137. Such extension is conceived as a simple way to enable the existing request/reply OWS specifications to Publish/Subscribe, by implementing the OGC Publish/Subscribe Interface Standard 1.0.</p>
+</div>
+<div class="paragraph">
+<p>The chapter describes how PubSub 1.0 Core operations, encodings and messages are modeled in terms of the functionalities of the generic OWS. No assumption is made on the capabilities of the target OWS, other than those defined by the OGC Web Services Common Standard. Hence the described extension may apply, for example, to WFS, WCS, and other OWS interfaces.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_title"><a class="anchor" href="#_title"></a>Annex A: Title</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Place other Annex material in sequential annexes beginning with "A" and leave final two annexes for the Revision History and Bibliography
+&lt;&lt;&lt;
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_revision_history"><a class="anchor" href="#_revision_history"></a>Annex B: Revision History</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all" style="width: 90%;">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Date</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Release</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Editor</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Primary clauses modified</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">2016-04-28</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">0.1</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">G. Editor</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">all</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">initial version</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Bibliography"><a class="anchor" href="#Bibliography"></a>Annex C: Bibliography</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Example Bibliography (Delete this note).</div>
+<div class="paragraph">
+<p>The TC has approved Springer LNCS as the official document citation type.</p>
+</div>
+<div class="paragraph">
+<p>Springer LNCS is widely used in technical and computer science journals and other publications</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For citations in the text please use square brackets and consecutive numbers: [1], [2], [3]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>– Actual References:</p>
+</div>
+<div class="paragraph">
+<p>[n] Journal: Author Surname, A.: Title. Publication Title. Volume number, Issue number, Pages Used (Year Published)</p>
+</div>
+<div class="paragraph">
+<p>[n] Web: Author Surname, A.: Title, <a href="http://Website-Url" class="bare">http://Website-Url</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p></p>
+</div>
+<div id="OGC2015" class="paragraph">
+<p>[1] OGC: OGC Testbed 12 Annex B: Architecture. (2015).</p>
+</div>
+<div id="Bigagli2017" class="paragraph">
+<p>[2] L. Bigagli, M. Rieke. The new OGC Publish/Subscribe Standard - applications in the Sensor Web and the Aviation domain. Open Geospatial Data, Software and Standards, ISSN: 2363-7501, doi: 10.1186/s40965- 017-0030-7, vol. 2, issue no. 1, article 18, Springer, Heidelberg, Germany, December 2017 (electronic 3 August 2017).</p>
+</div>
+<div id="Rieke2018" class="paragraph">
+<p>[3] M. Rieke, L. Bigagli, S. Herle, S. Jirka, A. Kotsev, T. Liebig, C. Malewski, T. Paschke, C. Stasch. Geospatial IoT—The Need for Event-Driven Architectures in Contemporary Spatial Data Infrastructures. ISPRS International Journal of Geo-Information (IJGI), ISSN 2220-9964, Volume 7, Issue 10, article 385, doi: 10.3390/ijgi7100385, MDPI, Basel, Switzerland, 25 September 2018.</p>
+</div>
+<div id="PubSubCore2016" class="paragraph">
+<p>[4] OGC. OGC Publish/Subscribe Interface Standard 1.0 — Core, 1st ed.; Open Geospatial Consortium: Wayland,
+MA, USA, 2016.</p>
+</div>
+<div id="PubSubSOAP2016" class="paragraph">
+<p>[5] OGC. OGC Publish/Subscribe Interface Standard 1.0 - SOAP Protocol Binding Extension, 1st ed.; Open Geospatial Consortium: Wayland, MA, USA, 2016.</p>
+</div>
+<div id="WSBN2016" class="paragraph">
+<p>[6] Graham, S.; Hull, D.; Murray, B. Web Services Base Notification 1.3; Technical Report; OASIS: Burlington, MA, USA, 2016.</p>
+</div>
+<div id="OGC19-137r2" class="paragraph">
+<p>[7] Bigagli, L.; Vretanos, P.P.A.; Lawrence, M.; Papeschi, F.; Martell, R. Testbed-12 PubSub/Catalog Engineering
+Report; Technical Report OGC 16-137r2; Open Geospatial Consortium: Wayland, MA, USA, 2017.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="http://www.opengeospatial.org/standards/filter" class="bare">http://www.opengeospatial.org/standards/filter</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="http://www.opengeospatial.org/standards/requests/139" class="bare">http://www.opengeospatial.org/standards/requests/139</a>
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. See also the Proxied Publish/Subscribe use case (access restricted to OGC Members): <a href="https://portal.opengeospatial.org/wiki/PUBSUBswg/PubSubSwgUseCaseBrokeredPubSub" class="bare">https://portal.opengeospatial.org/wiki/PUBSUBswg/PubSubSwgUseCaseBrokeredPubSub</a>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-05-27 16:30:20 +0100
+</div>
+</div>
+</body>
+</html>

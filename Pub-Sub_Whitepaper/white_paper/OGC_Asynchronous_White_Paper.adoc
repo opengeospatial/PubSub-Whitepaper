@@ -1,4 +1,4 @@
-:Title: OGC (PubSub White Paper)
+:Title: OGC Publish-Subscribe White Paper
 :titletext: {Title}
 :doctype: book
 :encoding: utf-8
@@ -8,7 +8,6 @@
 :toclevels: 3
 :numbered:
 :sectanchors:
-:source-highlighter: pygments
 
 <<<
 [cols = ">",frame = "none",grid = "none"]
@@ -17,9 +16,9 @@
 |[big]*Open Geospatial Consortium*
 |Submission Date: <yyyy-mm-dd>
 |Approval Date:   <yyyy-mm-dd>
-|Publication Date:   <yyyy-mm-dd>
+|Publication Date:   <2020-05-27>
 |External identifier of this OGC(R) document: http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}
-|Internal reference number of this OGC(R) document:    YY-nnnrx
+|Internal reference number of this OGC(R) document:    20-046
 |Category: OGC(R) White Paper
 |Editor:   <Name(s) of Editor or Editors>
 |===
