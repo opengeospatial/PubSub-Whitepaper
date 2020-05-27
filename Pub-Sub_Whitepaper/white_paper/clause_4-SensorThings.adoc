@@ -1,6 +1,6 @@
 == PubSub in OGC SensorThings
 
-OGC SensorThings API is a standard for interconnecting the Internet of Things (IoT) devices, data, and applications over the Web. OGC SensorThings API has two main parts, Sensing part which is focusing on heterogeneous IoT sensor systems, and the Tasking part that is focused on IoT actuators and tasking devices.   
+OGC SensorThings API is a standard for interconnecting the Internet of Things (IoT) devices, data, and applications over the Web. OGC SensorThings API has two main parts, Sensing part which is focusing on heterogeneous IoT sensor systems, and the Tasking part that is focused on IoT actuators and tasking devices.
 
 OGC SensorThings API is following ODATA for managing the sensing resources. Thus, it has a REST-like API and supports HTTP CRUD operations (GET, POST, PATCH, DELETE) as well as ODATA query options (select, expand, filter, orderby, top, skip) for data retrieval.
 
@@ -8,9 +8,9 @@ In addition to supporting HTTP, OGC SensorThings API has the extension for suppo
 
 MQ Telemetry Transport, known as MQTT, is an OASIS standard. It is an extremely lightweight publish/subscribe messaging protocol which is specifically designed for resource-constrained IoT devices. The main concepts are topic, and publish and subscribe functions. When a new message is published to a topic, anyone subscribing to that topic will receive a notification including that message.
 
-OGC SensorThings API is adopting MQTT protocol and defines a topic structure for creating and also receiving notifications of sensor Observations. The topic structure for OGC SensorThings API MQTT extension is following its HTTP resource path. It means that the topic used for creating Observation through MQTT is identical to the HTTP URL that is used for POST and creating Observations. Examples of these resource paths are *_v1.0/Observations_* and *_v1.0/Datastreams(id)/Observations_*. Similarly, accessing those URLs using HTTP GET would result in retrieving sensor Observations, while subscribing to those as topics means receiving notifications for those Observations in real-time. 
+OGC SensorThings API is adopting MQTT protocol and defines a topic structure for creating and also receiving notifications of sensor Observations. The topic structure for OGC SensorThings API MQTT extension is following its HTTP resource path. It means that the topic used for creating Observation through MQTT is identical to the HTTP URL that is used for POST and creating Observations. Examples of these resource paths are *_v1.0/Observations_* and *_v1.0/Datastreams(id)/Observations_*. Similarly, accessing those URLs using HTTP GET would result in retrieving sensor Observations, while subscribing to those as topics means receiving notifications for those Observations in real-time.
 
-Here is the summary of lessons learnt from MQTT adoption is OGC SensorThings API that might be applicable to any RESTful API: 
+Here is the summary of lessons learnt from MQTT adoption is OGC SensorThings API that might be applicable to any RESTful API:
 
 *	Each RESTful API has a potential for MQTT binding to receive updates for a resource collection
 **	The topic would be the resource GET URL
@@ -20,6 +20,6 @@ Here is the summary of lessons learnt from MQTT adoption is OGC SensorThings API
 **	The topic will be same as the POST topic
 **	The payload will be the same as POST payload
 **	The service would subscribe to the topics
-**	When it receives the payload, it uses the same process as POST for creating the resource 
+**	When it receives the payload, it uses the same process as POST for creating the resource
 
-We also did a pilot on a simple rules engine for Institute for the Management of Information Systems (IMIS) pilot project. In that pilot, what we did was to define topics that contain the resource path together with $filter query options. Then the Observation that are published to that topic would be filtered by the criteria defined in the topic. This way we can define rules that notify subscribers about certain condition that happened, for example when the CO reading are higher than a threshold and considered dangerous. Example of the topic would be *_v1.0/Datastreams(id)/Observations?$filter=result gt 100_*. This was a pilot implementation and could be a starting point for OGC SensorThings API potential part 3, rules engine.
+We also did a pilot on a simple rules engine for the Institute for the Management of Information Systems (IMIS) pilot project. In that pilot, what we did was to define topics that contain the resource path together with $filter query options. Then the Observation that are published to that topic would be filtered by the criteria defined in the topic. This way we can define rules that notify subscribers about certain condition that happened, for example when the CO reading are higher than a threshold and considered dangerous. Example of the topic would be *_v1.0/Datastreams(id)/Observations?$filter=result gt 100_*. This was a pilot implementation and could be a starting point for OGC SensorThings API potential part 3, rules engine.

@@ -2,23 +2,27 @@
 
 === Overview
 
-The OGC has conducted significant work on event-based models and architectures. <<OGC_TIMELINE>> provides an overview and a timeline of relevant OGC work in the last decade.
+The OGC has conducted significant work on event-based models and architectures. <<OGC_TIMELINE>> provides an overview and a timeline of relevant OGC work in the last decade (source: <<Rieke2018>>).
+The rows show the roadmap of various documents, including official OGC standards (highlighted in bold fonts)
+and milestones, indicated with their version and OGC reference number and type (Best Practice, Discussion Paper, Implementation Standard, and Engineering Report;
+see section <<section:abbreviations>> for a complete list of abbreviations)
 
 [[OGC_TIMELINE]]
 [#OGC_TIMELINE,reftext='{figure-caption} {counter:figure-num}']
-.OGC Publish/Subscribe related work (source: <<Rieke2018>>). The rows show the roadmap of various documents, including official OGC standards (highlighted in bold fonts) and milestones, indicated with their version and OGC reference number and type (Best Practice, Discussion Paper, Implementation Standard, and Engineering Report; see section <<section:abbreviations>> for a complete list of abbreviations)
-image::figures/clause_3/OGC_PubSub_timeline.png[align=center,width=600]
+.OGC Publish/Subscribe related work (source: <<Rieke2018>>)
+image::figures/clause_3/OGC_PubSub_timeline.png[align=center,width=800]
 
 From 2010 onward, these efforts have been subsumed under the scope of the PubSub SWG and resulted in the adoption of the Publish/Subscribe Interface Standard 1.0 in February 2016.
 
-=== OGC's PubSub features
+=== OGC's PubSub Features
 
 The OGC Publish/Subscribe Interface Standard (in short, PubSub) describes a mechanism to support publish/subscribe requirements across OGC service interfaces, such as Sensor Observation Service (SOS) and Catalogue Service for the Web (CSW), and data types, such as coverages, features, and observations.
 
-PubSub is intended as an overarching model to complement OGC service interfaces with publish/subscribe capabilities, alongside the primarily addressed request/reply model. In fact, the latter is sufficient to meet may use cases, when clients request the data of interest upon need, and may re-issue requests periodically for updates. However, the publish/subscribe model can be better suited to manage urgent, unpredictable pieces of information, such as sporadic events, hazard warnings and sensor data, resulting in less network traffic and more timely responses.
+PubSub is intended as an overarching model to complement OGC service interfaces with publish/subscribe capabilities, alongside the primarily addressed request/reply model.
+In fact, the latter is sufficient to meet many use cases, when clients request the data of interest upon need, and may re-issue requests periodically for updates. However, the publish/subscribe model can be better suited to manage urgent, unpredictable pieces of information, such as sporadic events, hazard warnings and sensor data, resulting in less network traffic and more timely responses.
 
-In the assumption that clients are interested in the information already provided by OGC services, the rationale for PubSub is to avoid impact on the existing service semantics, when possible reusing the specialized mechanisms for accessing and filtering the information provided (e.g., the Filter Encoding Specification footnote:[http://www.opengeospatial.org/standards/filter] for general-purpose filtering).
-Hence, PubSub provides notification and messaging capabilities as a module to existing services, as well as a standalone, independent OWS capability. Besides, it supports simple notifications (e.g. references to data from OWS services) or actual data push.
+In the assumption that clients are interested in the information already provided by OGC services, the rationale for PubSub is to avoid impact on the existing service semantics, when possible reusing the specialized mechanisms for accessing and filtering the information provided (_e.g._, the Filter Encoding Specification footnote:[http://www.opengeospatial.org/standards/filter] for general-purpose filtering).
+Hence, PubSub provides notification and messaging capabilities as a module to existing services, as well as a standalone, independent OWS capability. Besides, it supports simple notifications (_e.g._, references to data from OWS services) or actual data push.
 
 The basic OGC PubSub workflow, depicted in <<PUBSUB_MEP>>, involves two primary actors: the Publisher of information (XML, binary data, or other content); and the Subscriber, which subscribes to the Publisher to obtain the published information, possibly filtered according to criteria defined upon subscription.
 Information is contained and transported in messages, which may include additional data, such as for routing or security purposes.
@@ -27,21 +31,35 @@ PubSub distinguishes two additional roles, the Sender and the Receiver, respecti
 
 [[PUBSUB_MEP]]
 [#PUBSUB_MEP,reftext='{figure-caption} {counter:figure-num}']
-.OGC PubSub basic workflow (source: <<PubSubCore2016>>). The Subscriber creates a subscription (with possible filter criteria) on behalf of a Receiver using the Subscribe operation on a Publisher (1.0). The Publisher creates a Subscription (1.1) and returns a SubscribeResponse (1.2). The Publisher attempts to match each new message against the filter of each Subscription (2.0). If a message matches, the Sender delivers it to the appropriate Receiver via the Notify operation (2.1). The Subscriber may utilize the Renew operation (3.0) to extend the lifetime of a Subscription. If the Publisher accepts the request, it sets the new termination time on the Subscription and returns a RenewResponse (3.1). The Subscriber may at any time request the termination of a Subscription via the Unsubscribe operation (4.0). If the Publisher accepts the request, it terminates the subscription (4.1) and returns an UnsubscribeResponse (4.2).
+.OGC PubSub basic workflow (source: <<PubSubCore2016>>).
 image::figures/clause_3/PubSub_MEP.png[align=center,width=600]
 
-To qualify as a Publisher, an OWS must at least conform to the Basic Publisher conformance class, that is satisfy the requirements for the above basic functionalities. Besides, it must return in its GetCapabilities response the three additional Capabilities components represented in <<PUBSUB_CAP_COMPONENTS>>.
+In the above figure, the Subscriber creates a subscription (with possible filter criteria) on behalf of a Receiver using the Subscribe operation on a Publisher (1.0).
+The Publisher creates a Subscription (1.1) and returns a SubscribeResponse (1.2).
+The Publisher attempts to match each new message against the filter of each Subscription (2.0).
+If a message matches, the Sender delivers it to the appropriate Receiver via the Notify operation (2.1).
+The Subscriber may utilize the Renew operation (3.0) to extend the lifetime of a Subscription.
+If the Publisher accepts the request, it sets the new termination time on the Subscription and returns a RenewResponse (3.1).
+The Subscriber may at any time request the termination of a Subscription via the Unsubscribe operation (4.0).
+If the Publisher accepts the request, it terminates the subscription (4.1) and returns an UnsubscribeResponse (4.2).
+
+To qualify as a Publisher, an OWS must at least conform to the Basic Publisher conformance class, that is satisfy the requirements for the above basic functionalities.
+Besides, it must return in its _GetCapabilities_ response the three additional Capabilities components represented in <<#PUBSUB_CAP_COMPONENTS>>.
 
 [[PUBSUB_CAP_COMPONENTS]]
 [#PUBSUB_CAP_COMPONENTS,reftext='{figure-caption} {counter:figure-num}']
 .OGC PubSub additional Capabilities components (source: <<PubSubCore2016>>).
 image::figures/clause_3/PubSubCapabilitiescomponents.png[align=center,width=600]
 
-The Publications component describes the contents offered by the Publisher, i.e. the sets of messages that Subscribers can subscribe to. The specification is agnostic as to what constitutes a publication, i.e. what events should cause notifications by a Publisher (i.e. its event model). Likewise, PubSub is agnostic as for the encoding of messages.
+The Publications component describes the contents offered by the Publisher, _i.e._, the sets of messages that Subscribers can subscribe to.
+The specification is agnostic as to what constitutes a publication, _i.e._, what events should cause notifications by a Publisher (_i.e._, its event model).
+Likewise, PubSub is agnostic as for the encoding of messages.
 
-The FilterCapabilities component describes the filtering-related capabilities of a Publisher, i.e. the filter languages it supports for matching messages against subscriptions (e.g., OGC Filter Encoding, XQuery). PubSub is agnostic as for the language to filter messages in subscriptions. A Publisher may support multiple filter languages, to support different Subscribers.
+The _FilterCapabilities_ component describes the filtering-related capabilities of a Publisher, _i.e._, the filter languages it supports for matching messages against subscriptions (_e.g._, OGC Filter Encoding, XQuery).
+PubSub is agnostic as for the language to filter messages in subscriptions.
+A Publisher may support multiple filter languages, to support different Subscribers.
 
-The DeliveryCapabilities component describes the methods supported by the PubSub-enabled OWS for delivering messages. The publish/subscribe MEP typically implies push-style message delivery, however some delivery methods may actually be underpinned by pull-based mechanisms (e.g. polling). Examples of delivery methods include: SOAP and related technologies, such as WS-N (used by the PubSub SOAP Binding), ATOM, PubSubHubbub, OAI-PMH, e-mail, Short Message Service, WebSockets and SSE. The PubSub standard is agnostic as regards delivery methods. A Publisher may offer more than one method of delivery for each Publication, to be chosen by Subscribers.
+The _DeliveryCapabilities_ component describes the methods supported by the PubSub-enabled OWS for delivering messages. The publish/subscribe MEP typically implies push-style message delivery, however some delivery methods may actually be underpinned by pull-based mechanisms (e.g. polling). Examples of delivery methods include: SOAP and related technologies, such as WS-N (used by the PubSub SOAP Binding), ATOM, PubSubHubbub, OAI-PMH, e-mail, Short Message Service, WebSockets and SSE. The PubSub standard is agnostic as regards delivery methods. A Publisher may offer more than one method of delivery for each Publication, to be chosen by Subscribers.
 
 In addition to the mandatory Basic Publisher conformance class, PubSub defines several other optional conformance classes, introducing additional functionalities, e.g. to pause a Subscription (Pausable Publisher), derive additional publications (Publication Manager), group messages in batches (Message Batching Publisher). Moreover, it defines conformance classes to bind such functionalities to actual technologies. At present, the PubSub specification consists of two parts:
 

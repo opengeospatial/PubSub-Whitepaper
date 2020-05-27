@@ -1,2 +1,42 @@
 == Overview
 //write text in as many clauses as necessary. Use one document or many, your choice!
+
+The OGC has conducted significant work on event-based models and architectures.
+The publish/subscribe model results in less network traffic and timely responses to manage event-based model such as urgent, unpredictable pieces of information, hazard warnings and sensor data.
+
+Since 2010, these efforts have been gathered under the scope of the PubSub SWG and resulted in the adoption of the Publish/Subscribe Interface Standard 1.0 (in short, PubSub) in February 2016.
+The OGC PubSub describes a mechanism to support publish/subscribe requirements across OGC service interfaces, such as
+Sensor Observation Service (SOS) and Catalogue Service for the Web (CSW), and data types, such as coverages, features, and observations.
+OGC PubSub is intended as an overarching model to complement OGC service interfaces with publish/subscribe capabilities, 
+alongside the primarily addressed request/reply model.
+
+OGC Testbed 12 initiative in 2016 addressed the means to incorporate forms of asynchronous service interaction,
+including Publish/Subscribe message patterns for WPS, WCS, WFS and in application domains such as the Sensor Web and Aviation. [Bigagli2017]
+The subtask description in this testbed distinguished among three different approaches to handle asynchronous interaction with OGC Web services:
+* WPS facades;
+* Specific extensions to each OGC Web Service with asynchronous request/response capabilities;
+* OGC PubSub.
+
+MQ Telemetry Transport, known as MQTT, is an OASIS standard for the lightweight and resource-constrained publish/subscribe messaging protocol.
+The main concepts of MQTT are topic, and publish and subscribe functions. When a new message is published to a topic, anyone subscribing to that topic will receive a notification including that message.
+For the IoT applications, OGC SensorThings API is following ODATA for managing the sensing resources.
+In addition to supporting HTTP, OGC SensorThings API has the extension for supporting MQTT for creation and real-time retrieval of sensor Observations.
+
+
+Section 2 introduces the asynchronous operations and models in any interaction between two software entities.
+
+Section 3 summarizes the effort of OGC Publish/Subscribe Interface Standard and illustrate its features in a generic OWS extension.
+
+Section 4 describes MQTT adoption for the OGC SensorThings API.
+
+Section 5
+
+Section 6 concludes the effort of Testbed 12 in using Publish Subscribe in aviation.
+
+Section 7 presents WIS 2 study on messaging protocols to use OWS pub/sub model.
+
+Section 8 discusses AsyncAPI spec  for designing the API
+
+Section ?
+//?
+briefly discusses the paper's key issues, main findings and discusses recommendations on preferred strategies and change requests.
