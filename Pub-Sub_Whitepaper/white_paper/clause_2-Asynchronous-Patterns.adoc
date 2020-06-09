@@ -10,27 +10,36 @@ This section will look at three aspects of asynchronous operations:
 
 === Asynchronous Behavior Models
 
-==== Request - response
+==== Request - Response
 
-Request-Response is a synchronous behavior model. A request is issued by one entity and a response is provided in return. Asynchronous behaviors can best be understood in contrast to this model.
+Request-Response is a synchronous behavior model. A request is issued by one entity and a response is provided in return (<<#img_Req_Res>>). Asynchronous behaviors can best be understood in contrast to this model.
 
-image::images/Request-Response.bmp[]
+[#img_Req_Res,reftext='{figure-caption} {counter:figure-num}']
+.Request - Response behavior model
+image::images/Request-Response.bmp[width=800,align="center"]
+
 
 ==== Request with Callback
 
-The OpenAPI Callback object describes "a set of requests that may be initiated by the API provider and the expected responses. The key value used to identify the callback object is an expression,  evaluated at runtime, that identifies a URL to use for the callback operation.
+The OpenAPI Callback object describes "a set of requests that may be initiated by the API provider and the expected responses".
+The _key value_ used to identify the callback object is an expression,  evaluated at runtime, that identifies a URL to use for the callback operation (<<#img_Req_Callback>>).
 
 In other words, a callback is an http accessible resource which can receive information from the server. This differs from Request-Response in that the immediate response is not the final response. The final response to the request is delivered latter through the callback.
 
-image::images/Callback.bmp[]
+[#img_Req_Callback,reftext='{figure-caption} {counter:figure-num}']
+.Request with Callbacl behavior model
+image::images/Callback.bmp[width=800,align="center"]
 
 Callbacks have been implemented as non-standard extensions to a number of OGC implementations. The change to the software is fairly minor and imposes no limitations on the functionality of the Service.
 
 ==== Standing Query
 
-A standing query is an extension to the callback pattern where the request, once issued, stays active. The client receives a response whenever the conditions specified in the request are met.
+A standing query is an extension to the callback pattern where the request, once issued, stays active. The client receives a response whenever the conditions specified in the request are met (<<#Standing_Query>>).
 
-image::images/Standing_Query.bmp[]
+[#Standing_Query,reftext='{figure-caption} {counter:figure-num}']
+.Request with Callbacl behavior model
+image::images/Standing_Query.bmp[width=800,align="center"]
+
 
 Standing Queries have long been used in image libraries to inform users when relevant images have arrived. Their value lies in relieving users of the need to search for new data.
 
