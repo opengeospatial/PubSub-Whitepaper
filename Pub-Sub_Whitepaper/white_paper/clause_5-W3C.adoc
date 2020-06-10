@@ -1,6 +1,6 @@
 == W3C Pub Sub Recommendation
 
-Description of the standard and recommendationsfor OGC PubSub.  
+Description of the standard and recommendations for OGC PubSub.  
  
 Presentation from Stuttgart would be good to draw from.
 
