@@ -16,11 +16,11 @@
 |[big]*Open Geospatial Consortium*
 |Submission Date: <yyyy-mm-dd>
 |Approval Date:   <yyyy-mm-dd>
-|Publication Date:   <2020-05-27>
+|Publication Date:   <2020-06-10>
 |External identifier of this OGC(R) document: http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}
 |Internal reference number of this OGC(R) document:    20-046
 |Category: OGC(R) White Paper
-|Editor:   <Name(s) of Editor or Editors>
+|Editor:   Sarah Saeedi
 |===
 
 [cols = "^", frame = "none"]
@@ -65,50 +65,30 @@ This document is not an OGC Standard. This document is an OGC White Paper and is
 
 [small]#Except as contained in this notice, the name of LICENSOR or of any other holder of a copyright in all or part of the Intellectual Property shall not be used in advertising or otherwise to promote the sale, use or other dealings in this Intellectual Property without prior written authorization of LICENSOR or such copyright holder. LICENSOR is and shall at all times be the sole entity that may authorize you or any third party to use certification marks, trademarks or other special designations to indicate compliance with any LICENSOR standards or specifications. This Agreement is governed by the laws of the Commonwealth of Massachusetts. The application to this Agreement of the United Nations Convention on Contracts for the International Sale of Goods is hereby expressly excluded. In the event any provision of this Agreement shall be deemed unenforceable, void or invalid, such provision shall be modified so as to make it valid and enforceable, and as so modified the entire Agreement shall remain in full force and effect. No decision, action or inaction by LICENSOR shall be construed to be a waiver of any rights or remedies available to it.#
 
-<<<
 toc::[]
-
-<<<
-
-////
-Make sure to complete each included document
-////
 
 include::clause_0_front_material.adoc[]
 
-include::clause_0_references.adoc[]
+include::clause_1_references.adoc[]
 
-include::clause_0_conventions.adoc[]
+include::clause_2_conventions.adoc[]
 
-include::clause_1-Overview.adoc[]
+include::clause_3-Overview.adoc[]
 
-include::clause_2-Asynchronous-Patterns.adoc[]
+include::clause_4-Asynchronous-Patterns.adoc[]
 
-include::clause_3-PubSub-IS.adoc[]
+include::clause_5-PubSub-IS.adoc[]
 
-include::clause_4-SensorThings.adoc[]
+include::clause_6-SensorThings.adoc[]
 
-include::clause_5-W3C.adoc[]
+include::clause_7-W3C.adoc[]
 
-include::clause_6-Aviation.adoc[]
+include::clause_8-WMO-OpenWIS.adoc[]
 
-include::clause_7-WMO-OpenWIS.adoc[]
+include::clause_9-AsyncAPI.adoc[]
 
-include::clause_8-AsyncAPI.adoc[]
+include::clause_10-Ideas-Abstract-Spec.adoc[]
 
-include::clause_9-AsyncAPI-in-OGC.adoc[]
-
-include::clause_10-Abstract-Spec.adoc[]
-
-<<<
-//use annexes as needed
-include::annex-n.adoc[]
-<<<
-////
-Revision History should be the last annex before the Bibliography
-Bibliography should be the last annex
-////
 include::annex-history.adoc[]
 
-<<<
 include::annex-bibliography.adoc[]

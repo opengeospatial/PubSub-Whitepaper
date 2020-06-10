@@ -18,7 +18,7 @@ Request-Response is a synchronous behavior model. A request is issued by one ent
 
 .Request - Response behavior model
 
-image::images/Request-Response.bmp[width=800,align="center"]
+image::images/Request-Response.png[width=800,align="center"]
  
 ==== Delayed Response
 
@@ -28,7 +28,7 @@ A key part of this pattern is the callback. A callback is an http accessible res
 
 [#img_Delayed-Response,reftext='{figure-caption} {counter:figure-num}']
 .Delayed Response behavior model
-image::images/Callback.bmp[width=800,align="center"]
+image::images/Callback.png[width=800,align="center"]
 
 ==== Standing Request
 
@@ -36,7 +36,7 @@ A Standing Request is a variation of the Delayed Response pattern. While a Delay
 
 [#Standing_Request,reftext='{figure-caption} {counter:figure-num}']
 .Standing Request behavior model
-image::images/Standing_Query.bmp[width=800,align="center"]
+image::images/Standing_Query.png[width=800,align="center"]
 
 ==== Synchronization
 
