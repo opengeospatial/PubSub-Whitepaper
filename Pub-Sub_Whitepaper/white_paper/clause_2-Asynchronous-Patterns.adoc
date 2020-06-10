@@ -10,25 +10,33 @@ This section will look at three aspects of asynchronous operations:
 
 === Behavior Models
 
-==== Request-response
+==== Request-Response
 
-Request-Response is a synchronous behavior model. A request is issued by one entity and a response is provided in return. Asynchonous behaviors can best be understood in contrast to this model.
+Request-Response is a synchronous behavior model. A request is issued by one entity and a response is provided in return (<<#img_Req_Res>>). Asynchronous behaviors can best be understood in contrast to this model.
 
-image::images/Request-Response.png[]
+[#img_Req_Res,reftext='{figure-caption} {counter:figure-num}']
 
+.Request - Response behavior model
+
+image::images/Request-Response.bmp[width=800,align="center"]
+ 
 ==== Delayed Response
 
-This model differs from Reqest-Response in that the immediate response is not the final response. Rather it acknowedges successful receipt of the request. The final response is to be delivered latter.
+This model differs from Reqest-Response in that the immediate response is not the final response. Rather it acknowedges successful receipt of the request. The final response is to be delivered latter (<<#img_Delayed-Response>>).
 
-A key part of this pattern is the callback. A callback is an http accessible resource which can receive information (responses) from the server.
+A key part of this pattern is the callback. A callback is an http accessible resource which can receive information (responses) from the server for the client.
 
-image::images/Callback.png[]
+[#img_Delayed-Response,reftext='{figure-caption} {counter:figure-num}']
+.Delayed Response behavior model
+image::images/Callback.bmp[width=800,align="center"]
 
 ==== Standing Request
 
-A Standing Request is a variation of the Delayed Response pattern. While a Delayed Response performs a single operation, a Standing Request is active until instructed to stop.  
+A Standing Request is a variation of the Delayed Response pattern. While a Delayed Response performs a single operation, a Standing Request is active until instructed to stop (<<#Standing_Request>>).
 
-image::images/Standing_Query.png[]
+[#Standing_Request,reftext='{figure-caption} {counter:figure-num}']
+.Standing Request behavior model
+image::images/Standing_Query.bmp[width=800,align="center"]
 
 ==== Synchronization
 
