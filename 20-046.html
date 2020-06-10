@@ -628,7 +628,35 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_pubsub_in_ogc_sensorthings">7. PubSub in OGC SensorThings</a></li>
 <li><a href="#_w3c_pub_sub_recommendation">8. W3C Pub Sub Recommendation</a></li>
 <li><a href="#_wmo_openwis_use_of_amqp">9. WMO OpenWIS use of AMQP</a></li>
-<li><a href="#_asyncapi_description">10. AsyncAPI description</a></li>
+<li><a href="#_asyncapi_description">10. AsyncAPI description</a>
+<ul class="sectlevel2">
+<li><a href="#_concepts">10.1. Concepts</a>
+<ul class="sectlevel3">
+<li><a href="#definitionsApplication">10.1.1. Application</a></li>
+<li><a href="#definitionsProducer">10.1.2. Producer</a></li>
+<li><a href="#definitionsConsumer">10.1.3. Consumer</a></li>
+<li><a href="#definitionsMessage">10.1.4. Message</a></li>
+<li><a href="#definitionsChannel">10.1.5. Channel</a></li>
+<li><a href="#definitionsProtocol">10.1.6. Protocol</a></li>
+<li><a href="#definitionsBindings">10.1.7. Bindings</a></li>
+</ul>
+</li>
+<li><a href="#_the_asyncapi_specification">10.2. The AsyncAPI Specification</a>
+<ul class="sectlevel3">
+<li><a href="#_info_object">10.2.1. Info Object</a></li>
+</ul>
+</li>
+<li><a href="#_servers">10.3. Servers</a>
+<ul class="sectlevel3">
+<li><a href="#_channels">10.3.1. Channels</a></li>
+<li><a href="#_operation_object">10.3.2. Operation Object</a></li>
+<li><a href="#_parameters">10.3.3. Parameters</a></li>
+<li><a href="#_message_object">10.3.4. Message Object</a></li>
+</ul>
+</li>
+<li><a href="#_resources">10.4. Resources</a></li>
+</ul>
+</li>
 <li><a href="#_ideas_for_an_ogc_abstract_spec_for_pubsub">11. Ideas for an OGC Abstract Spec for PubSub</a></li>
 <li><a href="#_revision_history">Annex A: Revision History</a></li>
 <li><a href="#Bibliography">Annex B: Bibliography</a></li>
@@ -1770,10 +1798,449 @@ Transfer times</p>
 <h2 id="_asyncapi_description"><a class="anchor" href="#_asyncapi_description"></a>10. AsyncAPI description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Description of the AsyncAPI spec in general.</p>
+<p>OGC Web API Standards build on the design patterns described by the OpenAPI Interface Design Language (IDL). The use of an IDL has proven invaluable in the development of OGC Web API Standards. OpenAPI provides a set of common concepts for the design of a Web API and rules for the application of those concepts. Without this common language, the task of coordinating multiple API standardization efforts would be almost impossible.</p>
 </div>
 <div class="paragraph">
-<p>The role of AsyncAPI is to provide a language for designing the API.</p>
+<p>The OGC is now looking to extend our Request-Response APIs to include event driven (asynchronous) operations. However, OpenAPI does not support event driven operations beyond a simple call-back model. So an IDL for event driven Web APIs is needed.</p>
+</div>
+<div class="paragraph">
+<p>AsyncAPI is an open source initiative that seeks to improve the current state of Event-Driven Architectures (EDA). Their long-term goal is to make working with EDA’s as easy as it is to work with REST APIs. That goes from documentation to code generation, from discovery to event management. Most of the processes used for REST APIs should also be applicable to event-driven/asynchronous APIs. This section provides an introduction to AsyncAPI as an additional tool for use in developing OGC Web API standards.</p>
+</div>
+<div class="sect2">
+<h3 id="_concepts"><a class="anchor" href="#_concepts"></a>10.1. Concepts</h3>
+<div class="sect3">
+<h4 id="definitionsApplication"><a class="anchor" href="#definitionsApplication"></a>10.1.1. Application</h4>
+<div class="paragraph">
+<p>An application is any kind of computer program or a group of them. It MUST be a <a href="#definitionsProducer">producer</a>, a <a href="#definitionsConsumer">consumer</a> or both. An application MAY be a microservice, IoT device (sensor), mainframe process, etc. An application MAY be written in any number of different programming languages as long as they support the selected <a href="#definitionsProtocol">protocol</a>. An application MUST also use a protocol supported by the server in order to connect and exchange <a href="#definitionsMessage">messages</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="definitionsProducer"><a class="anchor" href="#definitionsProducer"></a>10.1.2. Producer</h4>
+<div class="paragraph">
+<p>A producer is a type of application, connected to a server, that is creating <a href="#definitionsMessage">messages</a> and addressing them to <a href="#definitionsChannel">channels</a>. A producer MAY be publishing to multiple channels depending on the server, protocol, and use-case pattern.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="definitionsConsumer"><a class="anchor" href="#definitionsConsumer"></a>10.1.3. Consumer</h4>
+<div class="paragraph">
+<p>A consumer is a type of application, connected to a server via a supported <a href="#definitionsProtocol">protocol</a>, that is consuming <a href="#definitionsMessage">messages</a> from <a href="#definitionsChannel">channels</a>. A consumer MAY be consuming from multiple channels depending on the server, protocol, and the use-case pattern.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="definitionsMessage"><a class="anchor" href="#definitionsMessage"></a>10.1.4. Message</h4>
+<div class="paragraph">
+<p>A message is the mechanism by which information is exchanged via a channel between servers and applications. A message MUST contain a payload and MAY also contain headers. The headers MAY be subdivided into <a href="#definitionsProtocol">protocol</a>-defined headers and header properties defined by the application which can act as supporting metadata. The payload contains the data, defined by the application, which MUST be serialized into a format (JSON, XML, Avro, binary, etc.). Since a message is a generic mechanism, it can support multiple interaction patterns such as event, command, request, or response.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="definitionsChannel"><a class="anchor" href="#definitionsChannel"></a>10.1.5. Channel</h4>
+<div class="paragraph">
+<p>A channel is an addressable component, made available by the server, for the organization of <a href="#definitionsMessage">messages</a>. <a href="#definitionsProducer">Producer</a> applications send messages to channels and <a href="#definitionsConsumer">consumer</a> applications consume messages from channels. Servers MAY support many channel instances, allowing messages with different content to be addressed to different channels. Depending on the server implementation, the channel MAY be included in the message via protocol-defined headers.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="definitionsProtocol"><a class="anchor" href="#definitionsProtocol"></a>10.1.6. Protocol</h4>
+<div class="paragraph">
+<p>A protocol is the mechanism (wireline protocol or API) by which <a href="#definitionsMessage">messages</a> are exchanged between the application and the <a href="#definitionsChannel">channel</a>. Example protocols include, but are not limited to, AMQP, HTTP, JMS, Kafka, MQTT, STOMP, Mercure, WebSocket.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="definitionsBindings"><a class="anchor" href="#definitionsBindings"></a>10.1.7. Bindings</h4>
+<div class="paragraph">
+<p>A "binding" (or "protocol binding") is a mechanism to define protocol-specific information. Therefore, a protocol binding MUST define protocol-specific information only.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_asyncapi_specification"><a class="anchor" href="#_the_asyncapi_specification"></a>10.2. The AsyncAPI Specification</h3>
+<div class="paragraph">
+<p>AsyncAPI can be viewed as an extension of OpenAPI. Many of the objects and structures defined in OpenAPI can also be found in AsynAPI. However, there are some important differences.</p>
+</div>
+<div class="sect3">
+<h4 id="_info_object"><a class="anchor" href="#_info_object"></a>10.2.1. Info Object</h4>
+<div class="paragraph">
+<p>The AsyncAPI Info Object extends the Infor Object defined by OpenAPI through --- additional elements.</p>
+</div>
+<table id="info-object" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Info Object</caption>
+<colgroup>
+<col style="width: 13.0434%;">
+<col style="width: 13.0434%;">
+<col style="width: 73.9132%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Field Name</th>
+<th class="tableblock halign-center valign-top" style="background-color: #FFFFFF;">Type</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">title</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong>Required.</strong> The title of the application.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">version</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong>Required</strong> Provides the version of the application API (not to be confused with the specification version).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">description</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A short description of the application. <a href="http://spec.commonmark.org/">CommonMark syntax</a> can be used for rich text representation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">termsOfService</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A URL to the Terms of Service for the API. MUST be in the format of a URL.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">contact</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#contactObject">Contact Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">The contact information for the exposed API.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">license</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#licenseObject">License Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">The license information for the exposed API.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_servers"><a class="anchor" href="#_servers"></a>10.3. Servers</h3>
+<div class="paragraph">
+<p>Servers are described by two objects; the Servers Object (plural) and the Server Object (singular).</p>
+</div>
+<div class="paragraph">
+<p>A Servers Object provides a map of Server Objects with each Server Object refrenced by an identifier (the map key).</p>
+</div>
+<table id="server-object" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Server Object</caption>
+<colgroup>
+<col style="width: 13.0434%;">
+<col style="width: 13.0434%;">
+<col style="width: 73.9132%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Field Name</th>
+<th class="tableblock halign-center valign-top" style="background-color: #FFFFFF;">Type</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">url</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong>REQUIRED</strong>. A URL to the target host.  This URL supports Server Variables and MAY be relative, to indicate that the host location is relative to the location where the AsyncAPI document is being served. Variable substitutions will be made when a variable is named in <code>{</code>brackets<code>}</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">protocol</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong>REQUIRED</strong>. The protocol this URL supports for connection. Supported protocol include, but are not limited to: <code>amqp</code>, <code>amqps</code>, <code>http</code>, <code>https</code>, <code>jms</code>, <code>kafka</code>, <code>kafka-secure</code>, <code>mqtt</code>, <code>secure-mqtt</code>, <code>stomp</code>, <code>stomps</code>, <code>ws</code>, <code>wss</code>, <code>mercure</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">protocolVersion</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">The version of the protocol used for connection. For instance: AMQP <code>0.9.1</code>, HTTP <code>2.0</code>, Kafka <code>1.0.0</code>, etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">description</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">An optional string describing the host designated by the URL. <a href="http://spec.commonmark.org/">CommonMark syntax</a> MAY be used for rich text representation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">variables</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Map[<code>string</code>, <a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#serverVariableObject">Server Variable Object</a>]</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A map between a variable name and its value.  The value is used for substitution in the server&#8217;s URL template.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">security</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock">[<a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#securityRequirementObject">Security Requirement Object</a>]</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A declaration of which security mechanisms can be used with this server. The list of values includes alternative security requirement objects that can be used. Only one of the security requirement objects need to be satisfied to authorize a connection or operation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">bindings</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#serverBindingsObject">Server Bindings Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the server.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_channels"><a class="anchor" href="#_channels"></a>10.3.1. Channels</h4>
+<div class="paragraph">
+<p>Channels are described by two objects; the Channels Object (plural) and the Channel Object (singular).</p>
+</div>
+<div class="paragraph">
+<p>A Channels Object provides a map of Channel Objects with each Channel Object refrenced by an identifier (the map key).</p>
+</div>
+<table id="channel-object" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Channel Object</caption>
+<colgroup>
+<col style="width: 13.0434%;">
+<col style="width: 13.0434%;">
+<col style="width: 73.9132%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Field Name</th>
+<th class="tableblock halign-center valign-top" style="background-color: #FFFFFF;">Type</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">$ref</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Allows for an external definition of this channel item. The referenced structure MUST be in the format of a <a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#channelItemObject">Channel Item Object</a>. If there are conflicts between the referenced definition and this Channel Item&#8217;s definition, the behavior is <em>undefined</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">description</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">An optional description of this channel item. <a href="http://spec.commonmark.org/">CommonMark syntax</a> can be used for rich text representation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">subscribe</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#operationObject">Operation Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A definition of the SUBSCRIBE operation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">publish</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#operationObject">Operation Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A definition of the PUBLISH operation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">parameters</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#parametersObject">Parameters Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A map of the parameters included in the channel name. It SHOULD be
+present only when using channels with expressions (as defined by <a href="https://tools.ietf.org/html/rfc6570#section-2.2">RFC 6570 section 2.2</a>).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">bindings</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#channelBindingsObject">Channel Bindings Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the channel.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_operation_object"><a class="anchor" href="#_operation_object"></a>10.3.2. Operation Object</h4>
+<table id="operation-object" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Operation Object</caption>
+<colgroup>
+<col style="width: 13.0434%;">
+<col style="width: 13.0434%;">
+<col style="width: 73.9132%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Field Name</th>
+<th class="tableblock halign-center valign-top" style="background-color: #FFFFFF;">Type</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">operationId</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Unique string used to identify the operation. The id MUST be unique among all operations described in the API. The operationId value is <strong>case-sensitive</strong>. Tools and libraries MAY use the operationId to uniquely identify an operation, therefore, it is RECOMMENDED to follow common programming naming conventions.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">summary</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A short summary of what the operation is about.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">description</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A verbose explanation of the operation. <a href="http://spec.commonmark.org/">CommonMark syntax</a> can be used for rich text representation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">tags</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock">[<a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#tagObject">Tag Object</a>]</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A list of tags for API documentation control. Tags can be used for logical grouping of operations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">externalDocs</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#externalDocumentationObject">External Documentation Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Additional external documentation for this operation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">bindings</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#operationBindingsObject">Operation Bindings Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the operation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">traits</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="#operation-trate-object">Operation Trait Object</a><br>
+<a href="#referenceObject">Reference Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A list of traits to apply to the operation object. Traits MUST be merged into the operation object using the <a href="https://tools.ietf.org/html/rfc7386">JSON Merge Patch</a> algorithm in the same order they are defined here.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">message</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="#messageObject">Message Object</a><br>
+<a href="#referenceObject">Reference Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A definition of the message that will be published or received on this channel. <code>oneOf</code> is allowed here to specify multiple messages, however, <strong>a message MUST be valid only against one of the referenced message objects.</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_parameters"><a class="anchor" href="#_parameters"></a>10.3.3. Parameters</h4>
+<div class="paragraph">
+<p>Parameters are described by two objects; the Parameters Object (plural) and the Parameter Object (singular).</p>
+</div>
+<div class="paragraph">
+<p>A Parameters Object provides a map of Parameter Objects with each Parameter Object referenced by an identifier (the map key).</p>
+</div>
+<table id="parameter-object" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Parameter Object</caption>
+<colgroup>
+<col style="width: 13.0434%;">
+<col style="width: 13.0434%;">
+<col style="width: 73.9132%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Field Name</th>
+<th class="tableblock halign-center valign-top" style="background-color: #FFFFFF;">Type</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">description</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A verbose explanation of the parameter. <a href="http://spec.commonmark.org/">CommonMark syntax</a> can be used for rich text representation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">schema</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#schemaObject">Schema Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Definition of the parameter.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">location</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A <a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#runtimeExpression">runtime expression</a> that specifies the location of the parameter value. Even when a definition for the target field exists, it MUST NOT be used to validate this parameter but, instead, the <code>schema</code> property MUST be used.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_message_object"><a class="anchor" href="#_message_object"></a>10.3.4. Message Object</h4>
+<table id="message-object" class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Message Object</caption>
+<colgroup>
+<col style="width: 13.0434%;">
+<col style="width: 13.0434%;">
+<col style="width: 73.9132%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Field Name</th>
+<th class="tableblock halign-center valign-top" style="background-color: #FFFFFF;">Type</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">headers</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#schemaObject">Schema Object</a><br>
+<a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#referenceObject">Reference Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Schema definition of the application headers. Schema MUST be of type "object". It <strong>MUST NOT</strong> define the protocol headers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">payload</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>any</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Definition of the message payload. It can be of any type but defaults to <a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#schemaObject">Schema object</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">correlationId</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#correlationIdObject">Correlation ID Object</a><br>
+<a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#referenceObject">Reference Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Definition of the correlation ID used for message tracing or matching.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">schemaFormat</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A string containing the name of the schema format used to define the message payload. If omitted, implementations should parse the payload as a <a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#schemaObject">Schema object</a>. Check out the <a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageObjectSchemaFormatTable">supported schema formats table</a> for more information. Custom values are allowed but their implementation is OPTIONAL. A custom value MUST NOT refer to one of the schema formats listed in the <a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageObjectSchemaFormatTable">table</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">contentType</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">The content type to use when encoding/decoding a message&#8217;s payload. The value MUST be a specific media type (e.g. <code>application/json</code>). When omitted, the value MUST be the one specified on the <a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#defaultContentTypeString">defaultContentType</a> field.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">name</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A machine-friendly name for the message.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">title</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A human-friendly title for the message.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">summary</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A short summary of what the message is about.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">description</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A verbose explanation of the message. <a href="http://spec.commonmark.org/">CommonMark syntax</a> can be used for rich text representation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">tags</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#tagsObject">Tags Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A list of tags for API documentation control. Tags can be used for logical grouping of messages.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">externalDocs</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#externalDocumentationObject">External Documentation Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Additional external documentation for this message.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">bindings</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageBindingsObject">Message Bindings Object</a></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the message.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">examples</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock">[Map[<code>string</code>, <code>any</code>]]</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">An array with examples of valid message objects.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">traits</p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock">[<a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageTraitObject">Message Trait Object</a><br>
+<a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#referenceObject">Reference Object</a>]</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A list of traits to apply to the message object. Traits MUST be merged into the message object using the <a href="https://tools.ietf.org/html/rfc7386">JSON Merge Patch</a> algorithm in the same order they are defined here. The resulting object MUST be a valid <a href="https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageObject">Message Object</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_resources"><a class="anchor" href="#_resources"></a>10.4. Resources</h3>
+<div class="paragraph">
+<p>The following resources should be explored if you wish to learn more about AsyncAPI, design an asynchronous API, or contribute to the standard.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.asyncapi.com/">AsyncAPI Home</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.asyncapi.com/docs/getting-started/">Getting Started</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.asyncapi.com/docs/specifications/2.0.0/">OpenAPI Version 2.0</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/asyncapi/asyncapi">AsyncAPI GitHub</a></p>
+</div>
 </div>
 </div>
 </div>

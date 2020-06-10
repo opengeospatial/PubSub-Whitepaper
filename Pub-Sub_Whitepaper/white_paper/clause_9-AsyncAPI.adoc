@@ -1,7 +1,178 @@
 == AsyncAPI description
 
-Description of the AsyncAPI spec in general. 
+OGC Web API Standards build on the design patterns described by the OpenAPI Interface Design Language (IDL). The use of an IDL has proven invaluable in the development of OGC Web API Standards. OpenAPI provides a set of common concepts for the design of a Web API and rules for the application of those concepts. Without this common language, the task of coordinating multiple API standardization efforts would be almost impossible.
 
-The role of AsyncAPI is to provide a language for designing the API.
+The OGC is now looking to extend our Request-Response APIs to include event driven (asynchronous) operations. However, OpenAPI does not support event driven operations beyond a simple call-back model. So an IDL for event driven Web APIs is needed. 
 
-//write text in as many clauses as necessary. Use one document or many, your choice!
+AsyncAPI is an open source initiative that seeks to improve the current state of Event-Driven Architectures (EDA). Their long-term goal is to make working with EDA’s as easy as it is to work with REST APIs. That goes from documentation to code generation, from discovery to event management. Most of the processes used for REST APIs should also be applicable to event-driven/asynchronous APIs. This section provides an introduction to AsyncAPI as an additional tool for use in developing OGC Web API standards.
+
+=== Concepts
+
+[[definitionsApplication]]
+==== Application
+
+An application is any kind of computer program or a group of them. It MUST be a <<definitionsProducer,producer>>, a <<definitionsConsumer,consumer>> or both. An application MAY be a microservice, IoT device (sensor), mainframe process, etc. An application MAY be written in any number of different programming languages as long as they support the selected <<definitionsProtocol,protocol>>. An application MUST also use a protocol supported by the server in order to connect and exchange <<definitionsMessage,messages>>.
+
+[[definitionsProducer]]
+==== Producer
+
+A producer is a type of application, connected to a server, that is creating <<definitionsMessage,messages>> and addressing them to <<definitionsChannel,channels>>. A producer MAY be publishing to multiple channels depending on the server, protocol, and use-case pattern.
+
+[[definitionsConsumer]]
+==== Consumer
+
+A consumer is a type of application, connected to a server via a supported <<definitionsProtocol,protocol>>, that is consuming <<definitionsMessage,messages>> from <<definitionsChannel,channels>>. A consumer MAY be consuming from multiple channels depending on the server, protocol, and the use-case pattern.
+
+[[definitionsMessage]]
+==== Message
+
+A message is the mechanism by which information is exchanged via a channel between servers and applications. A message MUST contain a payload and MAY also contain headers. The headers MAY be subdivided into <<definitionsProtocol,protocol>>-defined headers and header properties defined by the application which can act as supporting metadata. The payload contains the data, defined by the application, which MUST be serialized into a format (JSON, XML, Avro, binary, etc.). Since a message is a generic mechanism, it can support multiple interaction patterns such as event, command, request, or response.
+
+[[definitionsChannel]]
+==== Channel
+
+A channel is an addressable component, made available by the server, for the organization of <<definitionsMessage,messages>>. <<definitionsProducer,Producer>> applications send messages to channels and <<definitionsConsumer,consumer>> applications consume messages from channels. Servers MAY support many channel instances, allowing messages with different content to be addressed to different channels. Depending on the server implementation, the channel MAY be included in the message via protocol-defined headers.
+
+[[definitionsProtocol]]
+==== Protocol
+
+A protocol is the mechanism (wireline protocol or API) by which <<definitionsMessage,messages>> are exchanged between the application and the <<definitionsChannel,channel>>. Example protocols include, but are not limited to, AMQP, HTTP, JMS, Kafka, MQTT, STOMP, Mercure, WebSocket.
+
+[[definitionsBindings]]
+==== Bindings
+
+A "binding" (or "protocol binding") is a mechanism to define protocol-specific information. Therefore, a protocol binding MUST define protocol-specific information only.
+
+=== The AsyncAPI Specification
+
+AsyncAPI can be viewed as an extension of OpenAPI. Many of the objects and structures defined in OpenAPI can also be found in AsynAPI. However, there are some important differences.
+
+==== Info Object
+
+The AsyncAPI Info Object extends the Infor Object defined by OpenAPI through --- additional elements. 
+
+[#info-object,reftext='{table-caption} {counter:table-num}']
+.Info Object
+[cols="15,^15,85",options="header"]
+|====
+| Field Name | Type | Description
+| title | ``string`` | **Required.** The title of the application.
+| version | ``string`` | **Required** Provides the version of the application API (not to be confused with the specification version).
+| description | ``string`` | A short description of the application. http://spec.commonmark.org/[CommonMark syntax] can be used for rich text representation.
+| termsOfService | ``string`` | A URL to the Terms of Service for the API. MUST be in the format of a URL.
+| contact | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#contactObject[Contact Object] | The contact information for the exposed API.
+| license | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#licenseObject[License Object] | The license information for the exposed API.
+|====
+
+=== Servers
+
+Servers are described by two objects; the Servers Object (plural) and the Server Object (singular). 
+
+A Servers Object provides a map of Server Objects with each Server Object refrenced by an identifier (the map key).
+
+[#server-object,reftext='{table-caption} {counter:table-num}']
+.Server Object
+[cols="15,^15,85",options="header"]
+|====
+| Field Name | Type | Description
+| url | ``string`` | **REQUIRED**. A URL to the target host.  This URL supports Server Variables and MAY be relative, to indicate that the host location is relative to the location where the AsyncAPI document is being served. Variable substitutions will be made when a variable is named in ``{``brackets``}``.
+| protocol | ``string`` | **REQUIRED**. The protocol this URL supports for connection. Supported protocol include, but are not limited to: ``amqp``, ``amqps``, ``http``, ``https``, ``jms``, ``kafka``, ``kafka-secure``, ``mqtt``, ``secure-mqtt``, ``stomp``, ``stomps``, ``ws``, ``wss``, ``mercure``.
+| protocolVersion | ``string`` | The version of the protocol used for connection. For instance: AMQP ``0.9.1``, HTTP ``2.0``, Kafka ``1.0.0``, etc.
+| description | ``string`` | An optional string describing the host designated by the URL. http://spec.commonmark.org/[CommonMark syntax] MAY be used for rich text representation.
+| variables | Map[``string``, https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#serverVariableObject[Server Variable Object]] | A map between a variable name and its value.  The value is used for substitution in the server's URL template.
+| security | [https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#securityRequirementObject[Security Requirement Object]] | A declaration of which security mechanisms can be used with this server. The list of values includes alternative security requirement objects that can be used. Only one of the security requirement objects need to be satisfied to authorize a connection or operation.
+| bindings | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#serverBindingsObject[Server Bindings Object] | A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the server.
+|====
+
+==== Channels
+
+Channels are described by two objects; the Channels Object (plural) and the Channel Object (singular). 
+
+A Channels Object provides a map of Channel Objects with each Channel Object refrenced by an identifier (the map key).
+
+[#channel-object,reftext='{table-caption} {counter:table-num}']
+.Channel Object
+[cols="15,^15,85",options="header"]
+|====
+| Field Name | Type | Description
+| $ref | ``string`` | Allows for an external definition of this channel item. The referenced structure MUST be in the format of a https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#channelItemObject[Channel Item Object]. If there are conflicts between the referenced definition and this Channel Item's definition, the behavior is __undefined__.
+| description | ``string`` | An optional description of this channel item. http://spec.commonmark.org/[CommonMark syntax] can be used for rich text representation.
+| subscribe | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#operationObject[Operation Object] | A definition of the SUBSCRIBE operation.
+| publish | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#operationObject[Operation Object] | A definition of the PUBLISH operation.
+| parameters | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#parametersObject[Parameters Object] | A map of the parameters included in the channel name. It SHOULD be 
+present only when using channels with expressions (as defined by https://tools.ietf.org/html/rfc6570#section-2.2[RFC 6570 section 2.2]).
+| bindings | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#channelBindingsObject[Channel Bindings Object] | A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the channel.
+|====
+
+==== Operation Object
+
+[#operation-object,reftext='{table-caption} {counter:table-num}']
+.Operation Object
+[cols="15,^15,85",options="header"]
+|====
+| Field Name | Type | Description
+| operationId | ``string`` | Unique string used to identify the operation. The id MUST be unique among all operations described in the API. The operationId value is **case-sensitive**. Tools and libraries MAY use the operationId to uniquely identify an operation, therefore, it is RECOMMENDED to follow common programming naming conventions.
+| summary | ``string`` | A short summary of what the operation is about.
+| description | ``string`` | A verbose explanation of the operation. http://spec.commonmark.org/[CommonMark syntax] can be used for rich text representation.
+| tags | [https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#tagObject[Tag Object]] | A list of tags for API documentation control. Tags can be used for logical grouping of operations.
+| externalDocs | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#externalDocumentationObject[External Documentation Object] | Additional external documentation for this operation.
+| bindings | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#operationBindingsObject[Operation Bindings Object] | A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the operation.
+| traits | <<operation-trate-object,Operation Trait Object>> + 
+<<referenceObject,Reference Object>> | A list of traits to apply to the operation object. Traits MUST be merged into the operation object using the https://tools.ietf.org/html/rfc7386[JSON Merge Patch] algorithm in the same order they are defined here.
+| message | <<messageObject,Message Object>> +
+<<referenceObject,Reference Object>> | A definition of the message that will be published or received on this channel. ``oneOf`` is allowed here to specify multiple messages, however, **a message MUST be valid only against one of the referenced message objects.**
+|====
+
+==== Parameters
+
+Parameters are described by two objects; the Parameters Object (plural) and the Parameter Object (singular). 
+
+A Parameters Object provides a map of Parameter Objects with each Parameter Object referenced by an identifier (the map key).
+
+[#parameter-object,reftext='{table-caption} {counter:table-num}']
+.Parameter Object
+[cols="15,^15,85",options="header"]
+|====
+| Field Name | Type | Description
+| description | ``string`` | A verbose explanation of the parameter. http://spec.commonmark.org/[CommonMark syntax] can be used for rich text representation.
+| schema | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#schemaObject[Schema Object] | Definition of the parameter.
+| location | ``string`` | A https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#runtimeExpression[runtime expression] that specifies the location of the parameter value. Even when a definition for the target field exists, it MUST NOT be used to validate this parameter but, instead, the ``schema`` property MUST be used.
+|====
+
+==== Message Object
+
+[#message-object,reftext='{table-caption} {counter:table-num}']
+.Message Object
+[cols="15,^15,85",options="header"]
+|====
+| Field Name | Type | Description
+| headers | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#schemaObject[Schema Object] +
+https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#referenceObject[Reference Object] | Schema definition of the application headers. Schema MUST be of type "object". It **MUST NOT** define the protocol headers.
+| payload | ``any`` | Definition of the message payload. It can be of any type but defaults to https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#schemaObject[Schema object].
+| correlationId | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#correlationIdObject[Correlation ID Object] +
+https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#referenceObject[Reference Object] | Definition of the correlation ID used for message tracing or matching.
+| schemaFormat | ``string`` | A string containing the name of the schema format used to define the message payload. If omitted, implementations should parse the payload as a https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#schemaObject[Schema object]. Check out the https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageObjectSchemaFormatTable[supported schema formats table] for more information. Custom values are allowed but their implementation is OPTIONAL. A custom value MUST NOT refer to one of the schema formats listed in the https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageObjectSchemaFormatTable[table].
+| contentType | ``string`` | The content type to use when encoding/decoding a message's payload. The value MUST be a specific media type (e.g. ``application/json``). When omitted, the value MUST be the one specified on the https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#defaultContentTypeString[defaultContentType] field.
+| name | ``string`` | A machine-friendly name for the message.
+| title | ``string`` | A human-friendly title for the message.
+| summary | ``string`` | A short summary of what the message is about.
+| description | ``string`` | A verbose explanation of the message. http://spec.commonmark.org/[CommonMark syntax] can be used for rich text representation.
+| tags | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#tagsObject[Tags Object] | A list of tags for API documentation control. Tags can be used for logical grouping of messages.
+| externalDocs | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#externalDocumentationObject[External Documentation Object] | Additional external documentation for this message.
+| bindings | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageBindingsObject[Message Bindings Object] | A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the message.
+| examples | [Map[``string``, ``any``]] | An array with examples of valid message objects.
+| traits | [https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageTraitObject[Message Trait Object] +
+https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#referenceObject[Reference Object]] | A list of traits to apply to the message object. Traits MUST be merged into the message object using the https://tools.ietf.org/html/rfc7386[JSON Merge Patch] algorithm in the same order they are defined here. The resulting object MUST be a valid https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageObject[Message Object].
+|====
+
+=== Resources
+
+The following resources should be explored if you wish to learn more about AsyncAPI, design an asynchronous API, or contribute to the standard.
+
+https://www.asyncapi.com/[AsyncAPI Home]
+
+https://www.asyncapi.com/docs/getting-started/[Getting Started]
+
+https://www.asyncapi.com/docs/specifications/2.0.0/[OpenAPI Version 2.0]
+
+https://github.com/asyncapi/asyncapi[AsyncAPI GitHub]
