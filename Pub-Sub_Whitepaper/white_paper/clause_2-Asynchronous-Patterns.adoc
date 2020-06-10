@@ -10,7 +10,7 @@ This section will look at three aspects of asynchronous operations:
 
 === Behavior Models
 
-==== Request-Response
+==== Request-response
 
 Request-Response is a synchronous behavior model. A request is issued by one entity and a response is provided in return. Asynchonous behaviors can best be understood in contrast to this model.
 
