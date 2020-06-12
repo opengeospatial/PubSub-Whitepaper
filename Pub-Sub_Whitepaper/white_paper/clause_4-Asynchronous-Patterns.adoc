@@ -88,6 +88,7 @@ Filtering allows a message producer to identify the intended recipients of a mes
 
 Event filtering specifies that a notification will be sent if certain conditions occure. For example, if the free space in a mail box drops below 10%.  
 
+[[topic-hierarchy-section]]
 ==== Topic Hierarchy
 
 Publish-Subscribe implementations typically define a set of topics (terms) which can be used to select messages for delivery. In the most basic case a recipient can only subscribe to topics. More capable systems may provide a simple query language to go with the topic vocabulary.
