@@ -16,7 +16,7 @@
 |[big]*Open Geospatial Consortium*
 |Submission Date: <yyyy-mm-dd>
 |Approval Date:   <yyyy-mm-dd>
-|Publication Date:   <2020-06-10>
+|Publication Date:   <2020-06-13>
 |External identifier of this OGC(R) document: http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}
 |Internal reference number of this OGC(R) document:    20-046
 |Category: OGC(R) White Paper
@@ -87,7 +87,7 @@ include::clause_8-WMO-OpenWIS.adoc[]
 
 include::clause_9-AsyncAPI.adoc[]
 
-include::clause_10-Ideas-Abstract-Spec.adoc[]
+include::clause_10-Future-Work.adoc[]
 
 include::annex-history.adoc[]
 
