@@ -16,8 +16,8 @@
 |[big]*Open Geospatial Consortium*
 |Submission Date: <yyyy-mm-dd>
 |Approval Date:   <yyyy-mm-dd>
-|Publication Date:   <2020-06-13>
-|External identifier of this OGC(R) document: http://www.opengis.net/doc/{doc-type}/{standard}/{m.n}
+|Publication Date:   <2020-06-15>
+|External identifier of this OGC(R) document: http://www.opengis.net/doc/whitepaper/Pub-Sub
 |Internal reference number of this OGC(R) document:    20-046
 |Category: OGC(R) White Paper
 |Editor:   Sarah Saeedi
