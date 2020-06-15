@@ -1,3 +1,4 @@
+
 == Future Work
 
 The next step the OGC should take is to establish a common approach to asynchronous Web APIs. Ideally, a Pub-Sub extension to OGC API-Common. This would provide a standard API module which could be extended to define Pub-Sub capabilities for existing and developmental OGC Web API standards.
