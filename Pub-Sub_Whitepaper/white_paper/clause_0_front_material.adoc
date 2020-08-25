@@ -30,5 +30,5 @@ The following organizations submitted this Document to the Open Geospatial Conso
 |Don Sullivan |NOAA | Contributor
 |Lorenzo Bigagli|CNR | Contributor
 |Steve Liang |University of Calgary | Contributor
+|Teodor Hanchevici |Kongsberg Geospatial| Contributor
 |====================
-

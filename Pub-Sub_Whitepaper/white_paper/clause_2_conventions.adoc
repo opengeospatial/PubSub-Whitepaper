@@ -41,9 +41,19 @@ Expression of interest in all or part of a publication offered by a Publisher. W
 // * COTS	Commercial Off The Shelf
 // * DCE	Distributed Computing Environment
 // * DCOM	Distributed Component Object Model
+* ATC Air Traffic Control
+* ATM Air Traffic Management
+* Automatic Dependent Surveillance–Broadcast (ADS–B)
 * CFP Call for Participation
 * CSW Catalogue Service for the Web
+* CHI Computer-Human Interface
+* DDS Data Distribution Service
+* DIS Distributed Interactive Simulation
 * DWG Domain Working Group
+* ERAM En Route Automation Modernization
+* FAA Federal Aviation Administration
+* HLA High-Level Architecture
+* HMI Human-Machine Interface
 * HTTP Hypertext Transfer Protocol
 // * IDL	Interface Definition Language
 * MEP Message Exchange Pattern
@@ -51,18 +61,25 @@ Expression of interest in all or part of a publication offered by a Publisher. W
 * OAI-PMH Open Archives Initiative Protocol for Metadata Harvesting
 * OGC Open Geospatial Consortium
 // * OMG Object Management Group
-* OpenWIS Open WMO Information system 
+* OpenWIS Open WMO Information system
 * OpenAPI Open API Standard
 * OWS OGC Web Services
+* QoS Quality of Service
 * RFQ Request for Quotation
 * SOS Sensor Observation Service
 * SSE Server-Sent Events
+* SSR Secondary Surveillance Radar
+* STARS Standard Terminal Automation Replacement System
 * SWG Standards Working Group
+* TRACON Terminal Radar Approach CONtrol
 * URL Uniform Resource Locator
 * UML Unified Modelling Language
+* VRR Voice Recognition/Response
 * WPS Web Processing Service
 * WCS Web Coverage Service
-* WFS* XML eXtensible Markup Language
+* WFS web Feature Service
+* XML eXtensible Markup Language
+
 
 ===	UML notation
 
