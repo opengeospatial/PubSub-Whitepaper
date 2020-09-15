@@ -20,7 +20,7 @@
 |External identifier of this OGC(R) document: http://www.opengis.net/doc/whitepaper/Pub-Sub
 |Internal reference number of this OGC(R) document:    20-046
 |Category: OGC(R) White Paper
-|Editor:   Sarah Saeedi
+|Editor:   Sara Saeedi
 |===
 
 [cols = "^", frame = "none"]
