@@ -81,9 +81,9 @@ include::clause_5-PubSub-IS.adoc[]
 
 include::clause_6-SensorThings.adoc[]
 
-include::clause_7-W3C.adoc[]
+include::clause_7-WMO-OpenWIS.adoc[]
 
-include::clause_8-WMO-OpenWIS.adoc[]
+include::clause_8-Aviation.adoc[]
 
 include::clause_9-AsyncAPI.adoc[]
 
