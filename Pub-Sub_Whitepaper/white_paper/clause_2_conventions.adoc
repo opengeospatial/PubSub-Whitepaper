@@ -1,38 +1,49 @@
 == Terms and definitions
+[[section:abbreviations]]
 
 For the purposes of this report, the definitions specified in Clause 4 of the OWS Common Implementation Standard [OGC 06-121r3] shall apply. In addition, the following terms and definitions apply.
 
-=== Broker | Brokering Publisher
-Intermediary between Subscribers and other Publishers which have been previously registered with the broker. The broker is not the original producer of messages, but only acts as a message middleman, re-publishing messages received from other Publishers and decoupling them from their Subscribers
+* Broker | Brokering Publisher
 
-=== Message
-A container within which data (such as XML, binary data, or other content) is transported. Messages may include additional information beyond data, including headers or other information used for routing or security purposes
+  Intermediary between Subscribers and other Publishers which have been previously registered with the broker. The broker is not the original producer of messages, but only acts as a message middleman, re-publishing messages received from other Publishers and decoupling them from their Subscribers
 
-=== Publication
-A uniquely identified aggregation of messages published by a Publisher over time. A Publisher may offer any number of publications that Subscribers may subscribe to
+* Message
 
-=== Publisher
-An entity that offers publications to Subscribers; supports subscription management (subscribe, unsubscribe) and is responsible for filtering and matching messages of interest to active subscriptions
+  A container within which data (such as XML, binary data, or other content) is transported. Messages may include additional information beyond data, including headers or other information used for routing or security purposes
 
-=== Receiver
-An entity that receives messages from Senders; may (but need not) be the original Subscriber
+* Publish–subscribe pattern
 
-=== Reliable Publisher
-A publisher of messages that offers capabilities to detect and recover from message delivery losses, whether caused by network failures, software failures, hardware failures, or other causes
+  A messaging pattern where message publishers categorize and send a message to a class of subscribers without knowledge of subscribers.
+  Similarly, subscribers express interest in one or more classes of messages and receive them without knowledge of their publishers.
 
-=== Sender
-Entity that sends messages to Receivers; may (but need not) be the initial creator/producer of the data in the message payload
+* Publication
 
-=== Subscriber
-Entity that creates a subscription at a Publisher; may (but need not) be the Receiver of delivered messages
+  A uniquely identified aggregation of messages published by a Publisher over time. A Publisher may offer any number of publications that Subscribers may subscribe to
 
-=== Subscription
-Expression of interest in all or part of a publication offered by a Publisher. When a subscription has been created, the Publisher delivers messages that match the subscription criteria to the Receiver defined in the subscription
+* Publisher
 
+  An entity that offers publications to Subscribers; supports subscription management (subscribe, unsubscribe) and is responsible for filtering and matching messages of interest to active subscriptions
 
-== Conventions
+* Receiver
 
-[[section:abbreviations]]
+  An entity that receives messages from Senders; may (but need not) be the original Subscriber
+
+* Reliable Publisher
+
+  A publisher of messages that offers capabilities to detect and recover from message delivery losses, whether caused by network failures, software failures, hardware failures, or other causes
+
+* Sender
+
+  An entity that sends messages to Receivers; may (but need not) be the initial creator/producer of the data in the message payload
+
+* Subscriber
+
+  An entity that creates a subscription at a Publisher; may (but need not) be the Receiver of delivered messages
+
+* Subscription
+
+  Expression of interest in all or part of a publication offered by a Publisher. When a subscription has been created, the Publisher delivers messages that match the subscription criteria to the Receiver defined in the subscription
+
 ===	Abbreviated terms
 
 // * API	Application Program Interface
@@ -55,15 +66,19 @@ Expression of interest in all or part of a publication offered by a Publisher. W
 * HLA High-Level Architecture
 * HMI Human-Machine Interface
 * HTTP Hypertext Transfer Protocol
+* IoT Internet of Things
 // * IDL	Interface Definition Language
 * MEP Message Exchange Pattern
-* MQTT OASIS Message Queuing Telemetry Transport Standard
+* MQTT Message Queuing Telemetry Transport
 * OAI-PMH Open Archives Initiative Protocol for Metadata Harvesting
+* OASIS Organization for the Advancement of Structured Information Standards
+* OData Open Data Protocol
 * OGC Open Geospatial Consortium
 // * OMG Object Management Group
 * OpenWIS Open WMO Information system
 * OpenAPI Open API Standard
 * OWS OGC Web Services
+* PubSub Publish–subscribe
 * QoS Quality of Service
 * RFQ Request for Quotation
 * SOS Sensor Observation Service
@@ -75,6 +90,7 @@ Expression of interest in all or part of a publication offered by a Publisher. W
 * URL Uniform Resource Locator
 * UML Unified Modelling Language
 * VRR Voice Recognition/Response
+* WIS WMO Information system
 * WPS Web Processing Service
 * WCS Web Coverage Service
 * WFS web Feature Service

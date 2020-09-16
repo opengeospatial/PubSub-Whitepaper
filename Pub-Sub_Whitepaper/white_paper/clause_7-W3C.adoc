@@ -1,7 +1,0 @@
-== W3C Pub Sub Recommendation
-
-Description of the standard and recommendations for OGC PubSub.  
- 
-Presentation from Stuttgart would be good to draw from.
-
-//write text in as many clauses as necessary. Use one document or many, your choice!

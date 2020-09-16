@@ -1,11 +1,11 @@
 == Asynchronous Operations
 
-An asynchronous operation is any interaction between two software entities where the conclusing action does not immediately follow the initiating action. There are a number of different models for Asynchronous Operations. This section attempts to describe someof the more common ones. An understanding of the scope of this space will help discuss and compare the alternatives OGC faces in asynchonous services.
+An asynchronous operation is any interaction between two software entities where the concluding action does not immediately follow the initiating action. There are several different models for Asynchronous Operations. This section attempts to describe some of the more common ones. An understanding of the scope of this space will help discuss and compare the alternatives OGC faces in asynchronous services.
 
 This section will look at three aspects of asynchronous operations:
 
 . The overall pattern of behavior
-. How the two entities rendezvous 
+. How the two entities rendezvous
 . The criteria for selecting response messages
 
 === Behavior Models
@@ -16,10 +16,10 @@ Request-Response is a synchronous behavior model. A request is issued by one ent
 
 [#img_Req_Res,reftext='{figure-caption} {counter:figure-num}']
 
-.Request - Response behavior model
+.Request-Response behavior model
 
 image::images/Request-Response.png[width=800,align="center"]
- 
+
 ==== Delayed Response
 
 This model differs from Reqest-Response in that the immediate response is not the final response. Rather it acknowedges successful receipt of the request. The final response is to be delivered latter (<<#img_Delayed-Response>>).
@@ -46,11 +46,11 @@ The Synchronization pattern supports a scenario where communication between the 
 
 A messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers, but instead to categorize published messages into classes without knowledge of which subscribers, if any, there may be. Similarly, subscribers express interest in one or classes and only receive messages that are of interest, without knowledge of which publishers, if any, there are. (Wikipedia)
 
-The Publish/Subscribe model is distinguished from the request/reply and client/server models by the asynchronous delivery of messages and the ability for a Subscriber to specify an ongoing (persistent) expression of interest.
+The Publish-Subscribe model is distinguished from the request/reply and client/server models by the asynchronous delivery of messages and the ability for a Subscriber to specify an ongoing (persistent) expression of interest.
 
 Alternate Text
 
-The Publish-Subscribe model completely separates message producers and consumers. Potential consumers of messages create filtering criteria which describe the types of messages they wish to receive. They then "subscribe" to a Pub-Sub service with this filtering criteria. Producers of messages "publish" those messages to the Pub-Sub service along with a set of tags which describe each message. The Pub-Sub service evaluates the tags against the filtering criteria of all subscribers. The message is forwarded to all subscribers who's criteria are met.
+The Publish-Subscribe model completely separates message producers and consumers. Potential consumers of messages create filtering criteria which describe the types of messages they wish to receive. They then "subscribe" to a Publish-Subscribe service with this filtering criteria. Producers of messages "publish" those messages to the Publish-Subscribe service along with a set of tags which describe each message. The Publish-Subscribe service evaluates the tags against the filtering criteria of all subscribers. The message is forwarded to all subscribers who's criteria are met.
 
 The "publish" operation follows the Request-Response pattern. The "subscribe" operation follows the Standing Request pattern.
 
@@ -58,7 +58,7 @@ image::images/Pub-Sub.png[]
 
 ==== Broadcast
 
-Broadcast is the simplest asynchronous pattern. The message producer simply sends the message to everyone. It is left up to the recipients to decide what to do with it. 
+Broadcast is the simplest asynchronous pattern. The message producer simply sends the message to everyone. It is left up to the recipients to decide what to do with it.
 
 === Notification and Alert
 
@@ -78,7 +78,7 @@ A stored response queue is a service which holds responses to asynchoronous requ
 
 ==== Man in the Loop
 
-If all else fails, let the human do it. Many alternatives are available including instand messaging, e-mail, phone calls, even the Postal Service. 
+If all else fails, let the human do it. Many alternatives are available including instand messaging, e-mail, phone calls, even the Postal Service.
 
 === Filtering
 
@@ -86,7 +86,7 @@ Filtering allows a message producer to identify the intended recipients of a mes
 
 ==== Event (RSS, SNMP)
 
-Event filtering specifies that a notification will be sent if certain conditions occure. For example, if the free space in a mail box drops below 10%.  
+Event filtering specifies that a notification will be sent if certain conditions occure. For example, if the free space in a mail box drops below 10%.
 
 [[topic-hierarchy-section]]
 ==== Topic Hierarchy
