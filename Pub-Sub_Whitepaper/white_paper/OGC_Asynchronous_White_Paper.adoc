@@ -18,7 +18,7 @@
 |Approval Date:   <yyyy-mm-dd>
 |Publication Date:   <2020-06-15>
 |External identifier of this OGC(R) document: http://www.opengis.net/doc/whitepaper/Pub-Sub
-|Internal reference number of this OGC(R) document:    20-046
+|Internal reference number of this OGC(R) document:    20-081
 |Category: OGC(R) White Paper
 |Editor:   Sara Saeedi
 |===
