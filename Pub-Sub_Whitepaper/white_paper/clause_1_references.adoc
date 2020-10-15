@@ -5,7 +5,6 @@ The following documents are referenced in this document.
 For dated references, subsequent amendments to, or revisions of, any of these publications do not apply.
 For undated references, the latest edition of the normative document referred to applies.
 
-
 * OGC 06-121r3, OGC® Web Services Common Specification, version 1.1.0 (9 February 2007)
 * OGC 13-131, OGC® Publish/Subscribe Interface Standard 1.0 - Core
 * OGC 13-133, OGC® Publish/Subscribe Interface Standard 1.0 - SOAP Protocol Binding Extension
@@ -16,3 +15,7 @@ For undated references, the latest edition of the normative document referred to
 * OGC 07-144r4, CSW-ebRIM Registry Service - Part 2: Basic extension package, version 1.0.1, corrigendum 1
 * OGC 08-103r2, CSW-ebRIM Registry Service - Part 3: Abstract Test Suite, version 1.0.1
 * OGC 16-137r2, Testbed-12 PubSub / Catalog Engineering Report (12 May 2017)
+
+
+https://standards.ieee.org/standard/1278_2-2015.html[Distributed Interactive Simulation (DIS) IEEE Standard 1278]
+ https://standards.ieee.org/standard/1516-2010.html[High-Level Architecture (HLA) IEEE Standard 1516]

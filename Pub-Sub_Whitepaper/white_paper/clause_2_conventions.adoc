@@ -1,7 +1,9 @@
 == Terms and definitions
 [[section:abbreviations]]
 
-For the purposes of this report, the definitions specified in Clause 4 of the OWS Common Implementation Standard [OGC 06-121r3] shall apply. In addition, the following terms and definitions apply.
+For the purposes of this report, the definitions specified in Clause 4 of the
+http://portal.opengeospatial.org/files/?artifact_id=38867[OWS Common Implementation Standard [OGC 06-121r9]] shall apply.
+In addition, the following terms and definitions apply.
 
 * Broker | Brokering Publisher
 
@@ -54,7 +56,7 @@ For the purposes of this report, the definitions specified in Clause 4 of the OW
 // * DCOM	Distributed Component Object Model
 * ATC Air Traffic Control
 * ATM Air Traffic Management
-* Automatic Dependent Surveillance–Broadcast (ADS–B)
+* ADS–B Automatic Dependent Surveillance–Broadcast
 * CFP Call for Participation
 * CSW Catalogue Service for the Web
 * CHI Computer-Human Interface
@@ -66,6 +68,8 @@ For the purposes of this report, the definitions specified in Clause 4 of the OW
 * HLA High-Level Architecture
 * HMI Human-Machine Interface
 * HTTP Hypertext Transfer Protocol
+* IEEE	Institute of Electrical and Electronics Engineer
+* InterCOM	Intercommunication
 * IoT Internet of Things
 // * IDL	Interface Definition Language
 * MEP Message Exchange Pattern
@@ -74,10 +78,11 @@ For the purposes of this report, the definitions specified in Clause 4 of the OW
 * OASIS Organization for the Advancement of Structured Information Standards
 * OData Open Data Protocol
 * OGC Open Geospatial Consortium
-// * OMG Object Management Group
+* OMG Object Management Group
 * OpenWIS Open WMO Information system
 * OpenAPI Open API Standard
 * OWS OGC Web Services
+* PSR Primary Surveillance Radar
 * PubSub Publish–subscribe
 * QoS Quality of Service
 * RFQ Request for Quotation
@@ -87,8 +92,10 @@ For the purposes of this report, the definitions specified in Clause 4 of the OW
 * STARS Standard Terminal Automation Replacement System
 * SWG Standards Working Group
 * TRACON Terminal Radar Approach CONtrol
+* UAS Unmanned Aviation System
 * URL Uniform Resource Locator
 * UML Unified Modelling Language
+* VoIP Voice over Internet Protocol
 * VRR Voice Recognition/Response
 * WIS WMO Information system
 * WPS Web Processing Service

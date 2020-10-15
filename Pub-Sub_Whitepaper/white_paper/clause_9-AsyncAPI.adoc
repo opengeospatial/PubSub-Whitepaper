@@ -2,7 +2,7 @@
 
 OGC Web API Standards build on the design patterns described by the OpenAPI Interface Design Language (IDL). The use of an IDL has proven invaluable in the development of OGC Web API Standards. OpenAPI provides a set of common concepts for the design of a Web API and rules for the application of those concepts. Without this common language, the task of coordinating multiple API standardization efforts would be almost impossible.
 
-The OGC is now looking to extend our Request-Response APIs to include event driven (asynchronous) operations. However, OpenAPI does not support event driven operations beyond a simple call-back model. So an IDL for event driven Web APIs is needed. 
+The OGC is now looking to extend our Request-Response APIs to include event driven (asynchronous) operations. However, OpenAPI does not support event driven operations beyond a simple call-back model. So an IDL for event driven Web APIs is needed.
 
 AsyncAPI is an open source initiative that seeks to improve the current state of Event-Driven Architectures (EDA). Their long-term goal is to make working with EDA’s as easy as it is to work with REST APIs. That goes from documentation to code generation, from discovery to event management. Most of the processes used for REST APIs should also be applicable to event-driven/asynchronous APIs. This section provides an introduction to AsyncAPI as an additional tool for use in developing OGC Web API standards.
 
@@ -49,18 +49,18 @@ AsyncAPI can be viewed as an extension of OpenAPI. Many of the objects and struc
 
 ==== AsyncAPI Object
 
-The AsyncAPI Object is similar to the OpenAPI Object. This object organizes the top-level components of the AsyncAPI file. <<#asyncAPI-object>> describes the AsyncAPI object and how it differs from its' OpenAPI counterpart.  
+The AsyncAPI Object is similar to the OpenAPI Object. This object organizes the top-level components of the AsyncAPI file. <<#asyncAPI-object>> describes the AsyncAPI object and how it differs from its' OpenAPI counterpart.
 
 [#asyncAPI-object,reftext='{table-caption} {counter:table-num}']
 .AsyncAPI Object
 [cols="15,^15,85",options="header"]
 |====
 | Field Name | Type | Description
-| asyncapi | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#A2SVersionString[AsyncAPI Version String] | **Required.** Serves the same function as the openAPI field. The format of the asyncAPI field is defined by the schema. OpenAPI uses the same format, but defines it in the text of the standard.  
+| asyncapi | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#A2SVersionString[AsyncAPI Version String] | **Required.** Serves the same function as the openAPI field. The format of the asyncAPI field is defined by the schema. OpenAPI uses the same format, but defines it in the text of the standard.
 | id | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#A2SIdString[Identifier] | *Specific to AsyncAPI.* Identifier of the <<definitionsApplication,application>> the AsyncAPI document is defining.
 | info | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#infoObject[Info Object] | **Required.** Same as OpenAPI.
 | servers | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#serversObject[Servers Object] | Differs from OpenAPI. In OpenAPI this is an array of Server Objects while in AsyncAPI it is a map of Server Objects. The structure of the <<server-object-section,Server Objects>> themselves also differ.
-| channels | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#channelsObject[Channels Object] | **Required**. <<channel-object-section,Channels>> are similar to OpenAPI Paths in that they identify a resource. The main difference is that a path is used to access the current resource while a channel is used to distribute all instances of that resource over a period of time. 
+| channels | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#channelsObject[Channels Object] | **Required**. <<channel-object-section,Channels>> are similar to OpenAPI Paths in that they identify a resource. The main difference is that a path is used to access the current resource while a channel is used to distribute all instances of that resource over a period of time.
 | components | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#componentsObject[Components Object] | The Components Object serves the same function in AsyncAPI as it does in OpenAPI. The categories of components managed, however, are very different. See the <<components-object-section,Components Object>> section for more information.
 | tags | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#tagsObject[Tags Object] |Same as in OpenAPI.
 | externalDocs | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#externalDocumentationObject[External Documentation Object] | Same as in OpenAPI.
@@ -73,7 +73,7 @@ It's notable that AsyncAPI does not include Security Requirements in the root fi
 
 The AsyncAPI Components Object provides the same functionality and structure as the Components Object in OpenAPI. The difference is in the types of components that can be included.
 
-<<#components-object>> describes the Components object and how it differs from its' OpenAPI counterpart.  
+<<#components-object>> describes the Components object and how it differs from its' OpenAPI counterpart.
 
 [#components-object,reftext='{table-caption} {counter:table-num}']
 .Components Object
@@ -100,11 +100,11 @@ https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#refe
 [[server-object-section]]
 ==== Server Objects
 
-Servers are described by two objects; the Servers Object (plural) and the Server Object (singular). 
+Servers are described by two objects; the Servers Object (plural) and the Server Object (singular).
 
 A Servers Object provides a map of Server Objects with each Server Object refrenced by an identifier (the map key). This differs from OpebnAPI where the Server Objects are packaged as an array.
 
-<<#server-object>> describes the Server object and how it differs from its' OpenAPI counterpart.  
+<<#server-object>> describes the Server object and how it differs from its' OpenAPI counterpart.
 
 [#server-object,reftext='{table-caption} {counter:table-num}']
 .Server Object
@@ -116,18 +116,18 @@ A Servers Object provides a map of Server Objects with each Server Object refren
 | protocolVersion | ``string`` | *Specific to AsyncAPI*. The version of the protocol used for connection. For instance: AMQP ``0.9.1``, HTTP ``2.0``, Kafka ``1.0.0``, etc.
 | description | ``string`` | Same as OpenAPI.
 | variables | Map[``string``, https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#serverVariableObject[Server Variable Object]] | Same as OpenAPI except that the AsyncAPI includes an `examples` field in the Server Variable Object.
-| security | [https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#securityRequirementObject[Security Requirement Object]] | *Specific to AsyncAPI*. AsyncAPI applies security requirements in the Server Object while OpenAPI applies them on the Path. The Server Scheme Objects are nearly identical, differing only in the valid values for the `type` and `in` fields. 
+| security | [https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#securityRequirementObject[Security Requirement Object]] | *Specific to AsyncAPI*. AsyncAPI applies security requirements in the Server Object while OpenAPI applies them on the Path. The Server Scheme Objects are nearly identical, differing only in the valid values for the `type` and `in` fields.
 | bindings | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#serverBindingsObject[Server Bindings Object] | *Specific to AsyncAPI*. A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the server.
 |====
 
 [[channel-object-section]]
 ==== Channel Object
 
-Channels are described by two objects; the Channels Object (plural) and the Channel Object (singular). 
+Channels are described by two objects; the Channels Object (plural) and the Channel Object (singular).
 
 A Channels Object provides a map of Channel Objects with each Channel Object refrenced by an identifier (the map key).
 
-<<#channel-object>> describes the Channel object.  
+<<#channel-object>> describes the Channel object.
 
 [#channel-object,reftext='{table-caption} {counter:table-num}']
 .Channel Object
@@ -138,7 +138,7 @@ A Channels Object provides a map of Channel Objects with each Channel Object ref
 | description | ``string`` | An optional description of this channel item. http://spec.commonmark.org/[CommonMark syntax] can be used for rich text representation.
 | subscribe | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#operationObject[Operation Object] | A definition of the SUBSCRIBE operation.
 | publish | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#operationObject[Operation Object] | A definition of the PUBLISH operation.
-| parameters | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#parametersObject[Parameters Object] | A map of the parameters included in the channel name. It SHOULD be 
+| parameters | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#parametersObject[Parameters Object] | A map of the parameters included in the channel name. It SHOULD be
 present only when using channels with expressions (as defined by https://tools.ietf.org/html/rfc6570#section-2.2[RFC 6570 section 2.2]).
 | bindings | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#channelBindingsObject[Channel Bindings Object] | A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the channel.
 |====
@@ -151,7 +151,7 @@ The Channel Item Object is similar to the Path Item Object in OpenAPI. Both desc
 * Channel Item Object includes a `bindings` field. This field is not needed in the Path Items object since the binding is always HTTP.
 * Path Items Objects include a `servers` field to identify the target of requests.
 
-<<#channel-item-object>> describes the Channel Item object.  
+<<#channel-item-object>> describes the Channel Item object.
 
 [#channel-item-object,reftext='{table-caption} {counter:table-num}']
 .Channel Item Object
@@ -161,7 +161,7 @@ The Channel Item Object is similar to the Path Item Object in OpenAPI. Both desc
 | description | ``string`` | An optional description of this channel item. http://spec.commonmark.org/[CommonMark syntax] can be used for rich text representation.
 | subscribe | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#operationObject[Operation Object] | A definition of the SUBSCRIBE operation.
 | publish | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#operationObject[Operation Object] | A definition of the PUBLISH operation.
-| parameters | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#parametersObject[Parameters Object] | A map of the parameters included in the channel name. It SHOULD be 
+| parameters | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#parametersObject[Parameters Object] | A map of the parameters included in the channel name. It SHOULD be
 present only when using channels with expressions (as defined by https://tools.ietf.org/html/rfc6570#section-2.2[RFC 6570 section 2.2]).
 | bindings | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#channelBindingsObject[Channel Bindings Object] | A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the channel.
 |====
@@ -171,7 +171,7 @@ present only when using channels with expressions (as defined by https://tools.i
 
 The AsyncAPI Operation Object serves in a similar role as the OpenAPI Operation Object, but requires a very different set of data to do so.
 
-<<#operation-object>> describes the Operation object and how it differs from its' OpenAPI counterpart.  
+<<#operation-object>> describes the Operation object and how it differs from its' OpenAPI counterpart.
 
 [#operation-object,reftext='{table-caption} {counter:table-num}']
 .Operation Object
@@ -184,7 +184,7 @@ The AsyncAPI Operation Object serves in a similar role as the OpenAPI Operation 
 | tags | [https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#tagObject[Tag Object]]|Similar to OpenAPI. In OpenAPI the tags are simple strings.
 | externalDocs | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#externalDocumentationObject[External Documentation Object] | Same as in OpenAPI.
 | bindings | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#operationBindingsObject[Operation Bindings Object] | *Specific to AsyncAPI*. A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the operation.
-| traits | <<operation-trate-object,Operation Trait Object>> OR + 
+| traits | <<operation-trate-object,Operation Trait Object>> OR +
 <<referenceObject,Reference Object>> | *Specific to AsyncAPI*. A list of traits to apply to the operation object. Traits MUST be merged into the operation object using the https://tools.ietf.org/html/rfc7386[JSON Merge Patch] algorithm in the same order they are defined here.
 | message | <<messageObject,Message Object>> +
 <<referenceObject,Reference Object>> | *Specific to AsyncAPI*. A definition of the message that will be published or received on this channel. ``oneOf`` is allowed here to specify multiple messages, however, **a message MUST be valid only against one of the referenced message objects.**
@@ -207,7 +207,7 @@ The Server Binding Object is specific to AsyncAPI.
 
 This object is a map describing protocol-specific definitions for a server. These objects are specific to AsyncAPI.
 
-<<#server-binding-object>> describes the Server Binding object.  
+<<#server-binding-object>> describes the Server Binding object.
 
 [#server-binding-object,reftext='{table-caption} {counter:table-num}']
 .Server Binding Object
@@ -254,13 +254,13 @@ The Operation Binding Object and <<server-binding-object-section,Server Binding 
 [[parameter-object-section]]
 ==== Parameters
 
-Parameters are described by two objects; the Parameters Object (plural) and the Parameter Object (singular). 
+Parameters are described by two objects; the _Parameters Object_ (plural) and the _Parameter Object_ (singular).
 
-A Parameters Object provides a map of Parameter Objects with each Parameter Object referenced by an identifier (the map key).
+A _Parameters Object_ provides a map of _Parameter Objects_ while each _Parameter Object_ referenced by an identifier (the map key).
 
-AsyncAPIs are considerably simpler than those defined in OpenAPI. So much so that they should be treated as different objects.
+AsyncAPIs are considerably simpler than those defined in OpenAPI; So, they should be treated as different objects.
 
-<<#parameter-object>> describes the AsyncAPI Parameter object.
+<<#parameter-object>> describes the AsyncAPI _Parameter Object_.
 
 [#parameter-object,reftext='{table-caption} {counter:table-num}']
 .Parameter Object
@@ -274,7 +274,11 @@ AsyncAPIs are considerably simpler than those defined in OpenAPI. So much so tha
 
 ==== Message Object
 
-Logically you would expect an OpenAPI Response Object and an AsyncAPI Message Object to be very similar. And in practice the information exchanged may be. But the information needed to describe that exchange is very different. Thus, the Message Object bears little resemblance to it's OpenAPI counter part. 
+Logically, an OpenAPI Response Object and an AsyncAPI Message
+Object are expected to be very similar.
+In practice, the information exchanged may be similar too; however, the information
+needed to describe that exchange is very different.
+Thus, the Message Object bears little resemblance to its OpenAPI counterpart.
 
 <<#message-object>> describes the Message object.
 
@@ -297,19 +301,19 @@ https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#refe
 | tags | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#tagsObject[Tags Object] | A list of tags for API documentation control. Tags can be used for logical grouping of messages.
 | externalDocs | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#externalDocumentationObject[External Documentation Object] | Additional external documentation for this message.
 | bindings | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageBindingsObject[Message Bindings Object] | A map where the keys describe the name of the protocol and the values describe protocol-specific definitions for the message.
-| examples | [Map[``string``, ``any``]] | An array with examples of valid message objects.
-| traits | [https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageTraitObject[Message Trait Object] +
-https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#referenceObject[Reference Object]] | A list of traits to apply to the message object. Traits MUST be merged into the message object using the https://tools.ietf.org/html/rfc7386[JSON Merge Patch] algorithm in the same order they are defined here. The resulting object MUST be a valid https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageObject[Message Object].
+| examples | Map [``string``, ``any``] | An array with examples of valid message objects.
+| traits | https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageTraitObject[Message Trait Object] +
+https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#referenceObject[Reference Object] | A list of traits to apply to the message object. Traits MUST be merged into the message object using the https://tools.ietf.org/html/rfc7386[JSON Merge Patch] algorithm in the same order they are defined here. The resulting object MUST be a valid https://github.com/asyncapi/asyncapi/blob/master/versions/2.0.0/asyncapi.md#messageObject[Message Object].
 |====
 
 === Resources
 
-The following resources should be explored if you wish to learn more about AsyncAPI, design an asynchronous API, or contribute to the standard.
+The following resources should be explored if you wish to learn more about AsyncAPI, design an asynchronous API, or contribute to the standard:
 
-https://www.asyncapi.com/[AsyncAPI Home]
+* https://www.asyncapi.com/[AsyncAPI Home]
 
-https://www.asyncapi.com/docs/getting-started/[Getting Started]
+* https://www.asyncapi.com/docs/getting-started/[Getting Started]
 
-https://www.asyncapi.com/docs/specifications/2.0.0/[OpenAPI Version 2.0]
+* https://www.asyncapi.com/docs/specifications/2.0.0/[OpenAPI Version 2.0]
 
-https://github.com/asyncapi/asyncapi[AsyncAPI GitHub]
+* https://github.com/asyncapi/asyncapi[AsyncAPI GitHub]
