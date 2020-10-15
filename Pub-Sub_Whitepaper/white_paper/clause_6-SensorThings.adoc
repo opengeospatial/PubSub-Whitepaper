@@ -2,7 +2,7 @@
 
 OGC SensorThings API is a standard for interconnecting the Internet of Things (IoT) devices, data, and applications over the Web. OGC SensorThings API has two main parts: the sensing part that focuses on heterogeneous IoT sensor systems, and the Tasking part focused on IoT actuators and tasking devices.
 
-OGC SensorThings API is following ODATA for managing the sensing resources. Thus, it has a REST-like API and supports HTTP CRUD operations (GET, POST, PATCH, DELETE) and ODATA query options (select, expand, filter, orderby, top, skip) for data retrieval.
+OGC SensorThings API is following https://www.odata.org/documentation/[ODATA] (Open Data Protocol) for managing the sensing resources. Thus, it has a REST-like API and supports HTTP CRUD operations (GET, POST, PATCH, DELETE) and ODATA query options (select, expand, filter, orderby, top, skip) for data retrieval.
 
 In addition to supporting HTTP, OGC SensorThings API has the extension for supporting MQTT to create and real-time retrieval of sensor Observations.
 
@@ -24,7 +24,7 @@ Here is a summary of lessons learnt from MQTT adoption is OGC SensorThings API t
 **	Once it receives the payload, it uses the same process as POST to create the resource
 
 === OGC IMIST IOT Pilot
-OGC Incident Management Information Sharing Internet of Things Pilot Project (https://www.ogc.org/projects/initiatives/imisiot<IMIS IoT Pilot>) depicts an incident fire, law enforcement, and emergency medical units must deploy, discover and integrate various sensors and platforms to gain situational awareness. In that pilot,  MQTT topics were defined to contain the resource path together with $filter query options. Then the Observation that is published to that topic was filtered by the criteria defined in the topic. In this way, rules can be defined to notify subscribers about specific conditions that happen, such as when the carbon dioxide reading for first responders is higher than a threshold and considered dangerous.
+OGC Incident Management Information Sharing Internet of Things Pilot Project (https://www.ogc.org/projects/initiatives/imisiot[IMIS IoT Pilot]) depicts an incident fire, law enforcement, and emergency medical units must deploy, discover and integrate various sensors and platforms to gain situational awareness. In that pilot,  MQTT topics were defined to contain the resource path together with $filter query options. Then the Observation that is published to that topic was filtered by the criteria defined in the topic. In this way, rules can be defined to notify subscribers about specific conditions that happen, such as when the carbon dioxide reading for first responders is higher than a threshold and considered dangerous.
 Example of the topic would be *_v1.0/Datastreams(id)/Observations?$filter=result gt 100_*.
 IMIS is a pilot implementation and could be a starting point for OGC SensorThings API potential part 3, rules engine.
 This was a pilot implementation and could be a starting point for OGC SensorThings API potential part 3, rules engine.

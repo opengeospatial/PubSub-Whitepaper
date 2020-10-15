@@ -16,6 +16,7 @@ For undated references, the latest edition of the normative document referred to
 * OGC 08-103r2, CSW-ebRIM Registry Service - Part 3: Abstract Test Suite, version 1.0.1
 * OGC 16-137r2, Testbed-12 PubSub / Catalog Engineering Report (12 May 2017)
 
-
-https://standards.ieee.org/standard/1278_2-2015.html[Distributed Interactive Simulation (DIS) IEEE Standard 1278]
- https://standards.ieee.org/standard/1516-2010.html[High-Level Architecture (HLA) IEEE Standard 1516]
+* https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html[OASIS international open standards consortium MQTT Version 5.0]
+* https://www.odata.org/documentation/[OASIS international open standards consortium ODATA Version 4.0]
+* https://standards.ieee.org/standard/1278_2-2015.html[Distributed Interactive Simulation (DIS) IEEE Standard 1278]
+* https://standards.ieee.org/standard/1516-2010.html[High-Level Architecture (HLA) IEEE Standard 1516]
